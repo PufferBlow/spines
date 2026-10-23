@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="_support/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_support/ds/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap">
+<style>body{margin:0;background:#0a0a0a;color:#f2f2f2}a{color:#f2f2f2;text-decoration-color:rgba(242,242,242,.35)}a:hover{color:#fff}</style>
+</helmet>
+<div style="max-width:1240px;margin:0 auto;padding:56px clamp(16px,3vw,36px) 96px;display:flex;flex-direction:column;gap:72px;font-family:var(--font-body)">
+
+  <header style="display:flex;flex-direction:column;gap:14px">
+    <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">Pufferblow · Roles</span>
+    <h1 style="margin:0;font:400 56px/1.05 Marcellus,serif">Role badges</h1>
+    <p style="margin:0;max-width:700px;font-size:15px;line-height:1.55;color:#9a9a9a;text-wrap:pretty">A small mark after a person's name that says what they do in a space. Every space starts with sixteen defaults and can make its own, using a built-in glyph or an uploaded image. Shape tells you who gave the role, colour comes from the six identity colours, and the glyph is always ink.</p>
+  </header>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">01 · Tiers</span><span style="font:400 36px/1.1 Marcellus,serif">Shape says who gave it</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
+      <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="3">
+        <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:center;gap:16px">
+            <svg width="{{ t.big.s }}" height="{{ t.big.s }}" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ t.big.shape }}" style="fill:{{ t.big.fill }}"></path><g transform="{{ t.big.gt }}"><path d="{{ t.big.glyph }}" style="fill:none;stroke:{{ t.big.ink }};stroke-width:{{ t.big.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg>
+            <div style="display:flex;flex-direction:column;gap:6px"><span style="font:400 22px/1.1 Marcellus,serif">{{ t.name }}</span><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">{{ t.shapeName }}</span></div>
+          </div>
+          <span style="font-size:13.5px;line-height:1.5;color:#9a9a9a;text-wrap:pretty">{{ t.desc }}</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:auto"><sc-for list="{{ t.ex }}" as="b" hint-placeholder-count="4"><svg width="{{ b.s }}" height="{{ b.s }}" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ b.shape }}" style="fill:{{ b.fill }}"></path><g transform="{{ b.gt }}"><path d="{{ b.glyph }}" style="fill:none;stroke:{{ b.ink }};stroke-width:{{ b.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg></sc-for></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">02 · Defaults</span><span style="font:400 36px/1.1 Marcellus,serif">Sixteen to start with</span><span style="max-width:720px;font-size:14px;line-height:1.55;color:#9a9a9a">New spaces get Owner, Admin and Moderator switched on. The rest are in the role picker, ready to rename or recolour. System badges can't be edited or assigned.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:8px">
+      <sc-for list="{{ defaults }}" as="d" hint-placeholder-count="16">
+        <div style="background:#121212;border-radius:16px;padding:16px;display:flex;align-items:center;gap:14px">
+          <svg width="{{ d.b48.s }}" height="{{ d.b48.s }}" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ d.b48.shape }}" style="fill:{{ d.b48.fill }}"></path><g transform="{{ d.b48.gt }}"><path d="{{ d.b48.glyph }}" style="fill:none;stroke:{{ d.b48.ink }};stroke-width:{{ d.b48.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><span style="font-size:15px;font-weight:600">{{ d.name }}</span><span style="font-size:12px;color:#707070">{{ d.meta }}</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><svg width="{{ d.b20.s }}" height="{{ d.b20.s }}" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ d.b20.shape }}" style="fill:{{ d.b20.fill }}"></path><g transform="{{ d.b20.gt }}"><path d="{{ d.b20.glyph }}" style="fill:none;stroke:{{ d.b20.ink }};stroke-width:{{ d.b20.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg><svg width="{{ d.b16.s }}" height="{{ d.b16.s }}" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ d.b16.shape }}" style="fill:{{ d.b16.fill }}"></path><g transform="{{ d.b16.gt }}"><path d="{{ d.b16.glyph }}" style="fill:none;stroke:{{ d.b16.ink }};stroke-width:{{ d.b16.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">03 · Custom</span><span style="font:400 36px/1.1 Marcellus,serif">Make your own</span><span style="max-width:720px;font-size:14px;line-height:1.55;color:#9a9a9a">Space admins pick a tier, a colour and a glyph, or upload an image. The preview shows every size it will appear at.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px;align-items:start">
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font:400 22px/1.15 Marcellus,serif">New role</span><button onClick="{{ reset }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:#1f1f1f;color:#dadada;font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer" style-hover="background:#2a2a2a">Reset</button></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Name</span><input value="{{ name }}" onChange="{{ onName }}" maxlength="24" placeholder="Role name" style="height:44px;border-radius:10px;background:#1f1f1f;border:0;outline:0;padding:0 12px;color:#f2f2f2;font:14.5px var(--font-body);min-width:0"></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Tier</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ tierOpts }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer">{{ o.label }}</button></sc-for></div><span style="font-size:12.5px;line-height:1.45;color:#707070">{{ tierHelp }}</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Colour</span><div style="display:flex;gap:10px;flex-wrap:wrap"><sc-for list="{{ toneOpts }}" as="o" hint-placeholder-count="8"><button onClick="{{ o.onClick }}" title="{{ o.label }}" style="width:30px;height:30px;border:0;border-radius:50%;background:{{ o.hex }};box-shadow:{{ o.ring }};cursor:pointer"></button></sc-for></div></div>
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Glyph</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,44px);gap:6px">
+            <sc-for list="{{ glyphOpts }}" as="o" hint-placeholder-count="18"><button onClick="{{ o.onClick }}" title="{{ o.label }}" style="width:44px;height:44px;padding:0;border:0;border-radius:10px;background:{{ o.bg }};color:{{ o.col }};display:grid;place-items:center;cursor:pointer" style-hover="background:#2a2a2a"><svg width="22" height="22" viewBox="0 0 24 24" style="display:block"><path d="{{ o.d }}" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"></path></svg></button></sc-for>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:#1f1f1f"><button onClick="{{ pickUpload }}" style="width:44px;height:44px;flex:none;padding:0;border:0;border-radius:10px;background:{{ upBg }};color:{{ upCol }};display:grid;place-items:center;cursor:pointer;box-shadow:inset 0 0 0 1.5px rgba(242,242,242,.25)"><svg width="20" height="20" viewBox="0 0 24 24" style="display:block"><path d="M12 16V5M7.5 9.5L12 5l4.5 4.5M5 19h14" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"></path></svg></button><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:13.5px;font-weight:600">Upload an image</span><span style="font-size:12px;line-height:1.4;color:#9a9a9a">SVG or PNG, 128 × 128, under 256 KB. It's cropped to the tier shape, so keep the subject inside the middle 75%.</span></div></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;position:sticky;top:16px">
+        <div style="background:#0a0a0a;border-radius:18px;padding:32px 24px;display:flex;flex-direction:column;align-items:center;gap:26px;background-image:radial-gradient(circle at 50% 0%,#1a1a1a,#0a0a0a 70%)">
+          <div style="display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap;justify-content:center">
+            <sc-for list="{{ preview }}" as="p" hint-placeholder-count="4"><div style="display:flex;flex-direction:column;align-items:center;gap:10px"><svg width="{{ p.s }}" height="{{ p.s }}" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ p.shape }}" style="fill:{{ p.fill }}"></path><sc-if value="{{ p.isUp }}" hint-placeholder-val="{{ false }}"><path d="{{ p.shape }}" style="fill:url(#pbUpHatch)"></path></sc-if><g transform="{{ p.gt }}"><path d="{{ p.glyph }}" style="fill:none;stroke:{{ p.ink }};stroke-width:{{ p.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ p.s }}</span></div></sc-for>
+          </div>
+          <svg width="0" height="0" style="position:absolute"><defs><pattern id="pbUpHatch" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="1.4" height="4" style="fill:rgba(242,242,242,.12)"></rect></pattern></defs></svg>
+          <div style="width:100%;max-width:400px;display:flex;flex-direction:column;gap:2px;padding:8px;border-radius:14px;background:#161616">
+            <div style="display:flex;gap:14px;padding:8px 10px;border-radius:10px">
+              <img src="../assets/avatars/pb-avatar-happy-violet.svg" alt="" style="width:40px;height:40px;display:block;flex:none">
+              <div style="display:flex;flex-direction:column;gap:3px;min-width:0"><div style="display:flex;align-items:center;gap:6px"><span style="font:700 15px/1.3 Barlow,sans-serif;color:#f2f2f2">Vexa</span><svg width="16" height="16" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ p16.shape }}" style="fill:{{ p16.fill }}"></path><g transform="{{ p16.gt }}"><path d="{{ p16.glyph }}" style="fill:none;stroke:{{ p16.ink }};stroke-width:{{ p16.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg><span style="font-size:12px;color:#707070;margin-left:4px">9:41 PM</span></div><span style="font-size:15px;line-height:1.5;color:#dadada">clips for this week's vote are pinned</span></div>
+            </div>
+          </div>
+          <div style="width:100%;max-width:400px;display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px;border-radius:10px;background:#121212"><img src="../assets/avatars/pb-avatar-happy-violet.svg" alt="" style="width:32px;height:32px;display:block;flex:none"><span style="font:600 14px/1.2 Barlow,sans-serif;color:#f2f2f2">Vexa</span><svg width="20" height="20" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ p20.shape }}" style="fill:{{ p20.fill }}"></path><g transform="{{ p20.gt }}"><path d="{{ p20.glyph }}" style="fill:none;stroke:{{ p20.ink }};stroke-width:{{ p20.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg></div>
+            <div style="display:flex;align-items:center;padding:8px;border-radius:10px;background:#121212"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px 0 4px;border-radius:7px;background:{{ chipBg }};color:{{ chipCol }};font:700 10.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;overflow:hidden"><svg width="16" height="16" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ p16.shape }}" style="fill:{{ p16.fill }}"></path><g transform="{{ p16.gt }}"><path d="{{ p16.glyph }}" style="fill:none;stroke:{{ p16.ink }};stroke-width:{{ p16.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg>{{ shownName }}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">04 · In use</span><span style="font:400 36px/1.1 Marcellus,serif">One badge per name</span><span style="max-width:720px;font-size:14px;line-height:1.55;color:#9a9a9a">Chat and lists show only the highest role that has a badge, right after the name. The profile card shows all of them as role tags.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:12px;align-items:start">
+
+      <div style="background:#161616;border-radius:18px;padding:10px;display:flex;flex-direction:column;gap:2px">
+        <span style="padding:10px 12px 8px;font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">Chat · 16 px</span>
+        <sc-for list="{{ chat }}" as="m" hint-placeholder-count="3">
+          <div style="display:flex;gap:14px;padding:8px 10px;border-radius:10px" style-hover="background:#1a1a1a">
+            <img src="{{ m.av }}" alt="" style="width:40px;height:40px;display:block;flex:none">
+            <div style="display:flex;flex-direction:column;gap:3px;min-width:0"><div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap"><span style="font:700 15px/1.3 Barlow,sans-serif;color:#f2f2f2">{{ m.name }}</span><sc-if value="{{ m.b }}"><svg width="16" height="16" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ m.b.shape }}" style="fill:{{ m.b.fill }}"></path><g transform="{{ m.b.gt }}"><path d="{{ m.b.glyph }}" style="fill:none;stroke:{{ m.b.ink }};stroke-width:{{ m.b.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg></sc-if><sc-if value="{{ m.remote }}"><span style="display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:999px;background:#1f1f1f;color:#9a9a9a;font-size:11.5px">@{{ m.remote }}</span></sc-if><span style="font-size:12px;color:#707070;margin-left:4px">{{ m.time }}</span></div><span style="font-size:15px;line-height:1.5;color:#dadada">{{ m.text }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:10px;display:flex;flex-direction:column">
+        <span style="padding:10px 12px 4px;font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">Member list · 20 px</span>
+        <sc-for list="{{ members }}" as="g" hint-placeholder-count="3">
+          <span style="padding:14px 12px 6px;font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">{{ g.name }}</span>
+          <sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="2">
+            <div style="display:flex;align-items:center;gap:10px;height:44px;padding:0 10px;border-radius:8px" style-hover="background:#1f1f1f"><img src="{{ r.av }}" alt="" style="width:32px;height:32px;display:block;flex:none"><span style="font:600 14.5px/1.2 Barlow,sans-serif;color:#f2f2f2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span><svg width="20" height="20" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ r.b.shape }}" style="fill:{{ r.b.fill }}"></path><g transform="{{ r.b.gt }}"><path d="{{ r.b.glyph }}" style="fill:none;stroke:{{ r.b.ink }};stroke-width:{{ r.b.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg></div>
+          </sc-for>
+        </sc-for>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">Profile card · role tags</span>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <sc-for list="{{ tags }}" as="t" hint-placeholder-count="5"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px 0 4px;border-radius:7px;background:{{ t.bg }};color:{{ t.c }};font:700 10.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase"><svg width="16" height="16" viewBox="0 0 32 32" style="display:block;flex:none"><path d="{{ t.b.shape }}" style="fill:{{ t.b.fill }}"></path><g transform="{{ t.b.gt }}"><path d="{{ t.b.glyph }}" style="fill:none;stroke:{{ t.b.ink }};stroke-width:{{ t.b.sw }};stroke-linecap:round;stroke-linejoin:round"></path></g></svg>{{ t.n }}</span></sc-for>
+          <span style="display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:7px;background:rgba(242,242,242,.08);color:#dadada;font:700 10.5px/1 var(--font-heading);letter-spacing:.12em">+2</span>
+        </div>
+        <span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">Roles without a badge keep the dot. Tags sort staff first, then community, then system.</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+    <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Sizes</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">16 in chat and tags, 20 in lists, 32 in role settings, 64 in the editor. Glyph strokes thicken at small sizes so they stay readable at 16.</span></div>
+    <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Colour</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Six identity colours plus white and grey. The glyph is always ink #0a0a0a, which stays above 7:1 on every fill.</span></div>
+    <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Limits</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Up to 50 badged roles per space. Spined shapes are kept for staff, so a custom Community role can't pass as a moderator.</span></div>
+    <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Federation</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Badges travel as tier, colour and glyph name, plus an image URL for uploads. Other fediverse apps show the role name as text.</span></div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static D0 = { name: 'Clip judge', tier: 'community', tone: 'violet', glyph: 'film' };
+  state = { ...Component.D0 };
+
+  static PAL = { brass: '#e3ae4f', coral: '#ec8a6f', rose: '#e59ac0', violet: '#a99cf2', sky: '#7fc0e3', sage: '#9fcf8a', white: '#f2f2f2', grey: '#9a9a9a' };
+  static G = {
+    crown: 'M3.5 8.5l4.5 4 4-7 4 7 4.5-4-1.8 10.5H5.3z',
+    key: 'M3.5 15a4.5 4.5 0 1 0 9 0a4.5 4.5 0 1 0-9 0zM11.2 11.8L20 3M16.5 6.5l3 3M14 9l2.2 2.2',
+    shield: 'M12 3l7.5 3v5.5c0 4.8-3.2 8-7.5 9.5-4.3-1.5-7.5-4.7-7.5-9.5V6zM8.8 12.2l2.3 2.3 4.3-4.6',
+    lifebuoy: 'M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0zM8 12a4 4 0 1 0 8 0a4 4 0 1 0-8 0zM5.6 5.6l3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6',
+    target: 'M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0zM7.5 12a4.5 4.5 0 1 0 9 0a4.5 4.5 0 1 0-9 0zM12 12h.01',
+    star: 'M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z',
+    broadcast: 'M10 12a2 2 0 1 0 4 0a2 2 0 1 0-4 0zM7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2',
+    brush: 'M15 4.5l4.5 4.5L10 18.5 5.5 14zM5.5 14L4 20l6-1.5',
+    code: 'M8.5 7l-5 5 5 5M15.5 7l5 5-5 5M13.5 5l-3 14',
+    heart: 'M12 20s-8-4.6-8-10.2A4.3 4.3 0 0 1 12 7a4.3 4.3 0 0 1 8 2.8C20 15.4 12 20 12 20z',
+    trophy: 'M8 4h8v5a4 4 0 0 1-8 0zM8 6H5.5A2.5 2.5 0 0 0 8 10M16 6h2.5A2.5 2.5 0 0 1 16 10M12 13v4M8.5 20h7M10 17h4',
+    flame: 'M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z',
+    bot: 'M5 9.5A2.5 2.5 0 0 1 7.5 7h9A2.5 2.5 0 0 1 19 9.5v7a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 16.5zM12 7V4M9.5 13h.01M14.5 13h.01M2.5 12v3M21.5 12v3',
+    check: 'M5 12.5l4.5 4.5L19 7.5',
+    bubbles: 'M4 14.5a4.5 4.5 0 1 0 9 0a4.5 4.5 0 1 0-9 0zM13.5 6.5a3 3 0 1 0 6 0a3 3 0 1 0-6 0zM15 16a2 2 0 1 0 4 0a2 2 0 1 0-4 0z',
+    globe: 'M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0zM12 3a13 13 0 0 0 0 18a13 13 0 0 0 0-18zM3 12h18',
+    music: 'M9 18V6l10-2v12M4 18a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0zM14 16a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0-5 0z',
+    film: 'M4 5h16v14H4zM8 5v14M16 5v14M4 9.5h4M16 9.5h4M4 14.5h4M16 14.5h4',
+    gamepad: 'M6.5 7h11a4 4 0 0 1 4 4.5l-.7 4.5a2.5 2.5 0 0 1-4.3 1.3L15 16H9l-1.5 1.3a2.5 2.5 0 0 1-4.3-1.3l-.7-4.5a4 4 0 0 1 4-4.5zM8 10v3M6.5 11.5h3M15.5 11h.01M17.5 13h.01',
+    mic: 'M9 6a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0zM5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21',
+    upload: 'M12 16V7M8 11l4-4 4 4',
+  };
+
+  spined() {
+    const p = (r, a) => `${(16 + r * Math.sin(a)).toFixed(2)} ${(16 - r * Math.cos(a)).toFixed(2)}`;
+    let d = 'M4 16a12 12 0 1 0 24 0a12 12 0 1 0-24 0z';
+    for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4; d += `M${p(10.5, a - .3)}Q${p(13.2, a - .1)} ${p(15.8, a)}Q${p(13.2, a + .1)} ${p(10.5, a + .3)}z`; }
+    return d;
+  }
+
+  badge(glyph, tier, tone, s) {
+    this._sh = this._sh || { staff: this.spined(), community: 'M10 1h12a9 9 0 0 1 9 9v12a9 9 0 0 1-9 9H10a9 9 0 0 1-9-9V10a9 9 0 0 1 9-9z', system: 'M1 16a15 15 0 1 0 30 0a15 15 0 1 0-30 0z' };
+    const k = { staff: .6, community: .74, system: .7 }[tier], up = glyph === 'upload';
+    const tpx = s <= 16 ? 1.55 : s <= 20 ? 1.75 : s <= 32 ? 2.2 : s * .05;
+    const o = 16 - 12 * k;
+    return { s, shape: this._sh[tier], fill: up ? '#2a2a2a' : Component.PAL[tone], ink: up ? '#9a9a9a' : '#0a0a0a', isUp: up,
+      gt: `translate(${o.toFixed(2)} ${o.toFixed(2)}) scale(${k})`, glyph: Component.G[glyph], sw: +(tpx * 32 / (s * k)).toFixed(2) };
+  }
+
+  renderVals() {
+    const s = this.state, P = Component.PAL, b = this.badge.bind(this);
+    const DEF = [
+      ['Owner', 'crown', 'staff', 'brass'], ['Admin', 'key', 'staff', 'coral'], ['Moderator', 'shield', 'staff', 'sky'], ['Helper', 'lifebuoy', 'community', 'sage'],
+      ['Coach', 'target', 'community', 'violet'], ['Event host', 'star', 'community', 'rose'], ['Streamer', 'broadcast', 'community', 'coral'], ['Artist', 'brush', 'community', 'violet'],
+      ['Developer', 'code', 'community', 'sky'], ['Supporter', 'heart', 'community', 'rose'], ['Ranked', 'trophy', 'community', 'white'], ['Veteran', 'flame', 'community', 'brass'],
+      ['Bot', 'bot', 'system', 'white'], ['Verified', 'check', 'system', 'sky'], ['New fish', 'bubbles', 'system', 'sage'], ['Guest', 'globe', 'system', 'grey'],
+    ];
+    const TN = { staff: 'Staff', community: 'Community', system: 'System' };
+    const by = n => DEF.find(d => d[0] === n);
+    const B = (n, sz) => { const d = by(n); return b(d[1], d[2], d[3], sz); };
+    const tiers = [
+      ['staff', 'Staff', 'Spined', 'Spines cut from the logo. Only for roles that can moderate: Owner, Admin, Moderator and any custom role given moderation permissions.', 'Moderator', ['Owner', 'Admin', 'Moderator']],
+      ['community', 'Community', 'Rounded square', 'Everything a space invents for itself, from coaches and artists to event hosts. Custom badges use this shape unless the role can moderate.', 'Coach', ['Helper', 'Event host', 'Streamer', 'Artist', 'Ranked']],
+      ['system', 'System', 'Circle', 'Given by Pufferblow, never by a space: bots, verified instances, people in their first week and guests from other instances.', 'Bot', ['Verified', 'New fish', 'Guest']],
+    ].map(([t, name, shapeName, desc, big, ex]) => ({ name, shapeName, desc, big: B(big, 64), ex: ex.map(n => B(n, 32)) }));
+    const defaults = DEF.map(([name, g, tier, tone]) => ({ name, meta: `${TN[tier]} · ${tone[0].toUpperCase() + tone.slice(1)}`, b48: b(g, tier, tone, 48), b20: b(g, tier, tone, 20), b16: b(g, tier, tone, 16) }));
+    const set = k => v => () => this.setState({ [k]: v });
+    const chip = (k, list) => list.map(([v, label]) => ({ label, onClick: set(k)(v), bg: s[k] === v ? '#f2f2f2' : '#1f1f1f', col: s[k] === v ? '#0a0a0a' : '#dadada' }));
+    const glyphs = Object.keys(Component.G).filter(g => g !== 'upload');
+    const preview = [64, 32, 20, 16].map(sz => b(s.glyph, s.tier, s.tone, sz));
+    const hex = P[s.tone];
+    return {
+      tiers, defaults,
+      name: s.name, onName: e => this.setState({ name: e.target.value }), shownName: s.name || 'New role',
+      reset: () => this.setState({ ...Component.D0 }),
+      tierOpts: chip('tier', [['community', 'Community'], ['staff', 'Staff']]),
+      tierHelp: s.tier === 'staff' ? 'Spined shape. Requires at least one moderation permission on the role.' : 'Rounded square. Works for any role without moderation permissions.',
+      toneOpts: Object.entries(P).map(([t, h]) => ({ label: t, hex: h, onClick: set('tone')(t), ring: s.tone === t ? '0 0 0 3px #121212, 0 0 0 5px #f2f2f2' : 'none' })),
+      glyphOpts: glyphs.map(g => ({ label: g, d: Component.G[g], onClick: set('glyph')(g), bg: s.glyph === g ? '#f2f2f2' : '#1f1f1f', col: s.glyph === g ? '#0a0a0a' : '#dadada' })),
+      pickUpload: set('glyph')('upload'), upBg: s.glyph === 'upload' ? '#f2f2f2' : 'transparent', upCol: s.glyph === 'upload' ? '#0a0a0a' : '#9a9a9a',
+      preview, p16: preview[3], p20: preview[2],
+      chipBg: s.glyph === 'upload' ? 'rgba(242,242,242,.08)' : hex + '24', chipCol: s.glyph === 'upload' ? '#dadada' : hex,
+      chat: [
+        { av: '../assets/avatars/pb-avatar-happy-brass.svg', name: 'Teo', b: B('Owner', 16), time: '9:38 PM', text: 'Bracket for Saturday is up in #events' },
+        { av: '../assets/avatars/pb-avatar-wink-coral.svg', name: 'rina', b: B('Moderator', 16), remote: 'mesh.garden', time: '9:40 PM', text: 'reminder: no spoilers in general until Sunday' },
+        { av: '../assets/avatars/pb-avatar-surprised-sky.svg', name: 'Maestro', b: B('Coach', 16), time: '9:41 PM', text: 'VOD review at 10, bring one clip each' },
+        { av: '../assets/avatars/pb-avatar-default-violet.svg', name: 'Patchbot', b: B('Bot', 16), time: '9:45 PM', text: 'Deadlock 1.4.2 is live. Notes pinned.' },
+      ],
+      members: [
+        { name: 'Staff — 3', rows: [['Teo', 'happy-brass', 'Owner'], ['Ada Quill', 'grumpy-rose', 'Admin'], ['rina', 'wink-coral', 'Moderator']] },
+        { name: 'Coaches — 2', rows: [['Maestro', 'surprised-sky', 'Coach'], ['lonelyfrog', 'sleepy-sage', 'Coach']] },
+        { name: 'Online — 41', rows: [['Vexa', 'happy-violet', 'Artist'], ['Pell', 'default-sky', 'New fish'], ['oskar', 'wink-brass', 'Guest']] },
+      ].map(g => ({ name: g.name, rows: g.rows.map(([name, av, r]) => ({ name, av: `../assets/avatars/pb-avatar-${av}.svg`, b: B(r, 20) })) })),
+      tags: ['Moderator', 'Coach', 'Ranked', 'Veteran', 'Verified'].map(n => { const d = by(n); return { n, b: B(n, 16), c: P[d[3]], bg: P[d[3]] + '24' }; }),
+    };
+  }
+}
+</script>
+</body>
+</html>
