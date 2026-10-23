@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="_support/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_support/ds/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap">
+<style>body{margin:0;background:#f2f2f2}a{color:#000}a:hover{color:#444}</style>
+</helmet>
+<div style="max-width:1160px;margin:0 auto;padding:48px 32px 64px;display:flex;flex-direction:column;gap:48px;font-family:var(--font-body);color:#0a0a0a">
+
+  <header style="display:flex;flex-direction:column;gap:8px">
+    <span style="font:400 40px/1 Marcellus,serif">Pufferblow avatars</span>
+    <span style="max-width:720px;font-size:13px;line-height:1.5;color:#555">Default profile pictures built from the puffer mark. New users get one assigned from their user ID (tone × expression), until they upload their own. Files are in <code>../assets/avatars/</code>.</span>
+  </header>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">01 Tones</span><span style="font-size:12.5px;color:#555">Six greys to match the black-and-white UI. The fish flips to black on the light tones.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px">
+      <sc-for list="{{ tones }}" as="t" hint-placeholder-count="6">
+        <div style="background:#fff;border-radius:18px;padding:22px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <img src="{{ t.src }}" alt="" style="width:96px;height:96px;display:block">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-weight:600;font-size:13px;text-transform:capitalize">{{ t.name }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ t.hex }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">01b Color tones</span><span style="font-size:12.5px;color:#555">Six soft colors with a black fish. Brass comes from the logo; the rest sit at the same lightness so none stands out.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px">
+      <sc-for list="{{ colors }}" as="t" hint-placeholder-count="6">
+        <div style="background:#fff;border-radius:18px;padding:22px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <img src="{{ t.src }}" alt="" style="width:96px;height:96px;display:block">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-weight:600;font-size:13px;text-transform:capitalize">{{ t.name }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ t.hex }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">02 Expressions</span><span style="font-size:12.5px;color:#555">Same fish, six faces. With 12 tones that gives 72 defaults.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px">
+      <sc-for list="{{ exprs }}" as="e" hint-placeholder-count="6">
+        <div style="background:#0a0a0a;border-radius:18px;padding:22px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <img src="{{ e.src }}" alt="" style="width:96px;height:96px;display:block">
+          <span style="font-weight:600;font-size:13px;color:#f2f2f2;text-transform:capitalize">{{ e.name }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">03 Full set</span><span style="font-size:12.5px;color:#555">Every tone and expression.</span></div>
+    <div style="background:#fff;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;overflow-x:auto">
+      <sc-for list="{{ grid }}" as="row" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:14px">
+          <span style="width:84px;flex:none;font-size:12px;color:#555;text-transform:capitalize">{{ row.name }}</span>
+          <sc-for list="{{ row.cells }}" as="c" hint-placeholder-count="6"><img src="{{ c }}" alt="" style="width:56px;height:56px;display:block;flex:none"></sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">04 In the app</span><span style="font-size:12.5px;color:#555">Member list, chat and profile card at real size. Switch between color and grey with the Palette tweak.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+
+      <div style="background:#121212;border-radius:18px;padding:16px 12px;display:flex;flex-direction:column;gap:2px;color:#f2f2f2">
+        <span style="padding:6px 10px 10px;font:600 11px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a">Online — 5</span>
+        <sc-for list="{{ members }}" as="m" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:12px;padding:6px 10px;border-radius:10px" style-hover="background:#1f1f1f">
+            <div style="position:relative;width:36px;height:36px;flex:none"><img src="{{ m.src }}" alt="" style="width:36px;height:36px;display:block"><span style="position:absolute;right:-2px;bottom:-2px;width:12px;height:12px;border-radius:50%;background:{{ m.dot }};box-shadow:0 0 0 3px #121212"></span></div>
+            <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:14px;font-weight:600">{{ m.name }}</span><span style="font-size:12px;color:#9a9a9a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.status }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#161616;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:18px;color:#f2f2f2">
+        <sc-for list="{{ chat }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;gap:14px">
+            <img src="{{ c.src }}" alt="" style="width:40px;height:40px;display:block;flex:none">
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:14px;font-weight:600">{{ c.name }}</span><span style="font-size:11px;color:#707070">{{ c.time }}</span></div>
+              <span style="font-size:14px;line-height:1.45;color:#dadada">{{ c.text }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;color:#f2f2f2">
+        <div style="height:96px;background:#2a2a2a"></div>
+        <div style="padding:0 20px 20px;display:flex;flex-direction:column;gap:12px">
+          <div style="margin-top:-44px;width:88px;height:88px;border-radius:50%;background:#121212;display:grid;place-items:center"><img src="{{ profileSrc }}" alt="" style="width:76px;height:76px;display:block"></div>
+          <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:18px;font-weight:600">kestrel</span><span style="font-size:13px;color:#9a9a9a">kestrel@switchyard.works</span></div>
+          <div style="height:1px;background:rgba(242,242,242,.08)"></div>
+          <span style="font-size:12px;color:#9a9a9a">{{ profileLabel }}</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">05 Server banners</span><span style="font-size:12.5px;color:#555">Default banners for spaces without an uploaded image. 16:9, exported at 960 × 540. Three patterns built from the mark, in the same tones as the avatars.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px">
+      <sc-for list="{{ banners }}" as="b" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:{{ b.hex }}">
+            <sc-if value="{{ b.isPattern }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;inset:-20px;background:{{ b.fg }};opacity:.13;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) 0 0/52px 52px repeat;mask:url(../assets/marks/pb-face-small-plain.svg) 0 0/52px 52px repeat;transform:rotate(-8deg)"></div>
+              <div style="position:absolute;inset:-20px;background:{{ b.fg }};opacity:.13;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) 26px 26px/52px 52px repeat;mask:url(../assets/marks/pb-face-small-plain.svg) 26px 26px/52px 52px repeat;transform:rotate(-8deg)"></div>
+            </sc-if>
+            <sc-if value="{{ b.isCrop }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;right:-12%;bottom:-38%;width:78%;aspect-ratio:1;background:{{ b.fg }};opacity:.16;-webkit-mask:url(../assets/marks/pb-face-plain-full.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-plain-full.svg) center/contain no-repeat;transform:rotate(-14deg)"></div>
+            </sc-if>
+            <sc-if value="{{ b.isBubbles }}" hint-placeholder-val="{{ false }}">
+              <sc-for list="{{ bubbles }}" as="c" hint-placeholder-count="0">
+                <span style="position:absolute;left:{{ c.x }}%;top:{{ c.y }}%;width:{{ c.s }}%;aspect-ratio:1;border-radius:50%;border:2px solid {{ b.fg }};opacity:{{ c.o }}"></span>
+              </sc-for>
+              <div style="position:absolute;left:8%;top:22%;width:24%;aspect-ratio:1;background:{{ b.fg }};opacity:.2;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;transform:rotate(-10deg)"></div>
+            </sc-if>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#555"><span style="text-transform:capitalize">{{ b.label }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ b.hexLabel }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start">
+      <sc-for list="{{ sidebars }}" as="s" hint-placeholder-count="3">
+        <div style="width:260px;background:#121212;border-radius:16px;overflow:hidden;color:#f2f2f2;display:flex;flex-direction:column">
+          <div style="position:relative;aspect-ratio:16/9;background:{{ s.hex }};overflow:hidden">
+            <sc-if value="{{ s.isPattern }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;inset:-20px;background:{{ s.fg }};opacity:.13;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) 0 0/36px 36px repeat;mask:url(../assets/marks/pb-face-small-plain.svg) 0 0/36px 36px repeat;transform:rotate(-8deg)"></div>
+              <div style="position:absolute;inset:-20px;background:{{ s.fg }};opacity:.13;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) 18px 18px/36px 36px repeat;mask:url(../assets/marks/pb-face-small-plain.svg) 18px 18px/36px 36px repeat;transform:rotate(-8deg)"></div>
+            </sc-if>
+            <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;right:-12%;bottom:-38%;width:78%;aspect-ratio:1;background:{{ s.fg }};opacity:.16;-webkit-mask:url(../assets/marks/pb-face-plain-full.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-plain-full.svg) center/contain no-repeat;transform:rotate(-14deg)"></div>
+            </sc-if>
+            <sc-if value="{{ s.isBubbles }}" hint-placeholder-val="{{ false }}">
+              <sc-for list="{{ bubbles }}" as="c" hint-placeholder-count="0">
+                <span style="position:absolute;left:{{ c.x }}%;top:{{ c.y }}%;width:{{ c.s }}%;aspect-ratio:1;border-radius:50%;border:2px solid {{ s.fg }};opacity:{{ c.o }}"></span>
+              </sc-for>
+            </sc-if>
+            <div style="position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(180deg,rgba(18,18,18,0),rgba(18,18,18,.92))"></div>
+            <div style="position:absolute;left:14px;right:14px;bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px"><span style="font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ s.name }}</span><span style="font-size:11px;color:#dadada">▾</span></div>
+          </div>
+          <div style="padding:12px 8px 14px;display:flex;flex-direction:column;gap:2px">
+            <span style="padding:6px 8px;font:600 11px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a">Text</span>
+            <sc-for list="{{ s.channels }}" as="ch" hint-placeholder-count="3">
+              <div style="padding:7px 10px;border-radius:8px;font-size:14px;color:#9a9a9a;display:flex;gap:8px" style-hover="background:#1f1f1f;color:#f2f2f2"><span style="color:#707070">#</span>{{ ch }}</div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">06 User banners</span><span style="font-size:12.5px;color:#555">Default profile banners. Each one takes its color from the user's avatar and is drawn around the spot where the avatar overlaps it. 5:2, exported at 600 × 240.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+      <sc-for list="{{ users }}" as="u" hint-placeholder-count="6">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:#121212;border-radius:18px;overflow:hidden;color:#f2f2f2;display:flex;flex-direction:column">
+            <div style="position:relative;aspect-ratio:5/2;background:{{ u.hex }};overflow:hidden">
+              <sc-if value="{{ u.isRipple }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:repeating-radial-gradient(circle at 17% 125%, transparent 0 11px, {{ u.ink }} 11px 14px)"></div></sc-if>
+              <sc-if value="{{ u.isBurst }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:repeating-conic-gradient(from -90deg at 17% 125%, {{ u.ink }} 0 4deg, transparent 4deg 13deg)"></div><div style="position:absolute;inset:0;background:radial-gradient(circle at 17% 125%, {{ u.hex }} 0 26%, transparent 60%)"></div></sc-if>
+              <sc-if value="{{ u.isHalftone }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:radial-gradient(circle,{{ u.inkStrong }} 36%,transparent 40%) 0 0/9px 9px;-webkit-mask:radial-gradient(circle at 17% 125%,transparent 22%,#000 70%);mask:radial-gradient(circle at 17% 125%,transparent 22%,#000 70%)"></div></sc-if>
+              <sc-if value="{{ u.isCrowd }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:-12px;background:{{ u.fg }};opacity:.14;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) 0 0/28px 28px repeat;mask:url(../assets/marks/pb-face-small-plain.svg) 0 0/28px 28px repeat"></div>
+                <div style="position:absolute;inset:-12px;background:{{ u.fg }};opacity:.14;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) 14px 14px/28px 28px repeat;mask:url(../assets/marks/pb-face-small-plain.svg) 14px 14px/28px 28px repeat"></div>
+                <div style="position:absolute;right:13%;top:24%;width:52px;height:52px;background:{{ u.fg }};-webkit-mask:url(../assets/marks/pb-face-plain-full.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-plain-full.svg) center/contain no-repeat;transform:rotate(12deg)"></div>
+              </sc-if>
+              <sc-if value="{{ u.isWall }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:-30px;background-image:url({{ u.wallA }}),url({{ u.wallB }});background-size:46px 46px;background-position:0 0,23px 23px;background-repeat:repeat;opacity:.4;transform:rotate(-8deg)"></div></sc-if>
+              <sc-if value="{{ u.isTrail }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,{{ u.inkStrong }})"></div>
+                <sc-for list="{{ trail }}" as="c" hint-placeholder-count="0"><span style="position:absolute;left:{{ c.x }}%;top:{{ c.y }}%;width:{{ c.s }}px;height:{{ c.s }}px;border-radius:50%;border:2px solid {{ u.fg }};opacity:{{ c.o }}"></span></sc-for>
+              </sc-if>
+            </div>
+            <div style="padding:0 18px 18px;display:flex;flex-direction:column;gap:12px">
+              <div style="margin-top:-44px;width:88px;height:88px;border-radius:50%;background:#121212;display:grid;place-items:center;position:relative"><img src="{{ u.src }}" alt="" style="width:76px;height:76px;display:block"><span style="position:absolute;right:6px;bottom:6px;width:16px;height:16px;border-radius:50%;background:{{ u.dot }};box-shadow:0 0 0 4px #121212"></span></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:18px;font-weight:600">{{ u.name }}</span><span style="font-size:13px;color:#9a9a9a">{{ u.handle }}</span></div>
+              <div style="height:1px;background:rgba(242,242,242,.08)"></div>
+              <span style="font-size:13px;color:#dadada">{{ u.status }}</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:#555"><span>{{ u.label }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ u.hexLabel }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">07 Server avatars</span><span style="font-size:12.5px;color:#555">Default icons for spaces without an uploaded one. Rounded squares, to tell them apart from round user avatars. Four styles, colored by the space.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px">
+      <sc-for list="{{ serverKinds }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border-radius:18px;padding:22px 16px 16px;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <div style="position:relative;width:96px;height:96px;border-radius:30%;overflow:hidden;background:{{ s.hex }};color:{{ s.fg }};container-type:size;flex:none;">
+  <sc-if value="{{ s.isInitials }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;font:400 40cqw/1 Marcellus,serif">{{ s.initials }}</div></sc-if>
+  <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-30%;bottom:-26%;width:96%;height:96%;transform:rotate(-12deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:13%;top:9%;font:400 36cqw/1 Marcellus,serif">{{ s.letter }}</div></sc-if>
+  <sc-if value="{{ s.isBubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14%;top:22%;width:62%;height:62%;border-radius:50%;border:4cqw solid currentColor;box-sizing:border-box;display:grid;place-items:center;font:400 30cqw/1 Marcellus,serif">{{ s.letter }}</div><span style="position:absolute;left:68%;top:12%;width:16%;height:16%;border-radius:50%;border:3cqw solid currentColor;box-sizing:border-box"></span><span style="position:absolute;left:80%;top:34%;width:9%;height:9%;border-radius:50%;border:2.5cqw solid currentColor;box-sizing:border-box"></span></sc-if>
+  <sc-if value="{{ s.isSchool }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:10%;top:12%;width:44%;height:44%;transform:rotate(-10deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:52%;top:36%;width:34%;height:34%;transform:rotate(8deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:20%;top:62%;width:26%;height:26%;transform:rotate(-4deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></sc-if>
+</div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><span style="font-weight:600;font-size:13px">{{ s.kindLabel }}</span><span style="font-size:11px;color:#707070">{{ s.kindNote }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:stretch">
+      <div style="background:#0a0a0a;border-radius:18px;padding:14px 12px;display:flex;flex-direction:column;align-items:center;gap:10px">
+        <div style="width:48px;height:48px;border-radius:16px;background:#1f1f1f;color:#f2f2f2;display:grid;place-items:center"><div style="position:static;width:30px;height:30px;background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></div>
+        <div style="width:28px;height:2px;border-radius:2px;background:rgba(242,242,242,.1)"></div>
+        <sc-for list="{{ servers }}" as="s" hint-placeholder-count="6"><div style="position:relative;width:48px;height:48px;border-radius:30%;overflow:hidden;background:{{ s.hex }};color:{{ s.fg }};container-type:size;flex:none;cursor:pointer">
+  <sc-if value="{{ s.isInitials }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;font:400 40cqw/1 Marcellus,serif">{{ s.initials }}</div></sc-if>
+  <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-30%;bottom:-26%;width:96%;height:96%;transform:rotate(-12deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:13%;top:9%;font:400 36cqw/1 Marcellus,serif">{{ s.letter }}</div></sc-if>
+  <sc-if value="{{ s.isBubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14%;top:22%;width:62%;height:62%;border-radius:50%;border:4cqw solid currentColor;box-sizing:border-box;display:grid;place-items:center;font:400 30cqw/1 Marcellus,serif">{{ s.letter }}</div><span style="position:absolute;left:68%;top:12%;width:16%;height:16%;border-radius:50%;border:3cqw solid currentColor;box-sizing:border-box"></span><span style="position:absolute;left:80%;top:34%;width:9%;height:9%;border-radius:50%;border:2.5cqw solid currentColor;box-sizing:border-box"></span></sc-if>
+  <sc-if value="{{ s.isSchool }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:10%;top:12%;width:44%;height:44%;transform:rotate(-10deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:52%;top:36%;width:34%;height:34%;transform:rotate(8deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:20%;top:62%;width:26%;height:26%;transform:rotate(-4deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></sc-if>
+</div></sc-for>
+      </div>
+      <div style="flex:1;min-width:260px;background:#fff;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:18px;justify-content:center">
+        <span style="font-size:12px;color:#555">Sizes: 96 · 64 · 48 · 32 · 24</span>
+        <sc-for list="{{ serverSizes }}" as="s" hint-placeholder-count="2">
+          <div style="display:flex;align-items:flex-end;gap:14px"><div style="position:relative;width:96px;height:96px;border-radius:30%;overflow:hidden;background:{{ s.hex }};color:{{ s.fg }};container-type:size;flex:none;">
+  <sc-if value="{{ s.isInitials }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;font:400 40cqw/1 Marcellus,serif">{{ s.initials }}</div></sc-if>
+  <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-30%;bottom:-26%;width:96%;height:96%;transform:rotate(-12deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:13%;top:9%;font:400 36cqw/1 Marcellus,serif">{{ s.letter }}</div></sc-if>
+  <sc-if value="{{ s.isBubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14%;top:22%;width:62%;height:62%;border-radius:50%;border:4cqw solid currentColor;box-sizing:border-box;display:grid;place-items:center;font:400 30cqw/1 Marcellus,serif">{{ s.letter }}</div><span style="position:absolute;left:68%;top:12%;width:16%;height:16%;border-radius:50%;border:3cqw solid currentColor;box-sizing:border-box"></span><span style="position:absolute;left:80%;top:34%;width:9%;height:9%;border-radius:50%;border:2.5cqw solid currentColor;box-sizing:border-box"></span></sc-if>
+  <sc-if value="{{ s.isSchool }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:10%;top:12%;width:44%;height:44%;transform:rotate(-10deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:52%;top:36%;width:34%;height:34%;transform:rotate(8deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:20%;top:62%;width:26%;height:26%;transform:rotate(-4deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></sc-if>
+</div><div style="position:relative;width:64px;height:64px;border-radius:30%;overflow:hidden;background:{{ s.hex }};color:{{ s.fg }};container-type:size;flex:none;">
+  <sc-if value="{{ s.isInitials }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;font:400 40cqw/1 Marcellus,serif">{{ s.initials }}</div></sc-if>
+  <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-30%;bottom:-26%;width:96%;height:96%;transform:rotate(-12deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:13%;top:9%;font:400 36cqw/1 Marcellus,serif">{{ s.letter }}</div></sc-if>
+  <sc-if value="{{ s.isBubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14%;top:22%;width:62%;height:62%;border-radius:50%;border:4cqw solid currentColor;box-sizing:border-box;display:grid;place-items:center;font:400 30cqw/1 Marcellus,serif">{{ s.letter }}</div><span style="position:absolute;left:68%;top:12%;width:16%;height:16%;border-radius:50%;border:3cqw solid currentColor;box-sizing:border-box"></span><span style="position:absolute;left:80%;top:34%;width:9%;height:9%;border-radius:50%;border:2.5cqw solid currentColor;box-sizing:border-box"></span></sc-if>
+  <sc-if value="{{ s.isSchool }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:10%;top:12%;width:44%;height:44%;transform:rotate(-10deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:52%;top:36%;width:34%;height:34%;transform:rotate(8deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:20%;top:62%;width:26%;height:26%;transform:rotate(-4deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></sc-if>
+</div><div style="position:relative;width:48px;height:48px;border-radius:30%;overflow:hidden;background:{{ s.hex }};color:{{ s.fg }};container-type:size;flex:none;">
+  <sc-if value="{{ s.isInitials }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;font:400 40cqw/1 Marcellus,serif">{{ s.initials }}</div></sc-if>
+  <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-30%;bottom:-26%;width:96%;height:96%;transform:rotate(-12deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:13%;top:9%;font:400 36cqw/1 Marcellus,serif">{{ s.letter }}</div></sc-if>
+  <sc-if value="{{ s.isBubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14%;top:22%;width:62%;height:62%;border-radius:50%;border:4cqw solid currentColor;box-sizing:border-box;display:grid;place-items:center;font:400 30cqw/1 Marcellus,serif">{{ s.letter }}</div><span style="position:absolute;left:68%;top:12%;width:16%;height:16%;border-radius:50%;border:3cqw solid currentColor;box-sizing:border-box"></span><span style="position:absolute;left:80%;top:34%;width:9%;height:9%;border-radius:50%;border:2.5cqw solid currentColor;box-sizing:border-box"></span></sc-if>
+  <sc-if value="{{ s.isSchool }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:10%;top:12%;width:44%;height:44%;transform:rotate(-10deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:52%;top:36%;width:34%;height:34%;transform:rotate(8deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:20%;top:62%;width:26%;height:26%;transform:rotate(-4deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></sc-if>
+</div><div style="position:relative;width:32px;height:32px;border-radius:30%;overflow:hidden;background:{{ s.hex }};color:{{ s.fg }};container-type:size;flex:none;">
+  <sc-if value="{{ s.isInitials }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;font:400 40cqw/1 Marcellus,serif">{{ s.initials }}</div></sc-if>
+  <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-30%;bottom:-26%;width:96%;height:96%;transform:rotate(-12deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:13%;top:9%;font:400 36cqw/1 Marcellus,serif">{{ s.letter }}</div></sc-if>
+  <sc-if value="{{ s.isBubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14%;top:22%;width:62%;height:62%;border-radius:50%;border:4cqw solid currentColor;box-sizing:border-box;display:grid;place-items:center;font:400 30cqw/1 Marcellus,serif">{{ s.letter }}</div><span style="position:absolute;left:68%;top:12%;width:16%;height:16%;border-radius:50%;border:3cqw solid currentColor;box-sizing:border-box"></span><span style="position:absolute;left:80%;top:34%;width:9%;height:9%;border-radius:50%;border:2.5cqw solid currentColor;box-sizing:border-box"></span></sc-if>
+  <sc-if value="{{ s.isSchool }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:10%;top:12%;width:44%;height:44%;transform:rotate(-10deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:52%;top:36%;width:34%;height:34%;transform:rotate(8deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:20%;top:62%;width:26%;height:26%;transform:rotate(-4deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></sc-if>
+</div><div style="position:relative;width:24px;height:24px;border-radius:30%;overflow:hidden;background:{{ s.hex }};color:{{ s.fg }};container-type:size;flex:none;">
+  <sc-if value="{{ s.isInitials }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;font:400 40cqw/1 Marcellus,serif">{{ s.initials }}</div></sc-if>
+  <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-30%;bottom:-26%;width:96%;height:96%;transform:rotate(-12deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:13%;top:9%;font:400 36cqw/1 Marcellus,serif">{{ s.letter }}</div></sc-if>
+  <sc-if value="{{ s.isBubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14%;top:22%;width:62%;height:62%;border-radius:50%;border:4cqw solid currentColor;box-sizing:border-box;display:grid;place-items:center;font:400 30cqw/1 Marcellus,serif">{{ s.letter }}</div><span style="position:absolute;left:68%;top:12%;width:16%;height:16%;border-radius:50%;border:3cqw solid currentColor;box-sizing:border-box"></span><span style="position:absolute;left:80%;top:34%;width:9%;height:9%;border-radius:50%;border:2.5cqw solid currentColor;box-sizing:border-box"></span></sc-if>
+  <sc-if value="{{ s.isSchool }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:10%;top:12%;width:44%;height:44%;transform:rotate(-10deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:52%;top:36%;width:34%;height:34%;transform:rotate(8deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:20%;top:62%;width:26%;height:26%;transform:rotate(-4deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></sc-if>
+</div></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase">08 Server avatar + banner</span><span style="font-size:12.5px;color:#555">How the two pair up: in the invite / discovery card and at the top of the channel sidebar.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px">
+      <sc-for list="{{ servers }}" as="s" hint-placeholder-count="6">
+        <div style="background:#121212;border-radius:18px;overflow:hidden;color:#f2f2f2;display:flex;flex-direction:column">
+          <div style="position:relative;aspect-ratio:16/9;background:{{ s.bHex }};overflow:hidden">
+  <sc-if value="{{ s.bPattern }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:-20px;background:{{ s.fg }};opacity:.13;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) 0 0/40px 40px repeat;mask:url(../assets/marks/pb-face-small-plain.svg) 0 0/40px 40px repeat;transform:rotate(-8deg)"></div><div style="position:absolute;inset:-20px;background:{{ s.fg }};opacity:.13;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) 20px 20px/40px 40px repeat;mask:url(../assets/marks/pb-face-small-plain.svg) 20px 20px/40px 40px repeat;transform:rotate(-8deg)"></div></sc-if>
+  <sc-if value="{{ s.bCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-12%;bottom:-38%;width:78%;aspect-ratio:1;background:{{ s.fg }};opacity:.16;-webkit-mask:url(../assets/marks/pb-face-plain-full.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-plain-full.svg) center/contain no-repeat;transform:rotate(-14deg)"></div></sc-if>
+  <sc-if value="{{ s.bBubbles }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ bubbles }}" as="c" hint-placeholder-count="0"><span style="position:absolute;left:{{ c.x }}%;top:{{ c.y }}%;width:{{ c.s }}%;aspect-ratio:1;border-radius:50%;border:2px solid {{ s.fg }};opacity:{{ c.o }}"></span></sc-for></sc-if>
+</div>
+          <div style="padding:0 18px 18px;display:flex;flex-direction:column;gap:10px">
+            <div style="margin-top:-36px;width:76px;height:76px;border-radius:24px;background:#121212;display:grid;place-items:center;position:relative"><div style="position:relative;width:64px;height:64px;border-radius:30%;overflow:hidden;background:{{ s.hex }};color:{{ s.fg }};container-type:size;flex:none;">
+  <sc-if value="{{ s.isInitials }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;display:grid;place-items:center;font:400 40cqw/1 Marcellus,serif">{{ s.initials }}</div></sc-if>
+  <sc-if value="{{ s.isCrop }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;right:-30%;bottom:-26%;width:96%;height:96%;transform:rotate(-12deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:13%;top:9%;font:400 36cqw/1 Marcellus,serif">{{ s.letter }}</div></sc-if>
+  <sc-if value="{{ s.isBubble }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:14%;top:22%;width:62%;height:62%;border-radius:50%;border:4cqw solid currentColor;box-sizing:border-box;display:grid;place-items:center;font:400 30cqw/1 Marcellus,serif">{{ s.letter }}</div><span style="position:absolute;left:68%;top:12%;width:16%;height:16%;border-radius:50%;border:3cqw solid currentColor;box-sizing:border-box"></span><span style="position:absolute;left:80%;top:34%;width:9%;height:9%;border-radius:50%;border:2.5cqw solid currentColor;box-sizing:border-box"></span></sc-if>
+  <sc-if value="{{ s.isSchool }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;left:10%;top:12%;width:44%;height:44%;transform:rotate(-10deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:52%;top:36%;width:34%;height:34%;transform:rotate(8deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div><div style="position:absolute;left:20%;top:62%;width:26%;height:26%;transform:rotate(-4deg);background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></sc-if>
+</div></div>
+            <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:17px;font-weight:600">{{ s.name }}</span><span style="font-size:13px;line-height:1.45;color:#9a9a9a">{{ s.desc }}</span></div>
+            <div style="display:flex;align-items:center;gap:14px;font-size:12px;color:#9a9a9a"><span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#9fd487"></span>{{ s.online }} online</span><span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#707070"></span>{{ s.members }} members</span></div>
+            <div style="height:40px;border-radius:10px;background:#f2f2f2;color:#0a0a0a;display:grid;place-items:center;font-size:14px;font-weight:600;cursor:pointer" style-hover="background:#ffffff">Join space</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;color&quot;,&quot;mono&quot;],&quot;default&quot;:&quot;color&quot;,&quot;tsType&quot;:&quot;'color' | 'mono'&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const T = [['ink', '#1F1F1F'], ['graphite', '#3D3D3D'], ['slate', '#5C5C5C'], ['ash', '#8C8C8C'], ['silver', '#C4C4C4'], ['paper', '#F2F2F2']];
+    const C = [['brass', '#E3AE4F'], ['coral', '#EC8A6F'], ['rose', '#E59AC0'], ['violet', '#A99CF2'], ['sky', '#7FC0E3'], ['sage', '#9FCF8A']];
+    const E = ['default', 'happy', 'wink', 'sleepy', 'surprised', 'grumpy'];
+    const color = (this.props.palette ?? 'color') === 'color';
+    const MAP = { paper: 'brass', slate: 'violet', ash: 'sky', graphite: 'coral', silver: 'sage', ink: 'rose' };
+    const src = (e, t, fixed) => `../assets/avatars/pb-avatar-${e}-${color && !fixed && MAP[t] ? MAP[t] : t}.svg`;
+    const colors = C.map(([name, hex]) => ({ name, hex, src: src('default', name, true) }));
+    const on = '#9fd487', idle = '#9a9a9a', dnd = '#e2654f';
+    return {
+      colors,
+      ...(() => {
+        const GREY = { brass: ['#e6e6e6', '#0a0a0a'], violet: ['#5c5c5c', '#f2f2f2'], sky: ['#c4c4c4', '#0a0a0a'], coral: ['#2a2a2a', '#f2f2f2'], sage: ['#8c8c8c', '#0a0a0a'], rose: ['#3d3d3d', '#f2f2f2'] };
+        const CH = Object.fromEntries(C);
+        const KL = { initials: ['Initials', 'Up to two letters'], crop: ['Peeking fish', 'First letter + fish'], bubble: ['Bubble', 'Letter in a bubble'], school: ['School', 'No letters'] };
+        const tone = t => color ? [CH[t], '#0a0a0a'] : GREY[t];
+        const mk = ([name, initials, kind, banner, t, bt, desc, online, members]) => {
+          const [hex, fg] = tone(t), [bHex] = tone(bt);
+          return { name, initials, letter: initials[0], hex, fg, bHex, desc, online, members,
+            kindLabel: KL[kind][0], kindNote: KL[kind][1],
+            isInitials: kind === 'initials', isCrop: kind === 'crop', isBubble: kind === 'bubble', isSchool: kind === 'school',
+            bPattern: banner === 'pattern', bCrop: banner === 'crop', bBubbles: banner === 'bubbles' };
+        };
+        const S = [
+          ['Switchyard', 'SW', 'initials', 'pattern', 'brass', 'brass', 'The home instance. Patch notes, events and general chat.', '312', '1,284'],
+          ['Deadlock Lab', 'DL', 'crop', 'crop', 'violet', 'violet', 'Builds, item paths and replay reviews.', '96', '540'],
+          ['Night Shift', 'NS', 'bubble', 'bubbles', 'sky', 'sky', 'Late-night lobbies for EU and NA.', '48', '210'],
+          ['Reef Raiders', 'RR', 'school', 'pattern', 'coral', 'coral', 'Casual squads, no tryhards.', '27', '133'],
+          ['Lo-fi Lagoon', 'LL', 'initials', 'crop', 'sage', 'sage', 'Music while you queue.', '61', '402'],
+          ['Patch Notes', 'PN', 'crop', 'bubbles', 'rose', 'rose', 'Every update, summarised.', '18', '96'],
+        ].map(mk);
+        return { servers: S, serverKinds: [S[0], S[1], S[2], S[3]], serverSizes: [S[1], S[2]] };
+      })(),
+      trail: [[24, 58, 10, .5], [30, 40, 7, .45], [36, 26, 12, .4], [44, 14, 6, .4], [50, 34, 9, .3], [58, 8, 14, .3], [66, 28, 6, .3], [74, 12, 10, .25], [84, 30, 7, .2], [92, 10, 12, .2]].map(([x, y, s, o]) => ({ x, y, s, o })),
+      users: (() => {
+        const CH = Object.fromEntries(C), TH = Object.fromEntries(T);
+        const DARK = { ink: 1, graphite: 1, slate: 1 };
+        const U = [
+          ['kestrel', 'happy', 'paper', 'ripple', 'Ripples', 'Playing Deadlock', '#9fd487'],
+          ['moth', 'default', 'slate', 'burst', 'Spike burst', 'In voice — Lobby', '#9fd487'],
+          ['quill', 'sleepy', 'ash', 'halftone', 'Halftone', 'Away', '#9a9a9a'],
+          ['bramble', 'grumpy', 'graphite', 'crowd', 'Find the fish', 'Do not disturb', '#e2654f'],
+          ['sora', 'wink', 'silver', 'wall', 'Mood wall', 'Listening to lo-fi', '#9fd487'],
+          ['juniper', 'surprised', 'ink', 'trail', 'Bubble trail', 'Back in 10', '#9a9a9a'],
+        ];
+        const OTHER = { happy: 'wink', default: 'surprised', sleepy: 'default', grumpy: 'sleepy', wink: 'happy', surprised: 'happy' };
+        return U.map(([name, e, t, k, label, status, dot]) => {
+          const tone = color ? MAP[t] : t;
+          const hex = color ? CH[tone] : TH[t];
+          const light = color || !DARK[t];
+          return {
+            name, handle: `${name}@switchyard.works`, status, dot, label, hexLabel: hex,
+            hex, src: src(e, t), fg: light ? '#0a0a0a' : '#f2f2f2',
+            ink: light ? 'rgba(10,10,10,.12)' : 'rgba(242,242,242,.12)',
+            inkStrong: light ? 'rgba(10,10,10,.22)' : 'rgba(242,242,242,.2)',
+            wallA: src(e, t), wallB: src(OTHER[e], t),
+            isRipple: k === 'ripple', isBurst: k === 'burst', isHalftone: k === 'halftone', isCrowd: k === 'crowd', isWall: k === 'wall', isTrail: k === 'trail',
+          };
+        });
+      })(),
+      ...(() => {
+        const KINDS = ['pattern', 'crop', 'bubbles'];
+        const GREY = [['#2a2a2a', '#f2f2f2'], ['#c4c4c4', '#0a0a0a'], ['#5c5c5c', '#f2f2f2'], ['#e6e6e6', '#0a0a0a'], ['#1f1f1f', '#f2f2f2'], ['#8c8c8c', '#0a0a0a']];
+        const pal = color ? C.map(([n, h]) => [h, '#0a0a0a', n]) : GREY.map(([h, f]) => [h, f, 'grey']);
+        const mk = (i) => { const [hex, fg, n] = pal[i % 6]; const k = KINDS[i % 3];
+          return { hex, fg, label: `${k} · ${n}`, hexLabel: hex.toUpperCase(), isPattern: k === 'pattern', isCrop: k === 'crop', isBubbles: k === 'bubbles' }; };
+        return {
+          banners: [0, 1, 2, 3, 4, 5].map(mk),
+          bubbles: [[44, 18, 9, .35], [58, 52, 5, .3], [70, 12, 14, .25], [82, 58, 7, .35], [36, 64, 4, .3], [90, 26, 4, .3], [52, 80, 11, .2]].map(([x, y, s, o]) => ({ x, y, s, o })),
+          sidebars: [
+            { ...mk(0), name: 'Switchyard', channels: ['general', 'patch-notes', 'lfg'] },
+            { ...mk(4), name: 'Deadlock Lab', channels: ['builds', 'clips', 'scrims'] },
+            { ...mk(2), name: 'Night Shift', channels: ['lobby', 'memes', 'off-topic'] },
+          ],
+        };
+      })(),
+      profileSrc: src('happy', 'paper'),
+      profileLabel: color ? 'Default avatar · Happy / Brass' : 'Default avatar · Happy / Paper',
+      tones: T.map(([name, hex]) => ({ name, hex, src: src('default', name, true) })),
+      exprs: E.map((name, i) => ({ name, src: src(name, C[i][0], true) })),
+      grid: E.map(name => ({ name, cells: [...T, ...C].map(([t]) => src(name, t, true)) })),
+      members: [
+        { name: 'kestrel', status: 'Playing Deadlock', src: src('happy', 'paper'), dot: on },
+        { name: 'moth', status: 'In voice — Lobby', src: src('default', 'slate'), dot: on },
+        { name: 'quill', status: 'Away', src: src('sleepy', 'ash'), dot: idle },
+        { name: 'bramble', status: 'Do not disturb', src: src('grumpy', 'graphite'), dot: dnd },
+        { name: 'sora', status: 'Listening to lo-fi', src: src('wink', 'silver'), dot: on },
+      ],
+      chat: [
+        { name: 'moth', time: '9:41 PM', text: 'anyone up for a few rounds?', src: src('default', 'slate') },
+        { name: 'kestrel', time: '9:42 PM', text: 'yes, give me five', src: src('happy', 'paper') },
+        { name: 'sora', time: '9:42 PM', text: 'in. joining voice now', src: src('wink', 'silver') },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

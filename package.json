@@ -1,0 +1,56 @@
+{
+  "name": "@pufferblow/brand",
+  "version": "0.1.0",
+  "description": "Pufferblow's brand in one place: the art, the tokens, the motion, the terminal glyphs, the design sheets and the components that carry them.",
+  "type": "module",
+  "license": "GPL-3.0-only",
+  "sideEffects": [
+    "./css/*.css",
+    "./tokens/*.css"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./css": "./css/index.css",
+    "./css/*": "./css/*",
+    "./tokens.css": "./tokens/tokens.css",
+    "./theme.css": "./tokens/theme.css",
+    "./tokens.json": "./tokens/tokens.json",
+    "./manifest.json": "./manifest.json",
+    "./assets/*": "./assets/*",
+    "./cli/*": "./cli/*"
+  },
+  "files": [
+    "assets",
+    "cli",
+    "css",
+    "specs",
+    "src",
+    "tokens",
+    "manifest.json"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check && tsc --noEmit",
+    "test": "vitest run",
+    "cli:python": "node scripts/build.mjs --python-out"
+  },
+  "peerDependencies": {
+    "lucide-react": ">=0.400",
+    "react": ">=19",
+    "react-dom": ">=19"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "jsdom": "^30.1.2",
+    "lucide-react": "^0.548.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "typescript": "^5.9.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.3"
+  }
+}

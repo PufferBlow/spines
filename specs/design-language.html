@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="_support/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_support/ds/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap">
+<script src="_support/icons.js"></script>
+<style>body{margin:0;background:#0a0a0a;color:#f2f2f2}a{color:#f2f2f2;text-decoration-color:rgba(242,242,242,.35)}a:hover{color:#fff;text-decoration-color:#fff}
+@keyframes pbPop{0%{transform:scale(1)}30%{transform:scale(1.45)}55%{transform:scale(.92)}75%{transform:scale(1.08)}100%{transform:scale(1)}}
+@keyframes pbSpike{0%{opacity:0;transform:rotate(var(--r)) translateY(0) scaleY(.2)}25%{opacity:1}100%{opacity:0;transform:rotate(var(--r)) translateY(-17px) scaleY(1)}}
+@keyframes pbRise{0%,100%{transform:translateY(0) scale(.8);opacity:.35}45%{transform:translateY(-6px) scale(1);opacity:1}}
+@keyframes pbRing{0%{box-shadow:0 0 0 2px #121212,0 0 0 4px rgba(159,207,138,1)}60%{box-shadow:0 0 0 2px #121212,0 0 0 9px rgba(159,207,138,0)}100%{box-shadow:0 0 0 2px #121212,0 0 0 4px rgba(159,207,138,0)}}
+@keyframes pbBristle{0%,100%{transform:scale(.86);opacity:.7}50%{transform:scale(1);opacity:1}}
+</style>
+</helmet>
+<div style="max-width:1240px;margin:0 auto;padding:56px 36px 96px;display:flex;flex-direction:column;gap:72px;font-family:var(--font-body)">
+
+  <header style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="width:44px;height:44px;background:#f2f2f2;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div>
+      <span style="font:400 26px/1 Marcellus,serif">Pufferblow</span>
+      <span style="margin-left:auto;font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">Design language · v1</span>
+    </div>
+    <div style="font:400 64px/1.02 Marcellus,serif;max-width:900px;text-wrap:balance">A quiet room full of loud fish.</div>
+    <p style="margin:0;max-width:720px;font-size:16px;line-height:1.55;color:#9a9a9a">The client chrome is black, grey and white. Colour belongs to people and spaces: avatars, server icons, banners and role tags. Federation is always visible, and the puffer shows up in the small moments: reactions, typing, loading, mentions.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <div style="background:#121212;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">01</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">Chrome is mono, people are colour</span>
+        <span style="font-size:13.5px;line-height:1.5;color:#9a9a9a">UI surfaces never use the identity palette. If something is coloured, it belongs to a person or a space.</span>
+      </div>
+      <div style="background:#121212;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">02</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">Everyone has a home</span>
+        <span style="font-size:13.5px;line-height:1.5;color:#9a9a9a">Remote people and spaces always show their instance. Local ones don't, so the difference reads at a glance.</span>
+      </div>
+      <div style="background:#121212;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">03</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">Playful at the edges</span>
+        <span style="font-size:13.5px;line-height:1.5;color:#9a9a9a">Layouts stay calm and dense. Motion and character live in feedback: puffing, bubbling, bristling.</span>
+      </div>
+    </div>
+  </header>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">01 · Colour</span><span style="font:400 36px/1.1 Marcellus,serif">Surfaces, identity, status</span></div>
+    <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px">
+      <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Surfaces &amp; text — the whole UI</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px">
+        <sc-for list="{{ neutrals }}" as="c" hint-placeholder-count="10">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="height:64px;border-radius:12px;background:{{ c.hex }};box-shadow:inset 0 0 0 1px rgba(242,242,242,.08)"></div>
+            <div style="display:flex;flex-direction:column;gap:2px"><span style="font:12px ui-monospace,Menlo,monospace;color:#f2f2f2">{{ c.token }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ c.hex }}</span><span style="font-size:12px;color:#9a9a9a">{{ c.use }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:12px">
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Identity — people &amp; spaces only</span>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+          <sc-for list="{{ identity }}" as="c" hint-placeholder-count="6">
+            <div style="border-radius:14px;background:{{ c.hex }};color:#0a0a0a;padding:12px;display:flex;align-items:center;gap:10px">
+              <img src="{{ c.src }}" alt="" style="width:36px;height:36px;display:block;border-radius:50%;box-shadow:0 0 0 2px rgba(10,10,10,.15)">
+              <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-weight:700;font-size:13px">{{ c.name }}</span><span style="font:11px ui-monospace,Menlo,monospace">{{ c.hex }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+        <span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">All six share one lightness so no one stands out. Content on them is always ink (#0A0A0A).</span>
+      </div>
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Status — the only other colours</span>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ status }}" as="s" hint-placeholder-count="5">
+            <div style="display:flex;align-items:center;gap:12px"><span style="width:12px;height:12px;border-radius:50%;background:{{ s.hex }};flex:none"></span><span style="width:120px;font-size:14px;font-weight:600">{{ s.name }}</span><span style="width:84px;font:11px ui-monospace,Menlo,monospace;color:#707070">{{ s.hex }}</span><span style="font-size:12.5px;color:#9a9a9a">{{ s.use }}</span></div>
+          </sc-for>
+        </div>
+        <div style="height:1px;background:rgba(242,242,242,.08)"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12.5px;line-height:1.45">
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9fcf8a">Use identity on</span><span style="color:#9a9a9a">Avatars, server icons, banners, role tags, presence rings.</span></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#ec8a6f">Never on</span><span style="color:#9a9a9a">Buttons, links, selection, focus rings, panels, icons.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">02 · Type</span><span style="font:400 36px/1.1 Marcellus,serif">Three voices</span></div>
+    <div style="background:#121212;border-radius:18px;padding:8px 24px;display:flex;flex-direction:column">
+      <sc-for list="{{ type }}" as="t" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:24px;align-items:center;padding:18px 0;border-bottom:1px solid rgba(242,242,242,.06)">
+          <span style="font:{{ t.font }};letter-spacing:{{ t.ls }};text-transform:{{ t.tt }};color:{{ t.col }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:.14em 0">{{ t.sample }}</span>
+          <div style="display:flex;flex-direction:column;gap:3px"><span style="font:12px ui-monospace,Menlo,monospace;color:#f2f2f2">{{ t.token }}</span><span style="font:11px/1.4 ui-monospace,Menlo,monospace;color:#707070">{{ t.spec }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+    <span style="font-size:13px;color:#9a9a9a;max-width:760px;line-height:1.5">Marcellus is for names: page titles, space names, the wordmark and server initials. Barlow Condensed is for labels and buttons, always uppercase. Barlow is for everything people write and read.</span>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:10px">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap"><span style="font:400 24px/1.15 Marcellus,serif">Text roles</span><span style="font-size:13px;color:#9a9a9a">Every piece of text in the client maps to exactly one row: font and colour together. Don't mix them.</span></div>
+      <div style="background:#121212;border-radius:18px;overflow-x:auto">
+        <div style="min-width:860px">
+          <div style="display:grid;grid-template-columns:170px minmax(0,1.2fr) minmax(0,1fr) 180px;gap:16px;padding:14px 24px;border-bottom:1px solid rgba(242,242,242,.08)"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Role</span><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Sample</span><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Font</span><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Colour</span></div>
+          <sc-for list="{{ roles }}" as="r" hint-placeholder-count="12">
+            <div style="display:grid;grid-template-columns:170px minmax(0,1.2fr) minmax(0,1fr) 180px;gap:16px;align-items:center;padding:12px 24px;border-bottom:1px solid rgba(242,242,242,.05)">
+              <div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:13.5px;font-weight:600;color:#f2f2f2">{{ r.role }}</span><span style="font-size:12px;color:#707070">{{ r.where }}</span></div>
+              <div style="min-width:0;padding:10px 12px;border-radius:10px;background:#161616;overflow:hidden"><span style="font:{{ r.font }};letter-spacing:{{ r.ls }};text-transform:{{ r.tt }};color:{{ r.hex }};background:{{ r.chipBg }};padding:{{ r.pad }};border-radius:{{ r.rad }};text-decoration:{{ r.td }};font-variant-numeric:tabular-nums;white-space:nowrap;display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;vertical-align:middle">{{ r.sample }}</span></div>
+              <span style="font:11.5px/1.5 ui-monospace,Menlo,monospace;color:#9a9a9a">{{ r.spec }}</span>
+              <div style="display:flex;align-items:center;gap:10px;min-width:0"><span style="width:22px;height:22px;border-radius:6px;background:{{ r.hex }};box-shadow:inset 0 0 0 1px rgba(242,242,242,.14);flex:none"></span><div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font:11.5px ui-monospace,Menlo,monospace;color:#f2f2f2">{{ r.token }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ r.hexLabel }}</span></div></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">03 · Shape, space, motion</span><span style="font:400 36px/1.1 Marcellus,serif">Soft corners, flat layers</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,370px),1fr));gap:12px">
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:18px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Radius</span>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end">
+          <sc-for list="{{ radii }}" as="r" hint-placeholder-count="7">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:52px;height:52px;background:#2a2a2a;border-radius:{{ r.v }}"></div><span style="font:11px ui-monospace,Menlo,monospace;color:#f2f2f2">{{ r.name }}</span><span style="font:10.5px ui-monospace,Menlo,monospace;color:#707070">{{ r.v }}</span></div>
+          </sc-for>
+        </div>
+        <span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">People are circles. Spaces are rounded squares (30% of size). Everything else uses the scale.</span>
+      </div>
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Space — 4 px base</span>
+        <sc-for list="{{ spaces }}" as="s" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:12px"><span style="width:64px;font:11px ui-monospace,Menlo,monospace;color:#f2f2f2">{{ s.name }}</span><span style="height:10px;border-radius:3px;background:#f2f2f2;width:{{ s.w }}"></span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ s.w }}</span></div>
+        </sc-for>
+      </div>
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Elevation — layers, not shadows</span>
+        <div style="background:#0a0a0a;border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px">
+          <span style="font:11px ui-monospace,Menlo,monospace;color:#707070">bg · app</span>
+          <div style="background:#121212;border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:6px">
+            <span style="font:11px ui-monospace,Menlo,monospace;color:#707070">panel</span>
+            <div style="background:#1f1f1f;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px">
+              <span style="font:11px ui-monospace,Menlo,monospace;color:#9a9a9a">raised · cards, inputs</span>
+              <div style="background:#2a2a2a;border-radius:10px;padding:12px;font:11px ui-monospace,Menlo,monospace;color:#dadada;box-shadow:0 12px 32px rgba(0,0,0,.5)">overlay · menus, popovers (only shadow)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Motion</span>
+        <sc-for list="{{ motion }}" as="m" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;gap:3px;padding-bottom:10px;border-bottom:1px solid rgba(242,242,242,.06)"><div style="display:flex;justify-content:space-between;gap:12px"><span style="font:12px ui-monospace,Menlo,monospace;color:#f2f2f2">{{ m.token }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ m.v }}</span></div><span style="font-size:12.5px;color:#9a9a9a">{{ m.use }}</span></div>
+        </sc-for>
+        <span style="font-size:12.5px;color:#9a9a9a">With reduced motion: no scale or spikes, colour and opacity changes only.</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">04 · Components</span><span style="font:400 36px/1.1 Marcellus,serif">The parts</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,560px),1fr));gap:12px">
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:18px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Buttons</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <button style="height:40px;padding:0 18px;border:0;border-radius:10px;background:#f2f2f2;color:#0a0a0a;font:700 13px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:8px" style-hover="background:#ffffff" style-active="transform:scale(.97)">Join space<lu-icon i="arrow" s="14"></lu-icon></button>
+          <button style="height:40px;padding:0 18px;border:0;border-radius:10px;background:#1f1f1f;color:#f2f2f2;font:700 13px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:8px" style-hover="background:#2a2a2a" style-active="transform:scale(.97)"><lu-icon i="volume" s="14"></lu-icon>Join voice</button>
+          <button style="height:40px;padding:0 14px;border:1px solid rgba(242,242,242,.14);border-radius:10px;background:transparent;color:#f2f2f2;font:700 13px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer" style-hover="background:#1f1f1f">Ghost</button>
+          <button style="height:40px;padding:0 18px;border:0;border-radius:10px;background:rgba(226,101,79,.14);color:#ef8a75;font:700 13px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer" style-hover="background:rgba(226,101,79,.22)">Leave</button>
+          <button style="width:40px;height:40px;border:0;border-radius:10px;background:#1f1f1f;color:#9a9a9a;display:grid;place-items:center;cursor:pointer" style-hover="background:#2a2a2a;color:#f2f2f2"><lu-icon i="settings" s="18"></lu-icon></button>
+          <button style="height:40px;padding:0 18px;border:0;border-radius:10px;background:#1a1a1a;color:#555;font:700 13px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase">Disabled</button>
+        </div>
+        <span style="font:11.5px/1.5 ui-monospace,Menlo,monospace;color:#707070">h 40 (32 small) · r 10 · label 13 / .1em caps · primary is the only white surface on a screen</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Inputs</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12.5px;color:#9a9a9a">Handle</span><div style="height:44px;border-radius:10px;background:#1f1f1f;display:flex;align-items:center;gap:10px;padding:0 14px;color:#707070"><lu-icon i="at" s="16"></lu-icon><span style="font-size:14.5px">name@instance</span></div></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12.5px;color:#9a9a9a">Focused</span><div style="height:44px;border-radius:10px;background:#1f1f1f;display:flex;align-items:center;gap:10px;padding:0 14px;color:#f2f2f2;box-shadow:0 0 0 2px #121212,0 0 0 4px #f2f2f2"><lu-icon i="at" s="16"></lu-icon><span style="font-size:14.5px">lonelyfrog@switchyard.works</span></div></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12.5px;color:#ef8a75">Instance not found</span><div style="height:44px;border-radius:10px;background:#1f1f1f;display:flex;align-items:center;gap:10px;padding:0 14px;color:#f2f2f2;box-shadow:inset 0 0 0 1px #e2654f"><lu-icon i="at" s="16"></lu-icon><span style="font-size:14.5px">frog@switchyrd.works</span></div></div>
+          <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12.5px;color:#9a9a9a">Search</span><div style="height:44px;border-radius:999px;background:#1f1f1f;display:flex;align-items:center;gap:10px;padding:0 8px 0 16px;color:#707070"><lu-icon i="search" s="16"></lu-icon><span style="font-size:14.5px;flex:1">Spaces, people…</span><span style="padding:4px 7px;border-radius:6px;background:#2a2a2a;font:11px ui-monospace,Menlo,monospace;color:#9a9a9a">Ctrl K</span></div></div>
+        </div>
+        <div style="height:48px;border-radius:14px;background:#1f1f1f;display:flex;align-items:center;gap:12px;padding:0 8px 0 10px;color:#707070"><span style="width:32px;height:32px;border-radius:50%;background:#2a2a2a;display:grid;place-items:center;color:#9a9a9a"><lu-icon i="plus" s="16"></lu-icon></span><span style="font-size:14.5px;flex:1">Message #general</span><lu-icon i="smile" s="18"></lu-icon><span style="width:34px;height:34px;border-radius:10px;background:#f2f2f2;color:#0a0a0a;display:grid;place-items:center"><lu-icon i="send" s="16"></lu-icon></span></div>
+        <span style="font:11.5px/1.5 ui-monospace,Menlo,monospace;color:#707070">h 44 · r 10 · fill raised · focus = 2px white ring offset 2 · error = 1px inset danger</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Tags, pills &amp; badges</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+          <span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:6px;background:rgba(169,156,242,.14);color:#a99cf2;font:700 10.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase"><span style="width:6px;height:6px;border-radius:50%;background:#a99cf2"></span>Spirit</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:6px;background:rgba(159,207,138,.14);color:#9fcf8a;font:700 10.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase"><span style="width:6px;height:6px;border-radius:50%;background:#9fcf8a"></span>Vitality</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:6px;background:rgba(236,138,111,.14);color:#ec8a6f;font:700 10.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase"><span style="width:6px;height:6px;border-radius:50%;background:#ec8a6f"></span>Weapon</span>
+          <span style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:999px;background:#1f1f1f;color:#9a9a9a;font-size:12px">@mesh.garden</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:rgba(159,212,135,.14);color:#9fd487;font:700 10.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase"><lu-icon i="gamepad" s="12"></lu-icon>In game</span>
+          <span style="min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#e2654f;color:#fff;display:inline-grid;place-items:center;font:700 11px/1 var(--font-body)">12</span>
+          <span style="min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#2a2a2a;color:#dadada;display:inline-grid;place-items:center;font:700 11px/1 var(--font-body)">3</span>
+          <span style="padding:4px 7px;border-radius:6px;background:#2a2a2a;font:11px ui-monospace,Menlo,monospace;color:#9a9a9a">Ctrl K</span>
+        </div>
+        <span style="font:11.5px/1.5 ui-monospace,Menlo,monospace;color:#707070">role tag: identity colour at 14% fill + full-strength text · host pill: raised, r 999 · badge: danger for mentions, grey for plain unread</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Avatar</span>
+        <div style="display:flex;gap:22px;align-items:flex-end;flex-wrap:wrap">
+          <div style="position:relative;width:80px;height:80px"><img src="../assets/avatars/pb-avatar-happy-violet.svg" alt="" style="width:80px;height:80px;display:block"><span style="position:absolute;right:2px;bottom:2px;width:18px;height:18px;border-radius:50%;background:#9fd487;box-shadow:0 0 0 4px #121212"></span></div>
+          <div style="position:relative;width:40px;height:40px"><img src="../assets/avatars/pb-avatar-wink-coral.svg" alt="" style="width:40px;height:40px;display:block"><span style="position:absolute;right:-2px;bottom:-2px;width:13px;height:13px;border-radius:50%;background:#f2f2f2;box-shadow:0 0 0 3px #121212"></span></div>
+          <div style="position:relative;width:32px;height:32px"><img src="../assets/avatars/pb-avatar-sleepy-sky.svg" alt="" style="width:32px;height:32px;display:block"><span style="position:absolute;right:-2px;bottom:-2px;width:11px;height:11px;border-radius:50%;background:#121212;box-shadow:inset 0 0 0 3px #9a9a9a,0 0 0 3px #121212"></span></div>
+          <div style="position:relative;width:24px;height:24px"><img src="../assets/avatars/pb-avatar-default-sage.svg" alt="" style="width:24px;height:24px;display:block;opacity:.55"></div>
+          <div style="display:flex;padding-left:8px"><img src="../assets/avatars/pb-avatar-happy-brass.svg" alt="" style="width:28px;height:28px;display:block;margin-left:-8px;border-radius:50%;box-shadow:0 0 0 2px #121212"><img src="../assets/avatars/pb-avatar-grumpy-rose.svg" alt="" style="width:28px;height:28px;display:block;margin-left:-8px;border-radius:50%;box-shadow:0 0 0 2px #121212"><img src="../assets/avatars/pb-avatar-surprised-sky.svg" alt="" style="width:28px;height:28px;display:block;margin-left:-8px;border-radius:50%;box-shadow:0 0 0 2px #121212"><span style="width:28px;height:28px;margin-left:-8px;border-radius:50%;background:#2a2a2a;box-shadow:0 0 0 2px #121212;display:grid;place-items:center;font:700 10.5px/1 var(--font-body);color:#dadada">+4</span></div>
+        </div>
+        <span style="font:11.5px/1.5 ui-monospace,Menlo,monospace;color:#707070">80 profile · 40 chat · 32 lists · 24 inline · status dot ≈ 30% of size, cut out with a 3px ring of the surface · idle = hollow · offline = 55% opacity, no dot</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Server rail</span>
+        <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+          <div style="background:#0a0a0a;border-radius:16px;padding:12px 0;width:72px;display:flex;flex-direction:column;align-items:center;gap:10px">
+            <div style="position:relative;width:72px;display:flex;justify-content:center"><span style="position:absolute;left:0;top:6px;width:4px;height:36px;border-radius:0 4px 4px 0;background:#f2f2f2"></span><div style="width:48px;height:48px;border-radius:16px;background:#f2f2f2;display:grid;place-items:center"><div style="width:30px;height:30px;background:#0a0a0a;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></div></div>
+            <div style="width:28px;height:2px;border-radius:2px;background:rgba(242,242,242,.1)"></div>
+            <div style="position:relative;width:72px;display:flex;justify-content:center"><span style="position:absolute;left:0;top:20px;width:4px;height:8px;border-radius:0 4px 4px 0;background:#f2f2f2"></span><div style="position:relative;width:48px;height:48px;border-radius:14px;background:#a99cf2;color:#0a0a0a;display:grid;place-items:start start;padding:6px 0 0 8px;box-sizing:border-box;font:400 18px/1 Marcellus,serif;overflow:hidden"><span style="position:absolute;inset:0;background:url(../assets/patterns/crop-ink.svg) center/100% 100% no-repeat"></span><span style="position:relative">D</span></div></div>
+            <div style="position:relative;width:48px;height:48px;border-radius:14px;background:#ec8a6f;color:#0a0a0a;display:grid;place-items:center;font:400 18px/1 Marcellus,serif">SB<span style="position:absolute;right:-5px;bottom:-5px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#e2654f;color:#fff;border:3px solid #0a0a0a;display:grid;place-items:center;font:700 11px/1 var(--font-body);box-sizing:border-box">5</span></div>
+            <div style="position:relative;width:48px;height:48px;border-radius:14px;background:#7fc0e3;color:#0a0a0a;display:grid;place-items:center;font:400 16px/1 Marcellus,serif"><span style="position:absolute;inset:0;background:url(../assets/patterns/ring-ink.svg) center/100% no-repeat"></span><span style="position:relative">H</span></div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#9fcf8a;background-image:url(../assets/patterns/school-ink.svg);background-size:100%"></div>
+            <div style="width:48px;height:48px;border-radius:50%;background:#1f1f1f;color:#9a9a9a;display:grid;place-items:center"><lu-icon i="plus" s="20"></lu-icon></div>
+          </div>
+          <div style="flex:1;min-width:220px;display:flex;flex-direction:column;gap:10px;font-size:13px;line-height:1.45;color:#9a9a9a">
+            <div><b style="color:#f2f2f2">Home</b> is the only white tile, carrying the mono fish. It turns white on hover from any other screen.</div>
+            <div><b style="color:#f2f2f2">Pill</b> on the left: 8px = unread, 20px = hover, 36px = open.</div>
+            <div><b style="color:#f2f2f2">Spaces</b> are rounded squares (r 14 at 48). Default icons come in four styles: initials, peeking fish, bubble, school.</div>
+            <div><b style="color:#f2f2f2">Badge</b> only for mentions, cut out of the rail with a 3px border.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Channel list</span>
+        <div style="background:#161616;border-radius:14px;padding:10px 8px;display:flex;flex-direction:column;gap:2px;max-width:300px">
+          <span style="padding:8px 10px 6px;display:flex;align-items:center;gap:6px;font:600 11px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#707070"><lu-icon i="down" s="12"></lu-icon>Community</span>
+          <div style="height:34px;padding:0 10px;border-radius:8px;display:flex;align-items:center;gap:8px;font-size:14.5px;color:#9a9a9a" style-hover="background:#1f1f1f;color:#dadada"><lu-icon i="hash" s="16"></lu-icon>rules</div>
+          <div style="position:relative;height:34px;padding:0 10px;border-radius:8px;display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:#f2f2f2"><span style="position:absolute;left:-8px;top:13px;width:4px;height:8px;border-radius:0 4px 4px 0;background:#f2f2f2"></span><lu-icon i="hash" s="16"></lu-icon>announcements<span style="margin-left:auto;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#e2654f;color:#fff;display:grid;place-items:center;font:700 11px/1 var(--font-body)">5</span></div>
+          <div style="height:34px;padding:0 10px;border-radius:8px;display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:#f2f2f2;background:#2a2a2a"><lu-icon i="hash" s="16"></lu-icon>general</div>
+          <div style="height:34px;padding:0 10px;border-radius:8px;display:flex;align-items:center;gap:8px;font-size:14.5px;color:#555"><lu-icon i="hash" s="16"></lu-icon>off-topic<span style="margin-left:auto;font-size:11px">muted</span></div>
+          <div style="height:34px;padding:0 10px;border-radius:8px;display:flex;align-items:center;gap:8px;font-size:14.5px;color:#dadada"><lu-icon i="volume" s="16"></lu-icon>Ranked Grind<span style="margin-left:auto;font-size:11px;color:#707070">3/5</span></div>
+          <div style="padding:2px 10px 6px 34px;display:flex;flex-direction:column;gap:6px;font-size:13px;color:#dadada">
+            <div style="display:flex;align-items:center;gap:8px">{{ speakingSmall }}Vexa</div>
+            <div style="display:flex;align-items:center;gap:8px"><img src="../assets/avatars/pb-avatar-wink-coral.svg" alt="" style="width:22px;height:22px;display:block">rina<span style="font-size:11px;color:#707070">mesh.garden</span></div>
+          </div>
+        </div>
+        <span style="font:11.5px/1.5 ui-monospace,Menlo,monospace;color:#707070">row h 34 · r 8 · default text-2 · unread = bold white + 8px pill · active = surface-4 fill · muted = text-4</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px;grid-column:1/-1">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Message</span>
+        <div style="background:#161616;border-radius:14px;padding:16px 4px;display:flex;flex-direction:column;gap:2px">
+          <div style="display:flex;gap:14px;padding:6px 16px;border-radius:10px" style-hover="background:#1a1a1a">
+            <img src="../assets/avatars/pb-avatar-happy-violet.svg" alt="" style="width:40px;height:40px;display:block;flex:none">
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-weight:700;font-size:15px">Vexa</span><span style="display:inline-flex;align-items:center;gap:6px;height:20px;padding:0 7px;border-radius:6px;background:rgba(169,156,242,.14);color:#a99cf2;font:700 10px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase"><span style="width:5px;height:5px;border-radius:50%;background:#a99cf2"></span>Spirit</span><span style="font-size:11.5px;color:#707070">1:32 PM</span></div>
+              <span style="font-size:15px;line-height:1.5;color:#dadada">Patch is live. Ropes, bridges and new hallways around the mid lanes.</span>
+              <div style="margin-top:6px;max-width:460px;display:flex;gap:14px;padding:12px;border-radius:14px;background:#1f1f1f">
+                <div style="width:84px;height:84px;flex:none;border-radius:10px;background:url(../assets/patterns/tile-ink.svg) 0 0/32px 32px repeat,#e59ac0"></div>
+                <div style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font:700 10.5px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a">Update · Oct 9</span><span style="font:400 19px/1.15 Marcellus,serif">The City Never Sleeps</span><span style="font-size:13px;line-height:1.45;color:#9a9a9a">Ziplines rerouted, two new hero labs and a reworked Street Brawl.</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;padding:2px 16px 6px 70px;border-radius:10px" style-hover="background:#1a1a1a"><span style="font-size:15px;line-height:1.5;color:#dadada">Also: the stutter on zipline-to-tower is fixed for most people.</span></div>
+          <div style="display:flex;gap:14px;padding:8px 16px;border-radius:10px;background:rgba(242,242,242,.035);box-shadow:inset 3px 0 0 #f2f2f2">
+            <img src="../assets/avatars/pb-avatar-wink-coral.svg" alt="" style="width:40px;height:40px;display:block;flex:none">
+            <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+              <span style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:#707070"><lu-icon i="reply" s="12"></lu-icon><img src="../assets/avatars/pb-avatar-happy-violet.svg" alt="" style="width:14px;height:14px;display:block">Vexa: Patch is live. Ropes, bridges…</span>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-weight:700;font-size:15px">rina</span><span style="display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:999px;background:#1f1f1f;color:#9a9a9a;font-size:11.5px">@mesh.garden</span><span style="font-size:11.5px;color:#707070">1:33 PM</span></div>
+              <span style="font-size:15px;line-height:1.5;color:#dadada"><span style="padding:1px 5px;border-radius:5px;background:#f2f2f2;color:#0a0a0a;font-weight:600">@lonelyfrog</span> the bridge rotation feels completely different now.</span>
+              <div style="display:flex;gap:6px;margin-top:4px;flex-wrap:wrap">
+                <sc-for list="{{ reactionsStatic }}" as="r" hint-placeholder-count="3"><span style="height:28px;padding:0 9px 0 5px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;font:600 12.5px/1 var(--font-body);background:{{ r.bg }};color:{{ r.col }};box-shadow:{{ r.bd }}"><img src="{{ r.src }}" alt="" style="width:18px;height:18px;display:block">{{ r.n }}</span></sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+        <span style="font:11.5px/1.5 ui-monospace,Menlo,monospace;color:#707070">avatar 40 · gap 14 · name 15/700 · body 15/1.5 text-1·85% · grouped follow-ups indent 70 · mention of you = soft white row + 3px white edge · remote author = host pill · local author = none</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Profile card</span>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <div style="width:280px;background:#1f1f1f;border-radius:16px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.5)">
+            <div style="height:96px;background:repeating-radial-gradient(circle at 16% 130%, transparent 0 11px, rgba(10,10,10,.12) 11px 14px),#a99cf2"></div>
+            <div style="padding:0 16px 16px;display:flex;flex-direction:column;gap:10px">
+              <div style="margin-top:-40px;width:80px;height:80px;border-radius:50%;background:#1f1f1f;display:grid;place-items:center;position:relative"><img src="../assets/avatars/pb-avatar-happy-violet.svg" alt="" style="width:70px;height:70px;display:block"><span style="position:absolute;right:4px;bottom:4px;width:16px;height:16px;border-radius:50%;background:#9fd487;box-shadow:0 0 0 4px #1f1f1f"></span></div>
+              <div style="display:flex;flex-direction:column;gap:2px"><span style="font:400 22px/1.1 Marcellus,serif">Vexa</span><span style="font-size:13px;color:#9a9a9a">vexa@lanes.gg</span></div>
+              <span style="display:inline-flex;align-self:flex-start;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:rgba(159,212,135,.14);color:#9fd487;font:700 10.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase"><lu-icon i="gamepad" s="12"></lu-icon>Deadlock · Street Brawl</span>
+              <div style="height:1px;background:rgba(242,242,242,.08)"></div>
+              <div style="display:flex;gap:8px"><button style="flex:1;height:34px;border:0;border-radius:9px;background:#f2f2f2;color:#0a0a0a;font:700 12px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Message</button><button style="width:34px;height:34px;border:0;border-radius:9px;background:#2a2a2a;color:#dadada;display:grid;place-items:center;cursor:pointer"><lu-icon i="more" s="16"></lu-icon></button></div>
+            </div>
+          </div>
+          <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:10px;font-size:13px;line-height:1.45;color:#9a9a9a">
+            <div><b style="color:#f2f2f2">Banner</b> defaults to the user's identity colour with one of four patterns, centred on where the avatar overlaps it.</div>
+            <div><b style="color:#f2f2f2">Avatar</b> is cut out of the banner with a ring of the card colour.</div>
+            <div><b style="color:#f2f2f2">Name</b> is set in Marcellus. Handle always includes the instance.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Toast, tooltip, empty state</span>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 12px 10px 10px;border-radius:14px;background:#2a2a2a;box-shadow:0 12px 32px rgba(0,0,0,.5)"><img src="../assets/avatars/pb-avatar-surprised-sky.svg" alt="" style="width:32px;height:32px;display:block"><div style="display:flex;flex-direction:column;gap:2px"><span style="font-size:13.5px;font-weight:600">Pell joined Ranked Grind</span><span style="font-size:12px;color:#9a9a9a">Deadlock Community · mesh.garden</span></div><button style="margin-left:6px;height:30px;padding:0 12px;border:0;border-radius:8px;background:#f2f2f2;color:#0a0a0a;font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Join</button></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="padding:7px 10px;border-radius:8px;background:#f2f2f2;color:#0a0a0a;font-size:12.5px;font-weight:600">Night Shift · kiln.social</span><span style="width:10px;height:10px;margin-top:-10px;background:#f2f2f2;transform:rotate(45deg)"></span><div style="width:48px;height:48px;border-radius:14px;background:#7fc0e3"></div></div>
+        </div>
+        <div style="border-radius:14px;background:#161616;padding:26px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+          <img src="../assets/avatars/pb-avatar-sleepy-ink.svg" alt="" style="width:64px;height:64px;display:block">
+          <span style="font:400 20px/1.2 Marcellus,serif">Nothing here yet</span>
+          <span style="font-size:13px;color:#9a9a9a;max-width:280px">No one has posted in #clips. Share the first one.</span>
+        </div>
+        <span style="font:11.5px/1.5 ui-monospace,Menlo,monospace;color:#707070">toast: overlay layer, r 14, auto-dismiss 5s · tooltip: inverted (white), 12.5/600 · empty: sleepy fish, one line of help, one action</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">05 · Signature UX</span><span style="font:400 36px/1.1 Marcellus,serif">What makes it Pufferblow</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:12px">
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">A · Puff reactions</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">Reactions are puffer faces</span>
+        <div style="border-radius:14px;background:#161616;padding:22px 16px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center">
+          <sc-for list="{{ reactions }}" as="r" hint-placeholder-count="6">
+            <button onClick="{{ r.onClick }}" style="height:34px;padding:0 11px 0 6px;border:0;border-radius:999px;display:inline-flex;align-items:center;gap:7px;font:600 13px/1 var(--font-body);cursor:pointer;background:{{ r.bg }};color:{{ r.col }};box-shadow:{{ r.bd }}">{{ r.node }}{{ r.n }}</button>
+          </sc-for>
+        </div>
+        <span style="font-size:13px;line-height:1.5;color:#9a9a9a">Six expressions instead of emoji, so reactions match the avatars. Tapping one puffs it up and its spines pop out. Click them to try it.</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">B · Identity from a handle</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">Same handle, same fish, everywhere</span>
+        <div style="height:44px;border-radius:10px;background:#1f1f1f;display:flex;align-items:center;gap:10px;padding:0 14px;color:#707070;box-shadow:0 0 0 2px #121212,0 0 0 4px #f2f2f2"><lu-icon i="at" s="16"></lu-icon><input value="{{ handle }}" onChange="{{ onHandle }}" spellcheck="false" style="flex:1;min-width:0;background:transparent;border:0;outline:0;color:#f2f2f2;font:15px var(--font-body)"></div>
+        <div style="border-radius:14px;overflow:hidden;background:#1f1f1f">
+          <div style="height:72px;background:{{ idBanner }}"></div>
+          <div style="padding:0 14px 14px;display:flex;align-items:flex-end;gap:12px">
+            <div style="margin-top:-30px;width:64px;height:64px;border-radius:50%;background:#1f1f1f;display:grid;place-items:center;flex:none"><img src="{{ idSrc }}" alt="" style="width:56px;height:56px;display:block"></div>
+            <div style="display:flex;flex-direction:column;gap:2px;min-width:0;padding-bottom:4px"><span style="font-weight:700;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ idName }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#9a9a9a">{{ idMeta }}</span></div>
+          </div>
+        </div>
+        <span style="font-size:13px;line-height:1.5;color:#9a9a9a">Before someone uploads a picture, their avatar and banner are derived from the full handle. Every instance and client computes the same result, so people are recognisable across the fediverse.</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">C · Home &amp; away</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">Federation you can see</span>
+        <div style="border-radius:14px;background:#161616;padding:12px;display:flex;flex-direction:column;gap:4px">
+          <sc-for list="{{ fed }}" as="f" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:12px;padding:8px;border-radius:10px">
+              <img src="{{ f.src }}" alt="" style="width:34px;height:34px;display:block;flex:none;opacity:{{ f.op }}">
+              <div style="display:flex;flex-direction:column;gap:3px;min-width:0;flex:1"><span style="font-weight:600;font-size:14px;color:{{ f.nameCol }};text-decoration:{{ f.strike }}">{{ f.name }}</span><span style="font-size:12px;color:#707070">{{ f.note }}</span></div>
+              <span style="display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 8px;border-radius:999px;font-size:11.5px;background:{{ f.pillBg }};color:{{ f.pillCol }};box-shadow:{{ f.pillBd }}">{{ f.pill }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <span style="font-size:13px;line-height:1.5;color:#9a9a9a">Local people show no pill. Remote people carry their instance. Unverified instances get a dashed pill, and blocked instances are struck through and dimmed.</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">D · Presence rings</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">The avatar tells you what's happening</span>
+        <div style="border-radius:14px;background:#161616;padding:22px 12px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px">{{ speakingBig }}<span style="font-size:12.5px;color:#dadada">Speaking</span><span style="font-size:11px;color:#707070">pulsing sage ring</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px"><img src="../assets/avatars/pb-avatar-wink-coral.svg" alt="" style="width:56px;height:56px;display:block;border-radius:50%;box-shadow:0 0 0 2px #161616,0 0 0 4px #f2f2f2"><span style="font-size:12.5px;color:#dadada">Muted / deafened</span><span style="font-size:11px;color:#707070">white ring + icon</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:10px">{{ bristle }}<span style="font-size:12.5px;color:#dadada">Mentioned you</span><span style="font-size:11px;color:#707070">spines bristle out</span></div>
+        </div>
+        <span style="font-size:13px;line-height:1.5;color:#9a9a9a">Speaking is the only animated ring. A mention makes the sender's avatar bristle in the rail and in notifications until you read it.</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">E · Bubbles &amp; puff loading</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">Waiting looks like breathing</span>
+        <div style="border-radius:14px;background:#161616;padding:18px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#9a9a9a">{{ typing }}<span><b style="color:#dadada">Maestro</b> and <b style="color:#dadada">rina</b> are typing…</span></div>
+          <div style="display:flex;align-items:center;gap:16px"><img src="../assets/loader/pufferblow-loader-mono-white-1024.png" alt="Loading" style="width:72px;height:72px;display:block"><span style="font-size:13px;line-height:1.45;color:#9a9a9a">Full-screen and long waits use the puff loader. Short waits (under 1s) show nothing.</span></div>
+        </div>
+        <span style="font-size:13px;line-height:1.5;color:#9a9a9a">Typing shows three rising bubbles instead of dots. The loader is the fish inflating and deflating.</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">F · One account per instance</span>
+        <span style="font:400 22px/1.15 Marcellus,serif">Switch who you are, not just where</span>
+        <div style="border-radius:14px;background:#161616;padding:10px;display:flex;flex-direction:column;gap:4px">
+          <div style="display:flex;align-items:center;gap:12px;padding:8px;border-radius:10px;background:#2a2a2a"><img src="../assets/avatars/pb-avatar-sleepy-rose.svg" alt="" style="width:36px;height:36px;display:block"><div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font-weight:600;font-size:14px">lonelyfrog</span><span style="font-size:12px;color:#9a9a9a">switchyard.works</span></div><lu-icon i="check" s="16"></lu-icon></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px;border-radius:10px" style-hover="background:#1f1f1f"><img src="../assets/avatars/pb-avatar-default-rose.svg" alt="" style="width:36px;height:36px;display:block"><div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0"><span style="font-weight:600;font-size:14px">frog.alt</span><span style="font-size:12px;color:#9a9a9a">lanes.gg</span></div><span style="min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#e2654f;color:#fff;display:grid;place-items:center;font:700 11px/1 var(--font-body)">2</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:8px;border-radius:10px;color:#9a9a9a" style-hover="background:#1f1f1f"><span style="width:36px;height:36px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(242,242,242,.25);display:grid;place-items:center"><lu-icon i="plus" s="16"></lu-icon></span><span style="font-size:14px">Add account on another instance</span></div>
+        </div>
+        <span style="font-size:13px;line-height:1.5;color:#9a9a9a">Open the switcher by clicking your avatar in the user panel. Unread mentions on other accounts show as a badge, so nothing is missed.</span>
+      </div>
+
+    </div>
+  </section>
+
+<section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">06 · Profile customization</span><span style="font:400 36px/1.1 Marcellus,serif">Your card, your colours</span><span style="max-width:760px;font-size:14px;line-height:1.55;color:#9a9a9a">The profile is the one surface a person is allowed to paint. Everything here is a setting a user can change. Try it: the card on the right updates live.</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px;align-items:start">
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font:400 22px/1.15 Marcellus,serif">Edit profile</span><div style="display:flex;gap:6px"><button onClick="{{ pfShuffle }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:#f2f2f2;color:#0a0a0a;font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px" style-hover="background:#ffffff"><lu-icon i="flame" s="13"></lu-icon>Surprise me</button><button onClick="{{ pfReset }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:#1f1f1f;color:#dadada;font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer" style-hover="background:#2a2a2a">Reset</button></div></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Identity</span><div style="display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:8px"><input value="{{ pfName }}" onChange="{{ pfOnName }}" maxlength="32" placeholder="Display name" style="height:40px;border-radius:10px;background:#1f1f1f;border:0;outline:0;padding:0 12px;color:#f2f2f2;font:14.5px var(--font-body);min-width:0"><input value="{{ pfPronouns }}" onChange="{{ pfOnPronouns }}" maxlength="40" placeholder="Pronouns" style="height:40px;border-radius:10px;background:#1f1f1f;border:0;outline:0;padding:0 12px;color:#f2f2f2;font:14.5px var(--font-body);min-width:0"></div><input value="{{ pfStatus }}" onChange="{{ pfOnStatus }}" maxlength="60" placeholder="Custom status" style="height:40px;border-radius:10px;background:#1f1f1f;border:0;outline:0;padding:0 12px;color:#f2f2f2;font:14.5px var(--font-body);min-width:0"><div style="position:relative"><textarea value="{{ pfBio }}" onChange="{{ pfOnBio }}" maxlength="190" rows="4" placeholder="About me" style="width:100%;box-sizing:border-box;border-radius:10px;background:#1f1f1f;border:0;outline:0;padding:10px 12px 22px;color:#f2f2f2;font:14.5px/1.45 var(--font-body);resize:none"></textarea><span style="position:absolute;right:10px;bottom:8px;font:11px ui-monospace,Menlo,monospace;color:#707070">{{ pfBioCount }}</span></div></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Avatar</span><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ pfExprOpts }}" as="o" hint-placeholder-count="6"><button onClick="{{ o.onClick }}" title="{{ o.label }}" style="padding:0;border:0;background:transparent;border-radius:50%;cursor:pointer;box-shadow:{{ o.ring }}"><img src="{{ o.src }}" alt="" style="width:40px;height:40px;display:block"></button></sc-for><button style="width:40px;height:40px;border:0;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1.5px rgba(242,242,242,.25);color:#9a9a9a;display:grid;place-items:center;cursor:pointer" title="Upload (512 × 512, PNG/JPG/GIF)"><lu-icon i="plus" s="16"></lu-icon></button></div></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Presence</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pfPresenceOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Avatar frame</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pfFrameOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Colour</span><div style="display:flex;gap:10px;flex-wrap:wrap"><sc-for list="{{ pfToneOpts }}" as="o" hint-placeholder-count="6"><button onClick="{{ o.onClick }}" title="{{ o.label }}" style="width:30px;height:30px;border:0;border-radius:50%;background:{{ o.hex }};box-shadow:{{ o.ring }};cursor:pointer"></button></sc-for></div></div>
+          <sc-if value="{{ pfIsDuo }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Second colour</span><div style="display:flex;gap:10px;flex-wrap:wrap"><sc-for list="{{ pfTone2Opts }}" as="o" hint-placeholder-count="6"><button onClick="{{ o.onClick }}" title="{{ o.label }}" style="width:30px;height:30px;border:0;border-radius:50%;background:{{ o.hex }};box-shadow:{{ o.ring }};cursor:pointer"></button></sc-for></div></div></sc-if>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Card theme</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pfThemeOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Banner</span><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px"><sc-for list="{{ pfBannerOpts }}" as="o" hint-placeholder-count="6"><button onClick="{{ o.onClick }}" style="height:56px;border:0;border-radius:10px;background:{{ o.css }};box-shadow:{{ o.ring }};cursor:pointer;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:6px 8px"><span style="padding:3px 6px;border-radius:5px;background:rgba(10,10,10,.6);color:#f2f2f2;font:700 10px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase">{{ o.label }}</span></button></sc-for></div></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Name style</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pfFontOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Sections</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pfWidgetOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+
+        <div style="display:flex;flex-direction:column;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Motion</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pfMotionOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;position:sticky;top:16px">
+        <div style="background:#0a0a0a;border-radius:18px;padding:28px 20px;display:grid;place-items:center;background-image:radial-gradient(circle at 50% 0%,#1a1a1a,#0a0a0a 70%)">
+          <div style="width:340px;max-width:100%;border-radius:20px;overflow:hidden;background:{{ pf.cardBg }};box-shadow:0 18px 48px rgba(0,0,0,.6),inset 0 0 0 1px rgba(242,242,242,.06)">
+            <div style="position:relative;height:136px;background:{{ pf.banner }}">
+              <sc-if value="{{ pf.isUpload }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(242,242,242,.06) 0 10px,transparent 10px 20px),#2a2a2a;display:grid;place-items:center;font:11px ui-monospace,Menlo,monospace;color:#9a9a9a">your banner · 960 × 384</div></sc-if>
+              <div style="position:absolute;top:12px;right:12px;display:flex;gap:6px"><button title="Add friend" style="width:32px;height:32px;padding:0;border:0;border-radius:50%;background:rgba(10,10,10,.55);color:#f2f2f2;display:grid;place-items:center;cursor:pointer" style-hover="background:rgba(10,10,10,.75)"><lu-icon i="userplus" s="16"></lu-icon></button><button title="More" style="width:32px;height:32px;padding:0;border:0;border-radius:50%;background:rgba(10,10,10,.55);color:#f2f2f2;display:grid;place-items:center;cursor:pointer" style-hover="background:rgba(10,10,10,.75)"><lu-icon i="more" s="16"></lu-icon></button></div>
+            </div>
+            <div style="padding:0 18px 18px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;align-items:flex-start;gap:14px;margin-top:-50px">
+                <div style="position:relative;width:100px;height:100px;flex:none;color:{{ pf.hex }}">
+                  <sc-if value="{{ pf.frSpines }}" hint-placeholder-val="{{ false }}"><svg viewBox="-60 -60 120 120" style="position:absolute;inset:-14px;width:128px;height:128px;overflow:visible" fill="currentColor"><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(0.0) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(25.7) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(51.4) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(77.1) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(102.9) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(128.6) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(154.3) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(180.0) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(205.7) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(231.4) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(257.1) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(282.9) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(308.6) translate(0 -47)"></path><path d="M-5.5 0Q-2 -8 0 -13Q2 -8 5.5 0Z" transform="rotate(334.3) translate(0 -47)"></path></svg></sc-if>
+                  <sc-if value="{{ pf.frBubbles }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;right:-10px;top:-4px;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 2.5px currentColor"></span><span style="position:absolute;right:-20px;top:18px;width:10px;height:10px;border-radius:50%;box-shadow:inset 0 0 0 2px currentColor"></span><span style="position:absolute;right:-6px;top:-22px;width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 2px currentColor"></span></sc-if>
+                  <div style="position:relative;width:100px;height:100px;border-radius:50%;background:{{ pf.cardTop }};box-shadow:{{ pf.ring }};display:grid;place-items:center"><img src="{{ pf.avatar }}" alt="" style="width:88px;height:88px;display:block;transition:transform .5s cubic-bezier(.45,0,.3,1)" style-hover="transform:{{ pf.hoverTf }}"></div>
+                  <sc-if value="{{ pf.prDot }}" hint-placeholder-val="{{ true }}"><span title="{{ pf.prLabel }}" style="position:absolute;right:6px;bottom:6px;width:20px;height:20px;border-radius:50%;background:{{ pf.prBg }};box-shadow:0 0 0 5px {{ pf.cardTop }},{{ pf.prIn }}"></span></sc-if>
+                  <sc-if value="{{ pf.prMobile }}" hint-placeholder-val="{{ false }}"><span title="On mobile" style="position:absolute;right:4px;bottom:2px;width:20px;height:28px;border-radius:7px;background:{{ pf.cardTop }};color:#f2f2f2;display:grid;place-items:center;box-shadow:0 0 0 3px {{ pf.cardTop }}"><lu-icon i="mobile" s="20"></lu-icon></span></sc-if>
+                </div>
+                <sc-if value="{{ pf.status }}" hint-placeholder-val="{{ true }}"><div style="position:relative;margin-top:30px;min-width:0;max-width:190px;padding:8px 12px;border-radius:14px;background:#161616;box-shadow:0 6px 18px rgba(0,0,0,.35);font-size:13px;line-height:1.35;color:#dadada;overflow-wrap:anywhere"><span style="position:absolute;left:-7px;bottom:4px;width:10px;height:10px;border-radius:50%;background:#161616"></span><span style="position:absolute;left:-14px;bottom:-3px;width:5px;height:5px;border-radius:50%;background:#161616"></span>{{ pf.status }}</div></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <span style="font:{{ pf.nameFont }};letter-spacing:{{ pf.nameLs }};text-transform:{{ pf.nameTt }};color:#f2f2f2;overflow-wrap:anywhere">{{ pf.name }}</span>
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px;color:#9a9a9a"><span>vexa@lanes.gg</span><sc-if value="{{ pf.pronouns }}" hint-placeholder-val="{{ true }}"><span style="color:#555555">•</span><span>{{ pf.pronouns }}</span></sc-if><sc-if value="{{ pf.showBadges }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:4px;margin-left:2px"><span title="Early fish · joined in beta" style="width:22px;height:22px;border-radius:6px;background:#e3ae4f;color:#0a0a0a;display:grid;place-items:center"><lu-icon i="flame" s="12"></lu-icon></span><span title="Instance admin" style="width:22px;height:22px;border-radius:6px;background:#f2f2f2;color:#0a0a0a;display:grid;place-items:center"><lu-icon i="shield" s="12"></lu-icon></span><span title="Verified instance" style="width:22px;height:22px;border-radius:6px;background:#7fc0e3;color:#0a0a0a;display:grid;place-items:center"><lu-icon i="check" s="12"></lu-icon></span></div></sc-if></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:13px;color:#dadada">
+                <span style="display:inline-flex;align-items:center;gap:8px;cursor:pointer"><span style="display:flex"><span style="width:20px;height:20px;border-radius:6px;background:#a99cf2;color:#0a0a0a;display:grid;place-items:center;font:400 10px/1 Marcellus,serif;box-shadow:0 0 0 2px {{ pf.cardTop }}">D</span><span style="width:20px;height:20px;margin-left:-5px;border-radius:6px;background:#7fc0e3;color:#0a0a0a;display:grid;place-items:center;font:400 10px/1 Marcellus,serif;box-shadow:0 0 0 2px {{ pf.cardTop }}">N</span></span>2 mutual spaces</span>
+                <span style="display:inline-flex;align-items:center;gap:8px;cursor:pointer"><span style="display:flex"><img src="../assets/avatars/pb-avatar-wink-coral.svg" alt="" style="width:20px;height:20px;display:block;border-radius:50%;box-shadow:0 0 0 2px {{ pf.cardTop }}"><img src="../assets/avatars/pb-avatar-surprised-sky.svg" alt="" style="width:20px;height:20px;display:block;margin-left:-5px;border-radius:50%;box-shadow:0 0 0 2px {{ pf.cardTop }}"><img src="../assets/avatars/pb-avatar-sleepy-sage.svg" alt="" style="width:20px;height:20px;display:block;margin-left:-5px;border-radius:50%;box-shadow:0 0 0 2px {{ pf.cardTop }}"></span>3 mutual friends</span>
+              </div>
+              <sc-if value="{{ pf.showPlay }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:12px;align-items:center;padding:10px;border-radius:12px;background:rgba(10,10,10,.35)"><div style="width:48px;height:48px;flex:none;border-radius:10px;background:url(../assets/patterns/fishfull-ink.svg) right -40% bottom -30%/110% auto no-repeat,#a99cf2"></div><div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:700 10px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9fd487">Playing</span><span style="font-size:14px;font-weight:600">Deadlock</span><span style="font-size:12px;color:#9a9a9a">Street Brawl · 12:40 elapsed</span></div></div></sc-if>
+              <div style="display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:12px;background:rgba(10,10,10,.35)"><span style="font:700 10px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a">About me</span><span style="font-size:13.5px;line-height:1.5;color:#dadada;white-space:pre-wrap;overflow-wrap:anywhere">{{ pf.bio }}</span></div>
+              <sc-if value="{{ pf.showMains }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:12px;background:rgba(10,10,10,.35)"><span style="font:700 10px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a">Mains</span><div style="display:flex;gap:6px;flex-wrap:wrap"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:7px;background:rgba(169,156,242,.16);color:#a99cf2;font:700 11px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase">Haze</span><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:7px;background:rgba(236,138,111,.16);color:#ec8a6f;font:700 11px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase">Vindicta</span><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px;border-radius:7px;background:rgba(159,207,138,.16);color:#9fcf8a;font:700 11px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase">Paradox</span></div></div></sc-if>
+              <sc-if value="{{ pf.showAccounts }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:12px;background:rgba(10,10,10,.35)"><span style="font:700 10px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a">Also on</span><div style="display:flex;flex-direction:column;gap:6px;font-size:13px"><div style="display:flex;align-items:center;gap:8px"><lu-icon i="home" s="13"></lu-icon><span style="color:#f2f2f2">lanes.gg</span><span style="margin-left:auto;color:#707070;font-size:12px">home</span></div><div style="display:flex;align-items:center;gap:8px"><lu-icon i="globe" s="13"></lu-icon><span style="color:#dadada">vexa@mesh.garden</span><span style="margin-left:auto;color:#707070;font-size:12px">linked</span></div></div></div></sc-if>
+              <div style="display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:12px;background:rgba(10,10,10,.35)"><span style="font:700 10px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a">Roles · Deadlock Community</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ pf.roles }}" as="r" hint-placeholder-count="4"><span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:6px;background:{{ r.bg }};color:{{ r.c }};font:700 10.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase"><span style="width:5px;height:5px;border-radius:50%;background:currentColor"></span>{{ r.n }}</span></sc-for><span title="Event host, Clip judge" style="display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:6px;background:rgba(242,242,242,.08);color:#dadada;font:700 10.5px/1 var(--font-heading);letter-spacing:.12em;cursor:pointer">+2</span></div></div>
+              <div style="display:flex;align-items:center;gap:6px;height:44px;padding:0 6px 0 14px;border-radius:12px;background:rgba(10,10,10,.35)"><input placeholder="Message @{{ pf.name }}" style="flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:#f2f2f2;font:14px var(--font-body)"><button title="Reactions" style="width:32px;height:32px;padding:0;border:0;border-radius:8px;background:transparent;color:#9a9a9a;display:grid;place-items:center;cursor:pointer" style-hover="background:rgba(242,242,242,.08);color:#f2f2f2"><span style="width:20px;height:20px;background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></span></button></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#121212;border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px">
+          <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Where it carries over</span>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:#121212;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(242,242,242,.06);padding:8px;display:flex;flex-direction:column;gap:2px">
+              <span style="padding:4px 6px 6px;font:600 10px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#707070">Member list</span>
+              <div style="display:flex;align-items:center;gap:10px;padding:6px;border-radius:8px;background:{{ pf.rowBg }}"><div style="position:relative;width:32px;height:32px;flex:none;color:{{ pf.hex }}"><img src="{{ pf.avatar }}" alt="" style="width:32px;height:32px;display:block;border-radius:50%;box-shadow:{{ pf.ringSm }}"></div><span style="font:{{ pf.nameFontSm }};letter-spacing:{{ pf.nameLs }};text-transform:{{ pf.nameTt }};color:#f2f2f2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ pf.name }}</span></div>
+              <div style="display:flex;align-items:center;gap:10px;padding:6px"><img src="../assets/avatars/pb-avatar-wink-coral.svg" alt="" style="width:32px;height:32px;display:block"><span style="font:600 14px/1.2 var(--font-body);color:#dadada">rina</span></div>
+            </div>
+            <div style="background:#161616;border-radius:12px;padding:10px;display:flex;gap:10px">
+              <img src="{{ pf.avatar }}" alt="" style="width:32px;height:32px;display:block;flex:none;border-radius:50%;box-shadow:{{ pf.ringSm }}">
+              <div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font:{{ pf.nameFontSm }};letter-spacing:{{ pf.nameLs }};text-transform:{{ pf.nameTt }};color:#f2f2f2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ pf.name }}</span><span style="font-size:13px;color:#dadada">gg, queue again?</span></div>
+            </div>
+          </div>
+          <span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">Avatar, frame (as a thin ring) and name style follow you into lists and chat. Theme, banner and sections stay on the card and full profile, so the rest of the client stays calm.</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px">
+      <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Readability guard</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Themes mix the chosen colour into the dark card at 16–24% max, so white text always stays above 4.5:1. Users pick the colour, never the text colour.</span></div>
+      <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Uploads</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Avatar 512 × 512, banner 960 × 384 (5:2). PNG, JPG, GIF, WebP up to 8 MB. Animated images play on hover only.</span></div>
+      <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Limits</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Name 32 · pronouns 40 · status 60 · bio 190 characters. Up to 4 sections, reorderable by drag in settings.</span></div>
+      <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Federation</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Profile settings travel as plain fields on the actor. Other Pufferblow instances render the full card; other fediverse apps get the avatar, banner, name and bio.</span></div>
+      <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Viewer context</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Mutual spaces, mutual friends and roles are worked out for whoever opens the card, so they can't be edited. Roles show for the space you're in, up to five, then +N. The message box sends a DM without leaving the channel.</span></div>
+      <div style="background:#121212;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Status and presence</span><span style="font-size:13px;line-height:1.5;color:#9a9a9a">Custom status floats beside the avatar as a thought bubble, up to 60 characters. The presence dot becomes a phone when the person is only active on mobile.</span></div>
+    </div>
+  </section>
+
+<section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">07 · Server status</span><span style="font:400 36px/1.1 Marcellus,serif">Health you can read at a glance</span><span style="max-width:760px;font-size:14px;line-height:1.55;color:#9a9a9a">Components for instance health, built from a <code>GET /healthz</code> response. Admins see the full dashboard; everyone else sees the small signals in the rail, headers and chat. Switch the simulated state to see each one react.</span></div>
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Simulate</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ hsModeOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+
+    <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <div style="width:48px;height:48px;border-radius:14px;background:#e3ae4f;color:#0a0a0a;display:grid;place-items:center;font:400 18px/1 Marcellus,serif;flex:none">SW</div>
+        <div style="display:flex;flex-direction:column;gap:3px"><span style="font:400 22px/1.15 Marcellus,serif">switchyard.works</span><span style="font:11.5px ui-monospace,Menlo,monospace;color:#707070">Pufferblow 0.9.2 · eu-central · checked 12s ago</span></div>
+        <span style="margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px;border-radius:999px;background:{{ hs.pillBg }};color:{{ hs.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase"><span style="width:8px;height:8px;border-radius:50%;background:{{ hs.col }}"></span>{{ hs.label }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px">
+        <sc-for list="{{ hs.kpis }}" as="k" hint-placeholder-count="4">
+          <div style="background:#161616;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px">
+            <span style="font:600 10.5px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#707070">{{ k.label }}</span>
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:10px">
+              <div style="display:flex;align-items:baseline;gap:4px"><span style="font:700 32px/1 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums;color:#f2f2f2">{{ k.value }}</span><span style="font:500 13px/1 var(--font-body);color:#9a9a9a">{{ k.unit }}</span></div>
+              <svg viewBox="0 0 120 32" preserveAspectRatio="none" style="width:96px;height:28px;display:block;overflow:visible"><polyline points="{{ k.spark }}" fill="none" stroke="{{ k.col }}" stroke-width="1.75" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></polyline></svg>
+            </div>
+            <span style="font-size:12px;color:{{ k.deltaCol }}">{{ k.delta }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Uptime · 90 days</span><span style="font:700 13px/1 'Barlow Condensed',sans-serif;letter-spacing:.06em;color:#f2f2f2">{{ hs.uptime }}</span></div>
+        <div style="display:flex;gap:2px;height:34px;align-items:stretch">
+          <sc-for list="{{ hs.days }}" as="d" hint-placeholder-count="90"><span title="{{ d.title }}" style="flex:1;min-width:0;border-radius:2px;background:{{ d.bg }}" style-hover="opacity:.7"></span></sc-for>
+        </div>
+        <div style="display:flex;justify-content:space-between;font:11px ui-monospace,Menlo,monospace;color:#707070"><span>90 days ago</span><span>today</span></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:12px">
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">API latency · 24 h</span><div style="display:flex;gap:14px;font:11px ui-monospace,Menlo,monospace;color:#9a9a9a"><span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:2px;background:#f2f2f2"></span>p95</span><span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:0;border-top:2px dashed #707070"></span>p50</span><span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:0;border-top:1px dashed #e2654f"></span>SLO 250 ms</span></div></div>
+        <div style="position:relative;height:200px" onMouseMove="{{ hs.onMove }}" onMouseLeave="{{ hs.onLeave }}">
+          <svg viewBox="0 0 600 180" preserveAspectRatio="none" style="position:absolute;inset:0 0 20px 34px;width:calc(100% - 34px);height:180px;display:block;overflow:visible">
+            <line x1="0" x2="600" y1="0" y2="0" stroke="rgba(242,242,242,.06)" vector-effect="non-scaling-stroke"></line>
+            <line x1="0" x2="600" y1="60" y2="60" stroke="rgba(242,242,242,.06)" vector-effect="non-scaling-stroke"></line>
+            <line x1="0" x2="600" y1="120" y2="120" stroke="rgba(242,242,242,.06)" vector-effect="non-scaling-stroke"></line>
+            <line x1="0" x2="600" y1="180" y2="180" stroke="rgba(242,242,242,.12)" vector-effect="non-scaling-stroke"></line>
+            <line x1="0" x2="600" y1="{{ hs.sloY }}" y2="{{ hs.sloY }}" stroke="#e2654f" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"></line>
+            <polygon points="{{ hs.area }}" fill="rgba(242,242,242,.06)"></polygon>
+            <polyline points="{{ hs.p50 }}" fill="none" stroke="#707070" stroke-width="1.5" stroke-dasharray="4 3" vector-effect="non-scaling-stroke"></polyline>
+            <polyline points="{{ hs.p95 }}" fill="none" stroke="{{ hs.lineCol }}" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"></polyline>
+          </svg>
+          <div style="position:absolute;left:0;top:0;height:180px;width:30px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;font:10.5px ui-monospace,Menlo,monospace;color:#707070"><span style="transform:translateY(-6px)">{{ hs.yMax }}</span><span>{{ hs.yMid }}</span><span style="transform:translateY(6px)">0</span></div>
+          <div style="position:absolute;left:34px;right:0;bottom:0;display:flex;justify-content:space-between;font:10.5px ui-monospace,Menlo,monospace;color:#707070"><span>21:30</span><span>03:30</span><span>09:30</span><span>15:30</span><span>now</span></div>
+          <sc-if value="{{ hs.hasHover }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:calc(34px + (100% - 34px) * {{ hs.hx }});top:0;height:180px;width:1px;background:rgba(242,242,242,.35);pointer-events:none"></div>
+            <div style="position:absolute;left:calc(34px + (100% - 34px) * {{ hs.hx }});top:{{ hs.hy }}px;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;border-radius:50%;background:#f2f2f2;box-shadow:0 0 0 3px #121212;pointer-events:none"></div>
+            <div style="position:absolute;left:calc(34px + (100% - 34px) * {{ hs.hx }});top:-6px;transform:translateX({{ hs.tipShift }});padding:7px 10px;border-radius:8px;background:#f2f2f2;color:#0a0a0a;font:600 12px/1.35 var(--font-body);white-space:nowrap;pointer-events:none">{{ hs.tip }}</div>
+          </sc-if>
+        </div>
+        <span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">Single-series charts are white. The line turns warn or danger only when it crosses the SLO. Hover for values.</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Checks</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ hsViewOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+        <sc-if value="{{ hs.isChecks }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ hs.checks }}" as="c" hint-placeholder-count="6">
+              <div style="display:grid;grid-template-columns:20px minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:10px 8px;border-radius:10px" style-hover="background:#1a1a1a">
+                <span style="width:10px;height:10px;border-radius:50%;background:{{ c.col }};box-shadow:0 0 0 4px {{ c.halo }};justify-self:center"></span>
+                <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:14px;font-weight:600;color:#f2f2f2">{{ c.name }}</span><span style="font-size:12px;color:{{ c.noteCol }}">{{ c.note }}</span></div>
+                <span style="font:700 15px/1 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums;color:#dadada">{{ c.ms }}</span>
+                <span style="font:700 10px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:{{ c.col }};width:62px;text-align:right">{{ c.state }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ hs.isJson }}" hint-placeholder-val="{{ false }}"><pre style="margin:0;padding:16px;border-radius:12px;background:#0a0a0a;font:12px/1.6 ui-monospace,Menlo,monospace;color:#dadada;overflow:auto;max-height:340px;white-space:pre">{{ hs.json }}</pre></sc-if>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Resources</span>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px">
+          <sc-for list="{{ hs.gauges }}" as="g" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:16px 8px;border-radius:14px;background:#161616">
+              <div style="width:96px;height:96px;border-radius:50%;background:{{ g.css }};display:grid;place-items:center"><div style="width:78px;height:78px;border-radius:50%;background:#161616;display:grid;place-items:center"><span style="font:700 24px/1 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums;color:{{ g.col }}">{{ g.v }}%</span></div></div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:13px;font-weight:600">{{ g.label }}</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ g.detail }}</span></div>
+            </div>
+          </sc-for>
+        </div>
+        <span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">White under 80%, warn from 80%, danger from 90%.</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Federation peers</span><span style="font:11px ui-monospace,Menlo,monospace;color:#707070">outbound queue</span></div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ hs.peers }}" as="p" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:32px minmax(0,1fr) 120px 56px;gap:12px;align-items:center">
+              <div style="position:relative;width:32px;height:32px;border-radius:10px;background:{{ p.hex }};color:#0a0a0a;display:grid;place-items:center;font:400 13px/1 Marcellus,serif;opacity:{{ p.op }}">{{ p.ini }}<span style="position:absolute;right:-3px;bottom:-3px;width:10px;height:10px;border-radius:50%;background:{{ p.col }};box-shadow:0 0 0 2.5px #121212"></span></div>
+              <div style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ p.name }}</span><span style="font-size:11.5px;color:{{ p.noteCol }}">{{ p.note }}</span></div>
+              <div style="height:8px;border-radius:4px;background:#1f1f1f;overflow:hidden"><div style="height:100%;width:{{ p.w }};border-radius:4px;background:{{ p.hex }}"></div></div>
+              <span style="font:700 14px/1 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums;text-align:right;color:#dadada">{{ p.q }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">Multi-series charts use each instance's identity colour, so a peer looks the same in the chart, the rail and its icon.</span>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Incidents</span>
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ hs.incidents }}" as="i" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:14px minmax(0,1fr);gap:14px">
+              <div style="display:flex;flex-direction:column;align-items:center"><span style="width:12px;height:12px;border-radius:50%;margin-top:3px;background:{{ i.col }};box-shadow:0 0 0 3px #121212;flex:none"></span><span style="flex:1;width:2px;background:rgba(242,242,242,.08)"></span></div>
+              <div style="display:flex;flex-direction:column;gap:4px;padding-bottom:18px;min-width:0">
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-size:14px;font-weight:600">{{ i.title }}</span><span style="height:20px;padding:0 7px;border-radius:6px;display:inline-flex;align-items:center;background:{{ i.tagBg }};color:{{ i.col }};font:700 10px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase">{{ i.state }}</span></div>
+                <span style="font-size:13px;line-height:1.45;color:#9a9a9a">{{ i.body }}</span>
+                <span style="font:11px ui-monospace,Menlo,monospace;color:#707070">{{ i.when }}</span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+        <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">In the client</span>
+        <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+            <div style="display:flex;align-items:center;gap:10px"><div style="position:relative;width:48px;height:48px;border-radius:14px;background:#e3ae4f;color:#0a0a0a;display:grid;place-items:center;font:400 18px/1 Marcellus,serif">SW<span style="position:absolute;right:-4px;bottom:-4px;width:14px;height:14px;border-radius:50%;background:{{ hs.col }};box-shadow:0 0 0 3px #0a0a0a"></span></div><div style="display:flex;flex-direction:column;gap:4px;padding:8px 10px;border-radius:8px;background:#f2f2f2;color:#0a0a0a"><span style="font-size:12.5px;font-weight:700">switchyard.works</span><span style="font-size:11.5px;color:#333">{{ hs.label }} · {{ hs.p95Now }} ms</span></div></div>
+            <span style="font-size:11.5px;color:#707070">Rail dot + tooltip (hidden when operational)</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:10px;height:48px;padding:0 14px;border-radius:12px;background:#161616"><lu-icon i="hash" s="16"></lu-icon><span style="font-weight:700;font-size:15px">general</span><span style="display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:999px;background:{{ hs.pillBg }};color:{{ hs.col }};font:700 10px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase"><span style="width:6px;height:6px;border-radius:50%;background:{{ hs.col }}"></span>{{ hs.short }}</span></div>
+            <span style="font-size:11.5px;color:#707070">Header chip on the affected space</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;width:230px">
+            <div style="padding:12px;border-radius:12px;background:#2a2a2a;box-shadow:0 12px 32px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:#9fd487"></span><span style="font:700 11px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:#9fd487">Voice connected</span></div>
+              <div style="display:flex;align-items:flex-end;gap:3px;height:22px"><span style="width:6px;height:6px;border-radius:2px;background:#f2f2f2"></span><span style="width:6px;height:11px;border-radius:2px;background:#f2f2f2"></span><span style="width:6px;height:16px;border-radius:2px;background:#f2f2f2"></span><span style="width:6px;height:22px;border-radius:2px;background:#555"></span><span style="margin-left:10px;font:700 20px/1 'Barlow Condensed',sans-serif;font-variant-numeric:tabular-nums">32<span style="font:500 12px var(--font-body);color:#9a9a9a"> ms</span></span></div>
+              <span style="font:11px/1.5 ui-monospace,Menlo,monospace;color:#9a9a9a">eu-central · loss 0.2% · opus 64k</span>
+            </div>
+            <span style="font-size:11.5px;color:#707070">Voice connection popover</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;background:rgba(230,193,92,.1);box-shadow:inset 0 0 0 1px rgba(230,193,92,.25)"><lu-icon i="network" s="16"></lu-icon><span style="font-size:13.5px;color:#f2f2f2;flex:1">Voice may be choppy. switchyard.works is seeing packet loss in EU.</span><span style="font:700 11px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;color:#e6c15c">Status</span></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;background:rgba(226,101,79,.1);box-shadow:inset 0 0 0 1px rgba(226,101,79,.28)"><lu-icon i="globe" s="16"></lu-icon><span style="font-size:13.5px;color:#f2f2f2;flex:1">mesh.garden is unreachable. Your messages will be delivered when it's back.</span><span style="font:700 11px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;color:#ef8a75">Retry</span></div>
+          <span style="font-size:11.5px;color:#707070">Chat banners sit above the composer and never block it. Warn = degraded, danger = unreachable.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">08 · Desktop overlay</span><span style="font:400 36px/1.1 Marcellus,serif">Stay in the game, stay in the call</span><span style="max-width:760px;font-size:14px;line-height:1.55;color:#9a9a9a">A layer that sits on top of fullscreen games and work apps. It turns on by itself based on what you are doing, stays click-through until you press the hotkey, and keeps only what matters on screen.</span></div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,360px);gap:12px;align-items:start">
+
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Preview</span><div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ ovModeOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div></div>
+        <div ref="{{ ovRef }}" style="position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#0a0a0a"><div style="position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;transform:scale({{ ovScale }})">
+          <sc-if value="{{ ov.isWork }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;inset:0;background:#f4f4f2;display:grid;grid-template-columns:18% 1fr">
+              <div style="background:#e8e8e5;padding:6% 10%;display:flex;flex-direction:column;gap:6%"><span style="height:6px;border-radius:3px;background:#c9c9c4;width:70%"></span><span style="height:6px;border-radius:3px;background:#c9c9c4;width:50%"></span><span style="height:6px;border-radius:3px;background:#c9c9c4;width:60%"></span><span style="height:6px;border-radius:3px;background:#c9c9c4;width:40%"></span></div>
+              <div style="padding:5% 6%;display:flex;flex-direction:column;gap:2.4%"><span style="height:10px;border-radius:3px;background:#2b2b2b;width:40%"></span><span style="height:6px;border-radius:3px;background:#cfcfca;width:90%"></span><span style="height:6px;border-radius:3px;background:#cfcfca;width:84%"></span><span style="height:6px;border-radius:3px;background:#cfcfca;width:88%"></span><span style="height:6px;border-radius:3px;background:#cfcfca;width:60%"></span><span style="height:6px;border-radius:3px;background:#cfcfca;width:92%"></span><span style="height:6px;border-radius:3px;background:#cfcfca;width:74%"></span><span style="position:absolute;right:2.5%;top:4%;font:11px ui-monospace,Menlo,monospace;color:#9a9a96">work app · focused</span></div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ ov.isGameBg }}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;inset:0;background:radial-gradient(70% 60% at 62% 38%,#5a6b5e 0%,#2c3530 45%,#121614 100%)"></div>
+            <div style="position:absolute;inset:0;background:repeating-linear-gradient(100deg,rgba(255,255,255,.025) 0 2px,transparent 2px 22px)"></div>
+            <div style="position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7)"></div>
+            <div style="position:absolute;left:50%;bottom:4%;transform:translateX(-50%);display:flex;gap:8px;align-items:flex-end"><span style="width:180px;height:10px;border-radius:5px;background:rgba(255,255,255,.18);overflow:hidden"><span style="display:block;width:72%;height:100%;background:#d8e2d2"></span></span><span style="font:700 14px/1 'Barlow Condensed',sans-serif;color:rgba(255,255,255,.8)">412 / 570</span></div>
+            <span style="position:absolute;right:2.5%;bottom:4%;font:11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.45)">game · fullscreen</span>
+          </sc-if>
+          <sc-if value="{{ ov.dim }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:0;background:rgba(0,0,0,.5)"></div></sc-if>
+
+          <sc-if value="{{ ov.showVoice }}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;left:2%;top:3.5%;width:240px;padding:8px;opacity:{{ ov.passiveOp }};background:rgba(10,10,10,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:inset 0 0 0 1px rgba(242,242,242,.08),0 8px 24px rgba(0,0,0,.35);border-radius:14px;color:#f2f2f2;display:flex;flex-direction:column;gap:2px">
+              <div style="display:flex;align-items:center;gap:6px;padding:2px 6px 6px;font:700 10px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:#9fd487"><lu-icon i="volume" s="12"></lu-icon>Ranked Grind</div>
+              <sc-for list="{{ ov.voice }}" as="v" hint-placeholder-count="4">
+                <div style="display:flex;align-items:center;gap:8px;padding:4px 6px;border-radius:8px">
+                  <img src="{{ v.src }}" alt="" style="width:24px;height:24px;display:block;border-radius:50%;box-shadow:{{ v.ring }}">
+                  <span style="font:600 13px/1.2 var(--font-body);color:{{ v.col }};flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 2px rgba(0,0,0,.5)">{{ v.name }}</span>
+                  <sc-if value="{{ v.muted }}" hint-placeholder-val="{{ false }}"><span style="color:#ef8a75;display:flex"><lu-icon i="mic" s="13"></lu-icon></span></sc-if>
+                </div>
+              </sc-for>
+              <sc-if value="{{ ov.isInter }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:6px;padding:8px 4px 2px;border-top:1px solid rgba(242,242,242,.08);margin-top:4px">
+                  <button style="flex:1;height:30px;border:0;border-radius:8px;background:#f2f2f2;color:#0a0a0a;display:grid;place-items:center;cursor:pointer"><lu-icon i="mic" s="14"></lu-icon></button>
+                  <button style="flex:1;height:30px;border:0;border-radius:8px;background:rgba(242,242,242,.12);color:#f2f2f2;display:grid;place-items:center;cursor:pointer"><lu-icon i="headphones" s="14"></lu-icon></button>
+                  <button style="flex:1;height:30px;border:0;border-radius:8px;background:rgba(226,101,79,.9);color:#fff;display:grid;place-items:center;cursor:pointer"><lu-icon i="phone" s="14"></lu-icon></button>
+                </div>
+              </sc-if>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ ov.showToasts }}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;right:2%;top:3.5%;width:320px;display:flex;flex-direction:column;gap:8px">
+              <sc-for list="{{ ov.toasts }}" as="t" hint-placeholder-count="1">
+                <div style="background:rgba(10,10,10,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:inset 0 0 0 1px rgba(242,242,242,.08),0 8px 24px rgba(0,0,0,.35);border-radius:14px;color:#f2f2f2;padding:10px;display:flex;gap:10px;align-items:flex-start;box-shadow:{{ t.edge }}">
+                  <img src="{{ t.src }}" alt="" style="width:30px;height:30px;display:block;flex:none">
+                  <div style="display:flex;flex-direction:column;gap:3px;min-width:0"><div style="display:flex;align-items:baseline;gap:6px"><span style="font:700 13px/1.2 var(--font-body);color:#f2f2f2">{{ t.name }}</span><span style="font-size:11px;color:#9a9a9a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ t.where }}</span></div><span style="font-size:12.5px;line-height:1.4;color:#dadada">{{ t.text }}</span></div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ ov.isInter }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:2%;bottom:4%;width:420px;background:rgba(10,10,10,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:inset 0 0 0 1px rgba(242,242,242,.08),0 8px 24px rgba(0,0,0,.35);border-radius:14px;color:#f2f2f2;padding:10px;display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;align-items:center;gap:6px;padding:0 4px;font:700 10px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a"><lu-icon i="hash" s="12"></lu-icon>general · Deadlock Community</div>
+              <sc-for list="{{ ov.chat }}" as="c" hint-placeholder-count="3">
+                <div style="display:flex;gap:8px;padding:0 4px"><img src="{{ c.src }}" alt="" style="width:22px;height:22px;display:block;flex:none"><div style="font-size:13px;line-height:1.4;color:#dadada;min-width:0"><b style="color:#f2f2f2;font-weight:700">{{ c.name }}</b> {{ c.text }}</div></div>
+              </sc-for>
+              <div style="height:36px;border-radius:10px;background:rgba(242,242,242,.1);display:flex;align-items:center;gap:8px;padding:0 6px 0 12px;color:#9a9a9a;font-size:13px">Message #general<span style="margin-left:auto;width:26px;height:26px;border-radius:7px;background:#f2f2f2;color:#0a0a0a;display:grid;place-items:center"><lu-icon i="send" s="13"></lu-icon></span></div>
+            </div>
+            <div style="position:absolute;left:50%;top:3.5%;transform:translateX(-50%);background:rgba(10,10,10,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:inset 0 0 0 1px rgba(242,242,242,.08),0 8px 24px rgba(0,0,0,.35);border-radius:14px;color:#f2f2f2;padding:6px;display:flex;gap:4px">
+              <span style="height:30px;padding:0 10px;border-radius:8px;display:flex;align-items:center;gap:6px;font:700 10.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;color:#f2f2f2;background:rgba(242,242,242,.12)"><lu-icon i="eye" s="13"></lu-icon>Pin</span>
+              <span style="height:30px;padding:0 10px;border-radius:8px;display:flex;align-items:center;gap:6px;font:700 10.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;color:#f2f2f2"><lu-icon i="grid" s="13"></lu-icon>Layout</span>
+              <span style="height:30px;padding:0 10px;border-radius:8px;display:flex;align-items:center;gap:6px;font:700 10.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;color:#f2f2f2"><lu-icon i="settings" s="13"></lu-icon>Overlay</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ ov.isFocus }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;left:50%;top:3.5%;transform:translateX(-50%);background:rgba(10,10,10,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:inset 0 0 0 1px rgba(242,242,242,.08),0 8px 24px rgba(0,0,0,.35);border-radius:14px;color:#f2f2f2;height:34px;padding:0 6px 0 12px;display:flex;align-items:center;gap:10px;font-size:12.5px;white-space:nowrap">
+              <div style="width:16px;height:16px;background:#f2f2f2;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div>
+              <span style="font:700 10.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase">Focus</span>
+              <span style="color:#9a9a9a">{{ ov.focusText }}</span>
+              <span style="height:24px;padding:0 8px;border-radius:7px;background:rgba(242,242,242,.12);display:flex;align-items:center;font:700 10px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase">Peek</span>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ ov.showHint }}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;left:50%;bottom:{{ ov.hintBottom }};transform:translateX(-50%);background:rgba(10,10,10,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);box-shadow:inset 0 0 0 1px rgba(242,242,242,.08),0 8px 24px rgba(0,0,0,.35);border-radius:14px;color:#f2f2f2;height:30px;padding:0 12px;display:flex;align-items:center;gap:8px;font-size:12px;color:#dadada;white-space:nowrap;opacity:.9">
+              <div style="width:14px;height:14px;background:#f2f2f2;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div>{{ ov.hint }}<span style="padding:3px 6px;border-radius:5px;background:rgba(242,242,242,.14);font:11px ui-monospace,Menlo,monospace;color:#f2f2f2">Shift + `</span>
+            </div>
+          </sc-if>
+        </div></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:10px">
+          <div style="background:#121212;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Passive</span><span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">Click-through. Panels at 85% opacity, voice roster and toasts only. Nothing takes focus from the game.</span></div>
+          <div style="background:#121212;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Interactive</span><span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">Hold or toggle the hotkey. The game dims to 50%, panels go fully opaque, chat and call controls appear.</span></div>
+          <div style="background:#121212;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Focus</span><span style="font-size:12.5px;line-height:1.5;color:#9a9a9a">For work. A single pill at the top; notifications are held and summarised. Peek shows them without leaving the app.</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+          <div style="display:flex;flex-direction:column;gap:4px"><span style="font:400 22px/1.15 Marcellus,serif">Auto overlay</span><span style="font-size:12.5px;color:#9a9a9a">Turns on when any of these happen. Manual hotkey always works.</span></div>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ ov.triggers }}" as="t" hint-placeholder-count="5">
+              <button onClick="{{ t.onClick }}" style="display:grid;grid-template-columns:minmax(0,1fr) 36px;gap:12px;align-items:center;padding:10px 6px;border:0;border-radius:10px;background:transparent;text-align:left;cursor:pointer;color:inherit;font:inherit" style-hover="background:#1a1a1a">
+                <div style="display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:13.5px;font-weight:600;color:#f2f2f2">{{ t.label }}</span><span style="font-size:12px;color:#707070">{{ t.target }}</span></div>
+                <span style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ t.bg }};transition:background .2s"><span style="position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:{{ t.knob }};transform:translateX({{ t.x }});transition:transform .2s cubic-bezier(.2,.8,.3,1)"></span></span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0">
+          <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Notifications in this mode</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap"><sc-for list="{{ ovNotifOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.onClick }}" style="height:32px;padding:0 12px;border:0;border-radius:8px;background:{{ o.bg }};color:{{ o.col }};font:700 11.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:6px">{{ o.label }}</button></sc-for></div>
+          <div style="height:1px;background:rgba(242,242,242,.08)"></div>
+          <button onClick="{{ ov.onStatus }}" style="display:grid;grid-template-columns:minmax(0,1fr) 36px;gap:12px;align-items:center;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;color:inherit;font:inherit">
+            <div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:13.5px;font-weight:600">Set my status automatically</span><span style="font-size:12px;color:#707070">{{ ov.statusText }}</span></div>
+            <span style="position:relative;width:36px;height:20px;border-radius:10px;background:{{ ov.stBg }}"><span style="position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:{{ ov.stKnob }};transform:translateX({{ ov.stX }});transition:transform .2s cubic-bezier(.2,.8,.3,1)"></span></span>
+          </button>
+        </div>
+        <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0;gap:10px">
+          <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Overlay surface</span>
+          <span style="font:11.5px/1.6 ui-monospace,Menlo,monospace;color:#9a9a9a">bg rgba(10,10,10,.72) · blur 14 · saturate 1.2<br>edge inset 1px text-1 8% · r 14<br>text always text-1 / body, never identity<br>passive opacity .85 · snap to corners, 2% safe area<br>mention toast = 3px white left edge</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section style="display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;flex-direction:column;gap:8px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#707070">09 · Implementation</span><span style="font:400 36px/1.1 Marcellus,serif">Tokens &amp; code</span></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:12px">
+      <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">tokens.css</span><button onClick="{{ copyTokens }}" style="height:28px;padding:0 10px;border:0;border-radius:8px;background:#1f1f1f;color:#dadada;font:700 11px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;cursor:pointer" style-hover="background:#2a2a2a">{{ copyLabel }}</button></div>
+        <pre style="margin:0;padding:16px;border-radius:12px;background:#0a0a0a;font:12px/1.6 ui-monospace,Menlo,monospace;color:#dadada;overflow:auto;max-height:520px;white-space:pre">{{ tokensCss }}</pre>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+        <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0">
+          <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">identity.js — default avatar &amp; banner</span>
+          <pre style="margin:0;padding:16px;border-radius:12px;background:#0a0a0a;font:12px/1.6 ui-monospace,Menlo,monospace;color:#dadada;overflow:auto;white-space:pre">{{ identityJs }}</pre>
+        </div>
+        <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0">
+          <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">roles.css — text roles</span>
+          <pre style="margin:0;padding:16px;border-radius:12px;background:#0a0a0a;font:12px/1.6 ui-monospace,Menlo,monospace;color:#dadada;overflow:auto;max-height:360px;white-space:pre">{{ rolesCss }}</pre>
+        </div>
+        <div style="background:#121212;border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px">
+          <span style="font:600 11px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#9a9a9a">Assets</span>
+          <sc-for list="{{ assets }}" as="a" hint-placeholder-count="6">
+            <div style="display:flex;gap:12px;align-items:baseline;padding-bottom:8px;border-bottom:1px solid rgba(242,242,242,.06)"><span style="font:12px ui-monospace,Menlo,monospace;color:#f2f2f2;min-width:0;overflow-wrap:anywhere;flex:1">{{ a.path }}</span><span style="font-size:12.5px;color:#9a9a9a;flex:1">{{ a.use }}</span></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;reducedMotion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  static PF0 = { presence: 'ingame', pfName: 'Vexa', pfPronouns: 'she/her', pfStatus: 'grinding to Phantom', pfBio: 'Spirit Haze main. Street Brawl most nights, ranked on weekends.\nDM for stacks.', expr: 'happy', frame: 'spines', tone: 'violet', tone2: 'sky', theme: 'duo', banner: 'ripple', font: 'marcellus', motion: 'puff', w: { play: true, mains: true, accounts: false, badges: true } };
+  state = { counts: [12, 5, 3, 1, 0, 0], mine: [true, false, false, false, false, false], pops: [0, 0, 0, 0, 0, 0], handle: 'lonelyfrog@switchyard.works', copied: false, ...Component.PF0, w: { ...Component.PF0.w },
+    hsMode: 'operational', hsView: 'checks', hoverIdx: null,
+    ovMode: 'game', trig: { fullscreen: true, game: true, share: true, focusApp: true, calendar: false }, ovNotif: { game: 'mentions', focus: 'none' }, ovStatus: true };
+
+  ovRef = el => {
+    if (this._ro) { this._ro.disconnect(); this._ro = null; }
+    if (!el) return;
+    const fit = () => { const s = el.clientWidth / 1280; if (Math.abs(s - (this.state.ovScale || 0)) > 0.001) this.setState({ ovScale: s }); };
+    this._ro = new ResizeObserver(fit); this._ro.observe(el); fit();
+  };
+  componentWillUnmount() { if (this._ro) this._ro.disconnect(); }
+
+  rolesVals() {
+    const R = [
+      ['Page title', 'Space name, settings pages', '400 36px/1.1 Marcellus,serif', '0', 'none', '--pb-text-1', '#f2f2f2', 'Deadlock Community', 'Marcellus 400 · 36 / 1.1'],
+      ['Panel header', 'Sidebar space name, card titles', '400 18px/1.2 Marcellus,serif', '0', 'none', '--pb-text-1', '#f2f2f2', 'Night Shift', 'Marcellus 400 · 18 / 1.2'],
+      ['Section label', 'Channel categories, card labels', '600 11px/1 "Barlow Condensed",sans-serif', '.16em', 'uppercase', '--pb-text-3', '#707070', 'Text channels', 'Barlow Cond. 600 · 11 · .16em · caps'],
+      ['Channel · idle', 'Channel list rows', '500 14.5px/1.2 Barlow,sans-serif', '0', 'none', '--pb-text-2', '#9a9a9a', '# off-topic', 'Barlow 500 · 14.5 / 1.2'],
+      ['Channel · active', 'Unread or selected', '600 14.5px/1.2 Barlow,sans-serif', '0', 'none', '--pb-text-1', '#f2f2f2', '# general', 'Barlow 600 · 14.5 / 1.2'],
+      ['Username', 'Message author, member list', '700 15px/1.3 Barlow,sans-serif', '0', 'none', '--pb-text-1', '#f2f2f2', 'kate wolf', "Barlow 700 · 15 / 1.3 · or the user's name style"],
+      ['Host', 'Remote author instance', '400 11.5px/1.4 Barlow,sans-serif', '0', 'none', '--pb-text-2', '#9a9a9a', '@mesh.garden', 'Barlow 400 · 11.5 · on raised, pill', '#1f1f1f', '2px 8px', '999px'],
+      ['Timestamp', 'Message meta', '400 11.5px/1.3 Barlow,sans-serif', '0', 'none', '--pb-text-3', '#707070', '1:36 PM · edited', 'Barlow 400 · 11.5 / 1.3'],
+      ['Message body', 'Chat, DMs, threads', '400 15px/1.5 Barlow,sans-serif', '0', 'none', '--pb-text-body', '#dadada', 'Queue a few after this? Need two more.', 'Barlow 400 · 15 / 1.5'],
+      ['Mention · you', '@ you in a message', '600 15px/1.5 Barlow,sans-serif', '0', 'none', '--pb-on-light', '#0a0a0a', '@lonelyfrog', 'Barlow 600 · 15 · on text-1, r 5', '#f2f2f2', '1px 5px', '5px'],
+      ['Mention · other', '@ anyone else', '600 15px/1.5 Barlow,sans-serif', '0', 'none', '--pb-text-1', '#f2f2f2', '@rina', 'Barlow 600 · 15 · on text-1 10%, r 5', 'rgba(242,242,242,.1)', '1px 5px', '5px'],
+      ['Link', 'URLs in messages', '400 15px/1.5 Barlow,sans-serif', '0', 'none', '--pb-text-1', '#f2f2f2', 'deadlock.wiki/patch', 'Barlow 400 · 15 · underline text-1 35%', 'transparent', '0', '0', 'underline rgba(242,242,242,.35)'],
+      ['Inline code', '`code` in messages', '400 13.5px/1.5 ui-monospace,Menlo,monospace', '0', 'none', '--pb-text-body', '#dadada', '/join ranked', 'Mono 400 · 13.5 · on bg, r 5', '#0a0a0a', '2px 6px', '5px'],
+      ['System line', 'Joins, pins, calls', 'italic 400 13.5px/1.4 Barlow,sans-serif', '0', 'none', '--pb-text-2', '#9a9a9a', 'Pell joined the space', 'Barlow 400 italic · 13.5 / 1.4'],
+      ['Button · primary', 'One per screen', '700 13px/1 "Barlow Condensed",sans-serif', '.1em', 'uppercase', '--pb-on-light', '#0a0a0a', 'Join voice', 'Barlow Cond. 700 · 13 · .1em · caps · on text-1', '#f2f2f2', '9px 14px', '8px'],
+      ['Button · secondary', 'Everything else', '700 13px/1 "Barlow Condensed",sans-serif', '.1em', 'uppercase', '--pb-text-1', '#f2f2f2', 'Invite', 'Barlow Cond. 700 · 13 · .1em · caps · on raised', '#1f1f1f', '9px 14px', '8px'],
+      ['Role tag', 'Spirit, Vitality, Weapon', '700 10.5px/1 "Barlow Condensed",sans-serif', '.12em', 'uppercase', '--pb-id-*', '#a99cf2', 'Spirit', 'Barlow Cond. 700 · 10.5 · .12em · caps · on id 14%', 'rgba(169,156,242,.14)', '5px 8px', '6px'],
+      ['Activity', 'Playing, in voice', '700 10.5px/1 "Barlow Condensed",sans-serif', '.1em', 'uppercase', '--pb-in-game', '#9fd487', 'Playing Deadlock', 'Barlow Cond. 700 · 10.5 · .1em · caps'],
+      ['Meta / helper', 'Hints, captions', '400 12px/1.4 Barlow,sans-serif', '0', 'none', '--pb-text-3', '#707070', 'Only you can see this', 'Barlow 400 · 12 / 1.4'],
+      ['Error', 'Field errors, failures', '500 12.5px/1.4 Barlow,sans-serif', '0', 'none', '--pb-danger-text', '#ef8a75', 'Instance not found', 'Barlow 500 · 12.5 / 1.4'],
+      ['Warning', 'Degraded states', '500 12.5px/1.4 Barlow,sans-serif', '0', 'none', '--pb-warn', '#e6c15c', 'Voice may be choppy', 'Barlow 500 · 12.5 / 1.4'],
+      ['Data · figure', 'KPIs, chart values', '700 32px/1 "Barlow Condensed",sans-serif', '0', 'none', '--pb-text-1', '#f2f2f2', '99.98%', 'Barlow Cond. 700 · 32 / 1 · tabular'],
+      ['Data · axis', 'Chart axes, legends', '400 11px/1 ui-monospace,Menlo,monospace', '0', 'none', '--pb-text-3', '#707070', '21:30   03:30   09:30', 'Mono 400 · 11'],
+    ];
+    const roles = R.map(([role, where, font, ls, tt, token, hex, sample, spec, chipBg = 'transparent', pad = '0', rad = '0', td = 'none']) =>
+      ({ role, where, font, ls, tt, token, hex, hexLabel: token === '--pb-id-*' ? 'identity colour' : hex.toUpperCase(), sample, spec, chipBg, pad, rad, td }));
+    const v = f => f.replace('Marcellus,serif', 'var(--pb-font-display)').replace('"Barlow Condensed",sans-serif', 'var(--pb-font-label)').replace('Barlow,sans-serif', 'var(--pb-font-body)').replace('ui-monospace,Menlo,monospace', 'var(--pb-font-mono)');
+    const slug = s => s.toLowerCase().replace(/[^a-z]+/g, '-').replace(/^-|-$/g, '');
+    const rolesCss = R.map(([role, , font, ls, tt, token, , , , chipBg, pad, rad, td]) => {
+      const lines = [`  font: ${v(font)};`];
+      if (ls !== '0') lines.push(`  letter-spacing: ${ls};`);
+      if (tt !== 'none') lines.push(`  text-transform: ${tt};`);
+      lines.push(`  color: ${token === '--pb-id-*' ? 'var(--role-colour)' : `var(${token})`};`);
+      if (chipBg && chipBg !== 'transparent') lines.push(`  background: ${chipBg.startsWith('#') ? ({ '#f2f2f2': 'var(--pb-text-1)', '#1f1f1f': 'var(--pb-raised)', '#0a0a0a': 'var(--pb-bg)' }[chipBg] || chipBg) : chipBg};`, `  padding: ${pad};`, `  border-radius: ${rad};`);
+      if (td && td !== 'none') lines.push(`  text-decoration: ${td};`);
+      if (role.startsWith('Data')) lines.push('  font-variant-numeric: tabular-nums;');
+      return `.pb-${slug(role)} {\n${lines.join('\n')}\n}`;
+    }).join('\n');
+    return { roles, rolesCss };
+  }
+
+  statusVals() {
+    const s = this.state, m = s.hsMode;
+    const C = { ok: '#9fd487', warn: '#e6c15c', bad: '#e2654f', off: '#555555' };
+    const tint = c => ({ [C.ok]: 'rgba(159,212,135,.14)', [C.warn]: 'rgba(230,193,92,.14)', [C.bad]: 'rgba(226,101,79,.16)', [C.off]: 'rgba(242,242,242,.06)' }[c]);
+    let seed = 42; const r = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const N = 48;
+    const lat = Array.from({ length: N }, (_, i) => { let v = 62 + r() * 22 + Math.sin(i / 5) * 8; if (m === 'degraded' && i > N - 12) v += 110 + r() * 70; if (m === 'outage' && i > N - 8) v += 360 + r() * 240; return Math.round(v); });
+    const p50 = lat.map(v => Math.round(v * 0.52 + 8));
+    const W = 600, Hh = 180, max = Math.max(300, Math.ceil(Math.max(...lat) * 1.12 / 50) * 50);
+    const X = i => (i / (N - 1) * W).toFixed(1), Y = v => (Hh - v / max * Hh).toFixed(1);
+    const pts = a => a.map((v, i) => `${X(i)},${Y(v)}`).join(' ');
+    const p95 = pts(lat);
+    const now = 21 * 60 + 30;
+    const clock = i => { const t = ((now - (N - 1 - i) * 30) % 1440 + 1440) % 1440; return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`; };
+    const hi = s.hoverIdx;
+    const label = { operational: 'Operational', degraded: 'Degraded', outage: 'Major outage' }[m];
+    const col = { operational: C.ok, degraded: C.warn, outage: C.bad }[m];
+    const lastLat = lat[N - 1];
+    const spark = (arr) => { const mx = Math.max(...arr), mn = Math.min(...arr); return arr.map((v, i) => `${(i / (arr.length - 1) * 120).toFixed(1)},${(30 - (v - mn) / ((mx - mn) || 1) * 28).toFixed(1)}`).join(' '); };
+    const users = Array.from({ length: 14 }, (_, i) => 900 + i * 22 + r() * 80 - (m === 'outage' && i > 11 ? 300 : 0));
+    const peersN = Array.from({ length: 14 }, (_, i) => 136 + Math.round(i / 2) + (m === 'outage' && i > 11 ? -18 : 0));
+    const kpis = [
+      { label: 'Uptime · 30 d', value: { operational: '99.98', degraded: '99.71', outage: '99.12' }[m], unit: '%', spark: spark([99.9, 99.95, 99.97, 99.98, 99.96, 99.99, 99.98, m === 'operational' ? 99.98 : 99.6]), col: '#f2f2f2', delta: m === 'operational' ? 'Within SLO (99.9%)' : 'Below last month', deltaCol: m === 'operational' ? '#707070' : C.warn },
+      { label: 'API p95', value: String(lastLat), unit: 'ms', spark: spark(lat.slice(-16)), col: lastLat > 250 ? C.bad : lastLat > 150 ? C.warn : '#f2f2f2', delta: lastLat > 250 ? 'Over SLO of 250 ms' : lastLat > 150 ? 'Elevated' : 'Normal', deltaCol: lastLat > 250 ? '#ef8a75' : lastLat > 150 ? C.warn : '#707070' },
+      { label: 'Federation peers', value: String(peersN[13]), unit: 'instances', spark: spark(peersN), col: '#f2f2f2', delta: m === 'outage' ? '18 unreachable' : '+6 this week', deltaCol: m === 'outage' ? '#ef8a75' : '#707070' },
+      { label: 'Online now', value: Math.round(users[13]).toLocaleString('en-US'), unit: 'people', spark: spark(users), col: '#f2f2f2', delta: m === 'outage' ? 'Down 24% in 1 h' : '+8% vs. last week', deltaCol: m === 'outage' ? C.warn : '#707070' },
+    ];
+    const days = Array.from({ length: 90 }, (_, i) => {
+      let st = 'ok'; if (i === 23 || i === 61) st = 'warn'; if (i === 47) st = 'bad';
+      if (i === 89) st = { operational: 'ok', degraded: 'warn', outage: 'bad' }[m];
+      const bg = { ok: C.ok, warn: C.warn, bad: C.bad }[st];
+      return { bg: st === 'ok' ? 'rgba(159,212,135,.55)' : bg, title: `${89 - i === 0 ? 'Today' : (89 - i) + ' days ago'} · ${{ ok: 'No issues', warn: 'Degraded', bad: 'Outage' }[st]}` };
+    });
+    const CK = [
+      ['API', 'Request handling', 'ok', `${Math.round(lastLat * .4)} ms`],
+      ['Database', 'Primary + 2 replicas', m === 'outage' ? 'warn' : 'ok', m === 'outage' ? 'lag 41 s' : '4 ms', m === 'outage' ? 'Replica lag 41 s' : null],
+      ['Media store', 'Uploads, avatars, banners', 'ok', '18 ms'],
+      ['Federation queue', 'Outbound delivery', m === 'outage' ? 'bad' : 'ok', m === 'outage' ? '18,402' : '12', m === 'outage' ? 'Workers stalled · backlog 18,402' : null],
+      ['Voice relay', 'eu-central, us-east', m === 'operational' ? 'ok' : 'warn', m === 'operational' ? '24 ms' : '4.2 %', m === 'operational' ? null : 'Packet loss 4.2% in EU'],
+      ['Search', 'Message index', 'ok', '31 ms'],
+    ];
+    const SC = { ok: [C.ok, 'OK'], warn: [C.warn, 'Degraded'], bad: [C.bad, 'Down'] };
+    const checks = CK.map(([name, desc, st, ms, note]) => ({ name, note: note || desc, noteCol: note ? (st === 'bad' ? '#ef8a75' : C.warn) : '#707070', ms, col: SC[st][0], state: SC[st][1], halo: tint(SC[st][0]) }));
+    const json = JSON.stringify({
+      status: { operational: 'ok', degraded: 'degraded', outage: 'down' }[m], version: '0.9.2', instance: 'switchyard.works', uptime_s: 2591204,
+      checks: Object.fromEntries(CK.map(([name, , st, ms]) => [name.toLowerCase().replace(/ /g, '_'), { status: st, value: ms }])),
+      federation: { peers: peersN[13], unreachable: m === 'outage' ? 18 : 0, queue: m === 'outage' ? 18402 : 12 },
+      checked_at: '2026-10-20T21:30:12Z',
+    }, null, 2);
+    const G = { operational: [38, 61, 72], degraded: [54, 66, 72], outage: [91, 83, 72] }[m];
+    const gcol = v => v >= 90 ? C.bad : v >= 80 ? C.warn : '#f2f2f2';
+    const gauges = [['CPU', '8 cores'], ['Memory', '32 GB'], ['Storage', '2 TB']].map(([label, d], i) => ({ label, detail: d, v: G[i], col: gcol(G[i]), css: `conic-gradient(${gcol(G[i])} ${G[i] * 3.6}deg, #2a2a2a 0)` }));
+    const PE = [
+      ['mesh.garden', 'MG', '#ec8a6f', m === 'outage' ? 'bad' : 'ok', m === 'outage' ? 9620 : 4, m === 'outage' ? 'Unreachable · 14 min' : '38 ms · synced 3 s ago'],
+      ['lanes.gg', 'LG', '#a99cf2', 'ok', m === 'outage' ? 4120 : 2, '22 ms · synced 1 s ago'],
+      ['kiln.social', 'KS', '#7fc0e3', m === 'operational' ? 'ok' : 'warn', m === 'operational' ? 6 : m === 'outage' ? 3080 : 220, m === 'operational' ? '61 ms · synced 4 s ago' : 'Slow · 840 ms'],
+      ['reef.chat', 'RC', '#9fcf8a', 'ok', m === 'outage' ? 1200 : 0, '45 ms · synced 2 s ago'],
+      ['fogbank.net', 'FB', '#e59ac0', 'ok', m === 'outage' ? 382 : 0, '90 ms · not verified'],
+    ];
+    const qmax = Math.max(...PE.map(p => p[4]), 10);
+    const peers = PE.map(([name, ini, hex, st, q, note]) => ({ name, ini, hex, col: SC[st][0], q: q.toLocaleString('en-US'), w: `${Math.max(2, q / qmax * 100)}%`, note, noteCol: st === 'bad' ? '#ef8a75' : st === 'warn' ? C.warn : '#707070', op: st === 'bad' ? .5 : 1 }));
+    const inc = [];
+    if (m === 'outage') inc.push({ title: 'Federation queue stalled', state: 'Investigating', col: C.bad, body: 'Outbound delivery workers stopped at 21:12. Messages to other instances are queued and will send once workers restart.', when: 'Today · 21:12 · updated 21:28' });
+    if (m !== 'operational') inc.push({ title: 'Voice packet loss in EU', state: m === 'outage' ? 'Identified' : 'Monitoring', col: C.warn, body: 'Upstream provider issue on eu-central. Calls fall back to us-east automatically.', when: 'Today · 20:48' });
+    inc.push({ title: 'Scheduled maintenance: media store', state: 'Completed', col: C.off, body: 'Storage migrated to new volumes. Uploads were read-only for 6 minutes.', when: 'Oct 14 · 04:00–04:06' });
+    inc.push({ title: 'Elevated API latency', state: 'Resolved', col: C.ok, body: 'A slow search query held database locks. Index added, p95 back under 100 ms.', when: 'Oct 9 · 18:20–18:55' });
+    const incidents = inc.map(i => ({ ...i, tagBg: tint(i.col) }));
+    const chip = (k, list) => list.map(([v, l]) => ({ label: l, onClick: () => this.setState({ [k]: v }), bg: s[k] === v ? '#f2f2f2' : '#1f1f1f', col: s[k] === v ? '#0a0a0a' : '#dadada' }));
+    return {
+      hsModeOpts: chip('hsMode', [['operational', 'Operational'], ['degraded', 'Degraded'], ['outage', 'Outage']]),
+      hsViewOpts: chip('hsView', [['checks', 'Checks'], ['json', '/healthz']]),
+      hs: {
+        label, col, pillBg: tint(col), short: { operational: 'OK', degraded: 'Voice degraded', outage: 'Federation down' }[m],
+        uptime: { operational: '99.97%', degraded: '99.95%', outage: '99.89%' }[m], days, kpis,
+        p95, p50: pts(p50), area: `0,${Hh} ${p95} ${W},${Hh}`, sloY: Y(250), yMax: String(max), yMid: String(max / 2),
+        lineCol: lastLat > 250 ? C.bad : lastLat > 150 ? C.warn : '#f2f2f2', p95Now: lastLat,
+        hasHover: hi != null, hx: hi != null ? (hi / (N - 1)).toFixed(4) : '0', hy: hi != null ? Y(lat[hi]) : '0',
+        tipShift: hi != null && hi > N * 0.7 ? 'calc(-100% - 8px)' : hi != null && hi < N * 0.15 ? '8px' : '-50%',
+        tip: hi != null ? `${clock(hi)} · p95 ${lat[hi]} ms · p50 ${p50[hi]} ms` : '',
+        onMove: e => { const b = e.currentTarget.getBoundingClientRect(); const x = (e.clientX - b.left - 34) / (b.width - 34); const i = Math.round(x * (N - 1)); this.setState({ hoverIdx: i < 0 || i > N - 1 ? null : i }); },
+        onLeave: () => this.setState({ hoverIdx: null }),
+        isChecks: s.hsView === 'checks', isJson: s.hsView === 'json', checks, json, gauges, peers, incidents,
+      },
+    };
+  }
+
+  overlayVals() {
+    const s = this.state, m = s.ovMode;
+    const sw = on => ({ bg: on ? '#f2f2f2' : '#2a2a2a', knob: on ? '#0a0a0a' : '#707070', x: on ? '16px' : '0px' });
+    const T = [
+      ['fullscreen', 'A fullscreen app is in front', 'Game overlay'],
+      ['game', 'A known game launches', 'Game overlay · Deadlock, CS2, Valorant…'],
+      ['share', 'You start sharing your screen', 'Focus · message previews hidden'],
+      ['focusApp', 'A focus app is in front', 'Focus · IDE, Figma, Office'],
+      ['calendar', 'Your calendar says busy', 'Focus · until the event ends'],
+    ];
+    const triggers = T.map(([k, label, target]) => ({ label, target, ...sw(s.trig[k]), onClick: () => this.setState(st => ({ trig: { ...st.trig, [k]: !st.trig[k] } })) }));
+    const nk = m === 'focus' ? 'focus' : 'game';
+    const notif = s.ovNotif[nk];
+    const chip = (list, cur, fn) => list.map(([v, l]) => ({ label: l, onClick: () => fn(v), bg: cur === v ? '#f2f2f2' : '#1f1f1f', col: cur === v ? '#0a0a0a' : '#dadada' }));
+    const sp = (on) => on && !this.props.reducedMotion ? '0 0 0 2px rgba(10,10,10,.6), 0 0 0 4px #9fcf8a' : 'none';
+    const voice = [
+      { name: 'Vexa', src: '../assets/avatars/pb-avatar-happy-violet.svg', ring: sp(true), col: '#f2f2f2', muted: false },
+      { name: 'rina', src: '../assets/avatars/pb-avatar-wink-coral.svg', ring: 'none', col: '#f2f2f2', muted: false },
+      { name: 'Maestro', src: '../assets/avatars/pb-avatar-surprised-sky.svg', ring: 'none', col: '#9a9a9a', muted: true },
+      { name: 'lonelyfrog', src: '../assets/avatars/pb-avatar-sleepy-rose.svg', ring: 'none', col: '#f2f2f2', muted: false },
+    ];
+    const mention = { name: 'rina', where: 'Deadlock Community · #general', text: '@lonelyfrog push mid after this fight?', src: '../assets/avatars/pb-avatar-wink-coral.svg', edge: 'inset 3px 0 0 #f2f2f2, inset 0 0 0 1px rgba(242,242,242,.08), 0 8px 24px rgba(0,0,0,.35)' };
+    const other = { name: 'Pell', where: 'joined Ranked Grind', text: 'Deadlock Community · mesh.garden', src: '../assets/avatars/pb-avatar-default-sage.svg', edge: 'inset 0 0 0 1px rgba(242,242,242,.08), 0 8px 24px rgba(0,0,0,.35)' };
+    const toasts = notif === 'none' ? [] : notif === 'mentions' ? [mention] : [mention, other];
+    const status = { game: 'Shown as “Playing Deadlock”', interactive: 'Shown as “Playing Deadlock”', focus: 'Shown as “Focusing” · DMs held' }[m];
+    return {
+      ovModeOpts: chip([['game', 'In game'], ['interactive', 'Hotkey held'], ['focus', 'Focus / work']], m, v => this.setState({ ovMode: v })),
+      ovNotifOpts: chip([['all', 'All'], ['mentions', 'Mentions only'], ['none', 'Hold all']], notif, v => this.setState(st => ({ ovNotif: { ...st.ovNotif, [nk]: v } }))),
+      ov: {
+        isWork: m === 'focus', isGameBg: m !== 'focus', dim: m === 'interactive', isInter: m === 'interactive', isFocus: m === 'focus',
+        showVoice: m !== 'focus', passiveOp: m === 'game' ? .85 : 1, voice,
+        showToasts: m !== 'focus' && toasts.length > 0, toasts,
+        chat: [
+          { name: 'Vexa', text: 'they rotated top, watch the zip', src: '../assets/avatars/pb-avatar-happy-violet.svg' },
+          { name: 'rina', text: '@lonelyfrog push mid after this fight?', src: '../assets/avatars/pb-avatar-wink-coral.svg' },
+          { name: 'Maestro', text: 'urn spawning in 30', src: '../assets/avatars/pb-avatar-surprised-sky.svg' },
+        ],
+        focusText: notif === 'none' ? '3 mentions, 12 messages held' : notif === 'mentions' ? 'Mentions only · 12 messages held' : 'Notifications on',
+        showHint: m !== 'interactive', hint: m === 'focus' ? 'Figma detected · overlay in focus mode' : 'Deadlock detected · overlay on', hintBottom: m === 'focus' ? '4%' : '12%',
+        triggers, statusText: s.ovStatus ? status : 'Off · your status stays as you set it',
+        onStatus: () => this.setState(st => ({ ovStatus: !st.ovStatus })),
+        stBg: sw(s.ovStatus).bg, stKnob: sw(s.ovStatus).knob, stX: sw(s.ovStatus).x,
+      },
+    };
+  }
+
+  profileVals() {
+    const s = this.state, P = Component.PAL, hex = P[s.tone], hex2 = P[s.tone2];
+    const mix = (c, p) => `color-mix(in srgb, ${c} ${p}%, #161616)`;
+    const set = k => v => () => this.setState({ [k]: v });
+    const chip = (k, list) => list.map(([v, label]) => ({ label, onClick: set(k)(v), bg: s[k] === v ? '#f2f2f2' : '#1f1f1f', col: s[k] === v ? '#0a0a0a' : '#dadada' }));
+    const swatch = k => Object.entries(P).map(([t, h]) => ({ label: t, hex: h, onClick: set(k)(t), ring: s[k] === t ? '0 0 0 3px #121212, 0 0 0 5px #f2f2f2' : 'none' }));
+    const cardTop = s.theme === 'mono' ? '#1f1f1f' : s.theme === 'tinted' ? mix(hex, 18) : mix(hex, 24);
+    const cardBg = s.theme === 'mono' ? '#1f1f1f' : s.theme === 'tinted' ? cardTop : `linear-gradient(180deg, ${cardTop} 0%, ${mix(hex2, 22)} 100%)`;
+    const BAN = {
+      ripple: h => this.bannerCss(h, 'ripple', '16% 130%'), burst: h => this.bannerCss(h, 'burst', '16% 130%'), halftone: h => this.bannerCss(h, 'halftone', '16% 130%'),
+      crowd: h => this.bannerCss(h, 'crowd'), duo: h => `linear-gradient(120deg, ${h} 0%, ${hex2} 100%)`, upload: () => '#2a2a2a',
+    };
+    const bannerOpts = [['ripple', 'Ripples'], ['burst', 'Spike burst'], ['halftone', 'Halftone'], ['crowd', 'Fish crowd'], ['duo', 'Gradient'], ['upload', 'Upload']]
+      .map(([v, label]) => ({ label, css: BAN[v](hex), onClick: set('banner')(v), ring: s.banner === v ? '0 0 0 2px #121212, 0 0 0 4px #f2f2f2' : 'none' }));
+    const FONTS = { marcellus: ['400 28px/1.1 Marcellus,serif', '400 16px/1.2 Marcellus,serif', '0', 'none'], barlow: ['700 25px/1.1 Barlow,sans-serif', '700 14.5px/1.2 Barlow,sans-serif', '0', 'none'], condensed: ['700 27px/1 "Barlow Condensed",sans-serif', '700 15px/1.2 "Barlow Condensed",sans-serif', '.06em', 'uppercase'] };
+    const [nameFont, nameFontSm, nameLs, nameTt] = FONTS[s.font];
+    const ringFor = { none: `0 0 0 6px ${cardTop}`, ring: `0 0 0 4px ${cardTop}, 0 0 0 8px ${hex}`, spines: `0 0 0 6px ${cardTop}`, bubbles: `0 0 0 4px ${cardTop}, 0 0 0 6px ${hex}` }[s.frame];
+    const widget = (k, label) => ({ label: (s.w[k] ? '✓ ' : '') + label, onClick: () => this.setState(st => ({ w: { ...st.w, [k]: !st.w[k] } })), bg: s.w[k] ? '#f2f2f2' : '#1f1f1f', col: s.w[k] ? '#0a0a0a' : '#dadada' });
+    const rnd = a => a[Math.floor(Math.random() * a.length)];
+    const tones = Object.keys(P);
+    return {
+      pfName: s.pfName, pfPronouns: s.pfPronouns, pfStatus: s.pfStatus, pfBio: s.pfBio, pfBioCount: `${s.pfBio.length}/190`,
+      pfOnName: e => this.setState({ pfName: e.target.value }), pfOnPronouns: e => this.setState({ pfPronouns: e.target.value }),
+      pfOnStatus: e => this.setState({ pfStatus: e.target.value }), pfOnBio: e => this.setState({ pfBio: e.target.value }),
+      pfExprOpts: Component.EXPR.map(x => ({ label: x, src: `../assets/avatars/pb-avatar-${x}-${s.tone}.svg`, onClick: set('expr')(x), ring: s.expr === x ? '0 0 0 3px #121212, 0 0 0 5px #f2f2f2' : 'none' })),
+      pfFrameOpts: chip('frame', [['none', 'None'], ['ring', 'Ring'], ['spines', 'Spines'], ['bubbles', 'Bubbles']]),
+      pfToneOpts: swatch('tone'), pfTone2Opts: swatch('tone2'), pfIsDuo: s.theme === 'duo',
+      pfThemeOpts: chip('theme', [['mono', 'Mono'], ['tinted', 'Tinted'], ['duo', 'Two-tone']]),
+      pfBannerOpts: bannerOpts,
+      pfFontOpts: chip('font', [['marcellus', 'Marcellus'], ['barlow', 'Barlow'], ['condensed', 'Condensed']]),
+      pfWidgetOpts: [widget('play', 'Now playing'), widget('mains', 'Mains'), widget('accounts', 'Linked accounts'), widget('badges', 'Badges')],
+      pfPresenceOpts: chip('presence', [['online', 'Online'], ['ingame', 'In game'], ['idle', 'Idle'], ['mobile', 'On mobile']]),
+      pfMotionOpts: chip('motion', [['puff', 'Puff on hover'], ['still', 'Still']]),
+      pfShuffle: () => this.setState({ expr: rnd(Component.EXPR), frame: rnd(['none', 'ring', 'spines', 'bubbles']), tone: rnd(tones), tone2: rnd(tones), theme: rnd(['mono', 'tinted', 'duo']), banner: rnd(['ripple', 'burst', 'halftone', 'crowd', 'duo']), font: rnd(['marcellus', 'barlow', 'condensed']) }),
+      pfReset: () => this.setState({ ...Component.PF0, w: { ...Component.PF0.w } }),
+      pf: {
+        hex, cardBg, cardTop, banner: BAN[s.banner](hex), isUpload: s.banner === 'upload',
+        avatar: `../assets/avatars/pb-avatar-${s.expr}-${s.tone}.svg`, ring: ringFor,
+        ringSm: s.frame === 'none' ? 'none' : `0 0 0 2px #121212, 0 0 0 3.5px ${hex}`,
+        frSpines: s.frame === 'spines', frBubbles: s.frame === 'bubbles',
+        hoverTf: s.motion === 'puff' && !this.props.reducedMotion ? 'scale(1.1)' : 'none',
+        name: s.pfName || 'Vexa', pronouns: s.pfPronouns, status: s.pfStatus, bio: s.pfBio || ' ',
+        nameFont, nameFontSm, nameLs, nameTt,
+        showPlay: s.w.play, showMains: s.w.mains, showAccounts: s.w.accounts, showBadges: s.w.badges,
+        btnBg: s.theme === 'mono' ? '#f2f2f2' : hex,
+        prDot: (s.presence || 'ingame') !== 'mobile', prMobile: s.presence === 'mobile',
+        prBg: { online: '#f2f2f2', ingame: '#9fd487', idle: cardTop, mobile: '#f2f2f2' }[s.presence || 'ingame'],
+        prIn: s.presence === 'idle' ? 'inset 0 0 0 3px #9a9a9a' : '0 0 0 0 transparent',
+        prLabel: { online: 'Online', ingame: 'In game', idle: 'Idle', mobile: 'On mobile' }[s.presence || 'ingame'],
+        roles: [['Moderator', '#ec8a6f'], ['Ranked', '#a99cf2'], ['Coach', '#7fc0e3'], ['EU West', '#9fcf8a']].map(([n, c]) => ({ n, c, bg: c + '24' })),
+        rowBg: s.theme === 'mono' ? 'transparent' : `color-mix(in srgb, ${hex} 10%, transparent)`,
+      },
+    };
+  }
+
+  static PAL = { brass: '#e3ae4f', coral: '#ec8a6f', rose: '#e59ac0', violet: '#a99cf2', sky: '#7fc0e3', sage: '#9fcf8a' };
+  static EXPR = ['default', 'happy', 'wink', 'sleepy', 'surprised', 'grumpy'];
+
+  ident(handle) {
+    const TONES = Object.keys(Component.PAL);
+    let h = 7;
+    for (const c of handle.trim().toLowerCase()) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+    const expr = Component.EXPR[h % 6], tone = TONES[(h >> 4) % 6], pattern = ['ripple', 'burst', 'halftone', 'crowd'][(h >> 8) % 4];
+    return { expr, tone, pattern, hex: Component.PAL[tone] };
+  }
+
+  bannerCss(hex, pattern, at = '14% 130%') {
+    const ink = 'rgba(10,10,10,.12)';
+    return {
+      ripple: `repeating-radial-gradient(circle at ${at}, transparent 0 11px, ${ink} 11px 14px), ${hex}`,
+      burst: `radial-gradient(circle at ${at}, ${hex} 0 18%, transparent 46%), repeating-conic-gradient(from 0deg at ${at}, ${ink} 0 4deg, transparent 4deg 13deg), ${hex}`,
+      halftone: `radial-gradient(circle at ${at}, ${hex} 0 20%, transparent 60%), radial-gradient(circle, rgba(10,10,10,.2) 36%, transparent 40%) 0 0/9px 9px, ${hex}`,
+      crowd: `url(../assets/patterns/tile-ink.svg) 0 0/36px 36px repeat, ${hex}`,
+    }[pattern];
+  }
+
+  react(i) {
+    this.setState(s => {
+      const mine = [...s.mine], counts = [...s.counts], pops = [...s.pops];
+      mine[i] = !mine[i]; counts[i] += mine[i] ? 1 : -1; if (mine[i]) pops[i] += 1;
+      return { mine, counts, pops };
+    });
+  }
+
+  renderVals() {
+    const e = React.createElement;
+    const rm = !!this.props.reducedMotion;
+    const tones = ['violet', 'coral', 'sky', 'brass', 'sage', 'rose'];
+    const reactions = Component.EXPR.map((ex, i) => {
+      const mine = this.state.mine[i], pop = this.state.pops[i];
+      const src = `../assets/avatars/pb-avatar-${ex}-${tones[i]}.svg`;
+      const spikes = !rm && pop > 0 ? [0, 45, 90, 135, 180, 225, 270, 315].map(r => e('span', { key: `${pop}-${r}`, style: {
+        position: 'absolute', left: 10, top: 10, width: 2.5, height: 7, marginLeft: -1.25, marginTop: -3.5, borderRadius: 2, background: Component.PAL[tones[i]],
+        transformOrigin: '50% 50%', '--r': `${r}deg`, opacity: 0, animation: 'pbSpike .55s cubic-bezier(.2,.8,.3,1) forwards' } })) : [];
+      const node = e('span', { style: { position: 'relative', width: 20, height: 20, display: 'block' } },
+        e('img', { key: 'i' + pop, src, alt: '', style: { width: 20, height: 20, display: 'block', animation: !rm && pop > 0 ? 'pbPop .5s cubic-bezier(.45,0,.3,1)' : 'none' } }), ...spikes);
+      return { node, n: this.state.counts[i] || '+', onClick: () => this.react(i),
+        bg: mine ? '#f2f2f2' : '#1f1f1f', col: mine ? '#0a0a0a' : '#dadada', bd: mine ? 'none' : 'inset 0 0 0 1px rgba(242,242,242,.08)' };
+    });
+    const reactionsStatic = [
+      { src: '../assets/avatars/pb-avatar-happy-violet.svg', n: 12, bg: '#f2f2f2', col: '#0a0a0a', bd: 'none' },
+      { src: '../assets/avatars/pb-avatar-surprised-sky.svg', n: 4, bg: '#1f1f1f', col: '#dadada', bd: 'inset 0 0 0 1px rgba(242,242,242,.08)' },
+      { src: '../assets/avatars/pb-avatar-grumpy-rose.svg', n: 1, bg: '#1f1f1f', col: '#dadada', bd: 'inset 0 0 0 1px rgba(242,242,242,.08)' },
+    ];
+    const speak = (sz, src) => e('img', { src, alt: '', style: { width: sz, height: sz, display: 'block', borderRadius: '50%', animation: rm ? 'none' : 'pbRing 1.4s ease-out infinite', boxShadow: '0 0 0 2px #161616,0 0 0 4px #9fcf8a' } });
+    const spinePath = 'M-5 0Q-2 -9 0 -14Q2 -9 5 0Z';
+    const bristle = e('div', { style: { position: 'relative', width: 56, height: 56 } },
+      e('svg', { width: 84, height: 84, viewBox: '-42 -42 84 84', style: { position: 'absolute', left: -14, top: -14, overflow: 'visible', animation: rm ? 'none' : 'pbBristle 1.6s ease-in-out infinite' } },
+        ...Array.from({ length: 12 }, (_, i) => e('path', { key: i, d: spinePath, fill: '#e59ac0', transform: `rotate(${i * 30}) translate(0 -30)` }))),
+      e('img', { src: '../assets/avatars/pb-avatar-grumpy-rose.svg', alt: '', style: { position: 'relative', width: 56, height: 56, display: 'block', borderRadius: '50%', boxShadow: '0 0 0 3px #161616' } }));
+    const typing = e('span', { style: { display: 'inline-flex', alignItems: 'flex-end', gap: 4, height: 16 } },
+      ...[0, 1, 2].map(i => e('span', { key: i, style: { width: 5 + i * 1.5, height: 5 + i * 1.5, borderRadius: '50%', boxShadow: 'inset 0 0 0 1.5px #dadada', animation: rm ? 'none' : `pbRise 1.2s ease-in-out ${i * 0.16}s infinite` } })));
+
+    const id = this.ident(this.state.handle || 'x');
+    const [nm, host] = (this.state.handle || '').split('@');
+
+    const fed = [
+      { name: 'Teo Vance', note: 'Local · switchyard.works', pill: 'home', src: '../assets/avatars/pb-avatar-happy-brass.svg', op: 1, nameCol: '#f2f2f2', strike: 'none', pillBg: 'transparent', pillCol: '#555', pillBd: 'none' },
+      { name: 'rina', note: 'Remote · verified instance', pill: '@mesh.garden', src: '../assets/avatars/pb-avatar-wink-coral.svg', op: 1, nameCol: '#f2f2f2', strike: 'none', pillBg: '#1f1f1f', pillCol: '#9a9a9a', pillBd: 'none' },
+      { name: 'Ada Quill', note: 'Remote · instance not verified', pill: '@fogbank.net', src: '../assets/avatars/pb-avatar-surprised-sage.svg', op: 1, nameCol: '#f2f2f2', strike: 'none', pillBg: 'transparent', pillCol: '#9a9a9a', pillBd: 'inset 0 0 0 1px rgba(242,242,242,.25)' },
+      { name: 'spambot', note: 'Instance blocked by your admin', pill: '@junk.zone', src: '../assets/avatars/pb-avatar-default-ash.svg', op: .4, nameCol: '#707070', strike: 'line-through', pillBg: 'rgba(226,101,79,.12)', pillCol: '#ef8a75', pillBd: 'none' },
+    ];
+
+    const tokensCss = `:root {
+  /* surfaces */
+  --pb-bg:        #0a0a0a;  /* app background, rail */
+  --pb-panel:     #121212;  /* sidebars, columns */
+  --pb-surface:   #161616;  /* chat area */
+  --pb-raised:    #1f1f1f;  /* cards, inputs, hover */
+  --pb-active:    #2a2a2a;  /* selected row, overlay */
+  --pb-line:      rgba(242,242,242,.08);
+  /* text */
+  --pb-text-1:    #f2f2f2;
+  --pb-text-2:    #9a9a9a;
+  --pb-text-3:    #707070;
+  --pb-text-4:    #555555;
+  --pb-text-body: #dadada;  /* message body */
+  --pb-on-light:  #0a0a0a;
+  /* identity (people & spaces only) */
+  --pb-id-brass:  #e3ae4f;
+  --pb-id-coral:  #ec8a6f;
+  --pb-id-rose:   #e59ac0;
+  --pb-id-violet: #a99cf2;
+  --pb-id-sky:    #7fc0e3;
+  --pb-id-sage:   #9fcf8a;
+  /* status */
+  --pb-online:    #f2f2f2;
+  --pb-in-game:   #9fd487;
+  --pb-idle:      #9a9a9a;
+  --pb-danger:    #e2654f;
+  --pb-danger-text: #ef8a75;
+  --pb-warn:      #e6c15c;  /* degraded */
+  /* overlay */
+  --pb-glass:     rgba(10,10,10,.72);
+  --pb-glass-blur: 14px;
+  /* type */
+  --pb-font-display: "Marcellus", serif;
+  --pb-font-label:   "Barlow Condensed", sans-serif;
+  --pb-font-body:    "Barlow", sans-serif;
+  --pb-font-mono:    ui-monospace, Menlo, monospace;
+  /* radius */
+  --pb-r-xs: 6px;  --pb-r-sm: 8px;  --pb-r-md: 10px;
+  --pb-r-lg: 14px; --pb-r-xl: 18px; --pb-r-pill: 999px;
+  --pb-r-space: 30%;   /* server icons */
+  /* space */
+  --pb-s-1: 4px;  --pb-s-2: 8px;  --pb-s-3: 12px; --pb-s-4: 16px;
+  --pb-s-5: 20px; --pb-s-6: 24px; --pb-s-8: 32px; --pb-s-12: 48px;
+  /* motion */
+  --pb-ease:       cubic-bezier(.2,.8,.3,1);
+  --pb-ease-puff:  cubic-bezier(.45,0,.3,1);
+  --pb-t-fast:  120ms;  /* hover */
+  --pb-t-base:  200ms;  /* state change */
+  --pb-t-puff:  500ms;  /* reactions, bristle */
+  /* focus */
+  --pb-focus: 0 0 0 2px var(--pb-panel), 0 0 0 4px var(--pb-text-1);
+}`;
+    const identityJs = `const TONES = ['brass','coral','rose','violet','sky','sage'];
+const EXPR  = ['default','happy','wink','sleepy','surprised','grumpy'];
+const BANNER = ['ripple','burst','halftone','crowd'];
+
+// handle = "name@instance", lower-cased, trimmed
+export function identity(handle) {
+  let h = 7;
+  for (const c of handle.trim().toLowerCase())
+    h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return {
+    expression: EXPR[h % 6],
+    tone:       TONES[(h >> 4) % 6],
+    banner:     BANNER[(h >> 8) % 4],
+    avatar: \`pb-avatar-\${EXPR[h % 6]}-\${TONES[(h >> 4) % 6]}.svg\`,
+  };
+}
+// spaces use the same function on "space-id@instance"`;
+
+    return {
+      ...this.profileVals(),
+      ...this.rolesVals(),
+      ...this.statusVals(),
+      ...this.overlayVals(),
+      ovRef: this.ovRef, ovScale: this.state.ovScale || 0.5,
+      neutrals: [
+        ['--pb-bg', '#0a0a0a', 'App, rail'], ['--pb-panel', '#121212', 'Sidebars'], ['--pb-surface', '#161616', 'Chat area'], ['--pb-raised', '#1f1f1f', 'Cards, inputs, hover'], ['--pb-active', '#2a2a2a', 'Selected, overlay'],
+        ['--pb-text-1', '#f2f2f2', 'Primary text, primary button'], ['--pb-text-1·85', '#dadada', 'Message body'], ['--pb-text-2', '#9a9a9a', 'Secondary'], ['--pb-text-3', '#707070', 'Meta, timestamps'], ['--pb-text-4', '#555555', 'Muted, disabled'],
+      ].map(([token, hex, use]) => ({ token, hex, use })),
+      identity: [['Brass', '#e3ae4f', 'happy'], ['Coral', '#ec8a6f', 'wink'], ['Rose', '#e59ac0', 'grumpy'], ['Violet', '#a99cf2', 'default'], ['Sky', '#7fc0e3', 'surprised'], ['Sage', '#9fcf8a', 'sleepy']]
+        .map(([name, hex, ex]) => ({ name, hex, src: `../assets/avatars/pb-avatar-${ex}-${name.toLowerCase()}.svg` })),
+      status: [
+        ['Online', '#f2f2f2', 'Dot on avatars'], ['In game / voice', '#9fd487', 'Dot + activity pill'], ['Idle', '#9a9a9a', 'Hollow dot'], ['Offline', '#555555', 'No dot, avatar at 55%'], ['Mention / danger', '#e2654f', 'Badges, destructive, errors'],
+      ].map(([name, hex, use]) => ({ name, hex, use })),
+      type: [
+        { token: 'display-xl', spec: 'Marcellus 56 / 1.02', font: '400 56px/1.02 Marcellus,serif', ls: '0', tt: 'none', col: '#f2f2f2', sample: 'Deadlock Community' },
+        { token: 'display-l', spec: 'Marcellus 36 / 1.1', font: '400 36px/1.1 Marcellus,serif', ls: '0', tt: 'none', col: '#f2f2f2', sample: "Who's playing?" },
+        { token: 'title', spec: 'Marcellus 22 / 1.15', font: '400 22px/1.15 Marcellus,serif', ls: '0', tt: 'none', col: '#f2f2f2', sample: 'The City Never Sleeps' },
+        { token: 'label', spec: 'Barlow Cond. 600 11 · .16em · caps', font: '600 11px/1 "Barlow Condensed",sans-serif', ls: '.16em', tt: 'uppercase', col: '#9a9a9a', sample: 'Text channels' },
+        { token: 'button', spec: 'Barlow Cond. 700 13 · .1em · caps', font: '700 13px/1 "Barlow Condensed",sans-serif', ls: '.1em', tt: 'uppercase', col: '#f2f2f2', sample: 'Join voice' },
+        { token: 'name', spec: 'Barlow 700 15', font: '700 15px/1.3 Barlow,sans-serif', ls: '0', tt: 'none', col: '#f2f2f2', sample: 'kate wolf' },
+        { token: 'body', spec: 'Barlow 400 15 / 1.5', font: '400 15px/1.5 Barlow,sans-serif', ls: '0', tt: 'none', col: '#dadada', sample: 'Queue a few after this? Need two more for a stack.' },
+        { token: 'meta', spec: 'Barlow 400 12', font: '400 12px/1.3 Barlow,sans-serif', ls: '0', tt: 'none', col: '#707070', sample: '1:36 PM · edited' },
+      ],
+      radii: [['xs', '6px'], ['sm', '8px'], ['md', '10px'], ['lg', '14px'], ['xl', '18px'], ['space', '30%'], ['person', '50%']].map(([name, v]) => ({ name, v })),
+      spaces: [['s-1', '4px'], ['s-2', '8px'], ['s-3', '12px'], ['s-4', '16px'], ['s-5', '20px'], ['s-6', '24px'], ['s-8', '32px'], ['s-12', '48px']].map(([name, w]) => ({ name, w })),
+      motion: [
+        { token: '--pb-t-fast · 120ms', v: 'ease', use: 'Hover fills, colour changes' },
+        { token: '--pb-t-base · 200ms', v: '--pb-ease', use: 'Rail pill, panels, selection' },
+        { token: '--pb-t-puff · 500ms', v: '--pb-ease-puff', use: 'Reaction puff, bristle, spines' },
+        { token: 'loader · 2.6s loop', v: '--pb-ease-puff', use: 'Inflate / deflate, full-screen waits' },
+        { token: 'typing · 1.2s loop', v: 'ease-in-out', use: 'Three bubbles rise in turn' },
+      ],
+      reactions, reactionsStatic,
+      speakingSmall: speak(22, '../assets/avatars/pb-avatar-happy-violet.svg'),
+      speakingBig: speak(56, '../assets/avatars/pb-avatar-happy-violet.svg'),
+      bristle, typing,
+      handle: this.state.handle,
+      onHandle: ev => this.setState({ handle: ev.target.value }),
+      idSrc: `../assets/avatars/pb-avatar-${id.expr}-${id.tone}.svg`,
+      idBanner: this.bannerCss(id.hex, id.pattern, '12% 140%'),
+      idName: nm || '—',
+      idMeta: `${id.expr} · ${id.tone} · ${id.pattern}${host ? ' · ' + host : ''}`,
+      fed,
+      tokensCss, identityJs,
+      copyLabel: this.state.copied ? 'Copied' : 'Copy',
+      copyTokens: () => { try { navigator.clipboard.writeText(tokensCss); } catch (e) {} this.setState({ copied: true }); setTimeout(() => this.setState({ copied: false }), 1500); },
+      assets: [
+        { path: '../assets/marks/pb-face-small-plain.svg', use: 'App mark (mono, use as mask, tint with currentColor)' },
+        { path: '../assets/avatars/pb-avatar-{expr}-{tone}.svg', use: 'Default avatars, 6 × 12' },
+        { path: '../assets/patterns/*.svg', use: 'Server icon decorations and banner patterns' },
+        { path: '../assets/logo/pufferblow-mono/', use: 'Logo SVG + PNG, black, white, badge' },
+        { path: '../assets/loader/*-mono-*.png', use: 'Puff loader (animated PNG)' },
+        { path: '../assets/logo/pufferblow-badge/favicon.ico', use: 'Favicon / app icon' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

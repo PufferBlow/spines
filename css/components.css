@@ -1,0 +1,44 @@
+/* Pufferblow brand. This file is the source; the client and the website import it. */
+/* The text a browser shows in place of an image it could not load, in the design language's label voice. */
+img {
+  font: 600 11px/1.3 var(--font-heading);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* "Edited": an information-blue tag, so a changed message is easy to tell from an unchanged one. */
+.pb-edited-tag {
+  display: inline-flex;
+  align-items: center;
+  font: 700 9.5px/1 var(--pb-font-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-info);
+  background: color-mix(in srgb, var(--color-info) 14%, transparent);
+  padding: 3px 6px;
+  border-radius: 5px;
+  vertical-align: 1px;
+}
+
+/* A code block's line numbers: the same metrics as the code beside them, never selected or copied. */
+.pb-code {
+  font: 400 13px/1.6 var(--pb-font-mono);
+  tab-size: 4;
+}
+.pb-code-gutter {
+  color: var(--color-text-faint);
+  text-align: right;
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/*
+ * One message toolbar at a time. A row shows its toolbar while hovered or while focus is inside
+ * it (keyboard use, or focus handed back by a closed menu); while the pointer is over the list,
+ * only the row under it keeps one, so a focused row elsewhere doesn't show a second.
+ */
+[data-message-list]:hover [data-message-id]:not(:hover) [data-message-toolbar] {
+  display: none;
+}

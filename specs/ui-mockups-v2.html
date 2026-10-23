@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="_support/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_support/ds/styles.css">
+<script src="_support/ds/_ds_bundle.js"></script>
+<script src="_support/icons.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap">
+<style>body{margin:0;background:var(--color-surface)}a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-800)}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid var(--color-divider);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:var(--color-text);color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 var(--font-body);color:var(--color-text)}.dv-opts{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:var(--color-text);border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 12px/1.3 var(--font-body);color:var(--color-neutral-700)}.dv-card{max-width:100%;background:var(--color-bg);border:1px solid var(--color-divider);box-shadow:var(--shadow-sm);overflow:hidden;position:relative}.dv-opt:target .dv-oid{background:var(--color-accent);color:#fff}.dv-next{margin:28px 0 0;font:12px/1.5 var(--font-body);color:var(--color-neutral-700)}.dv-row{font:600 12px var(--font-body);letter-spacing:.1em;text-transform:uppercase;color:var(--color-neutral-700);margin:36px 0 14px}</style>
+</helmet>
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Gaming direction — dark, rounded, after deadlock.wiki</span></div>
+<p style="max-width:780px;font-size:13px;color:var(--color-neutral-700);margin:0">Departs from Industry on purpose: black and grey ground, white text, white as the only accent, and rounded panels, taken from the wiki's brown theme. Marcellus is used for display type, Barlow for everything else. Spirit, Vitality and Weapon colors mark roles. Art and avatars are placeholders.</p>
+
+<div class="dv-row">Login</div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a"><div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Key art + sign-in panel, featured space on the art</div>
+<div class="dv-card" style="width:1200px;height:760px;background:#0a0a0a;color:#f2f2f2;border-radius:18px;border:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:10px;padding:10px">
+  <div style="position:relative;border-radius:14px;overflow:hidden;background:{{ v2heroArt }}">
+    <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(242,242,242,.035) 0 2px,transparent 2px 16px)"></div>
+    
+    <div style="position:absolute;top:28px;left:28px;display:flex;align-items:center;gap:10px;color:#0a0a0a"><div style="color:#0a0a0a;display:grid;place-items:center"><div style="width:34px;height:34px;background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></div><span style="font:400 23px/1 Marcellus,serif;letter-spacing:.02em">Pufferblow</span></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:120px 32px 32px;background:linear-gradient(transparent,rgba(10,10,10,.92))">
+      <span style="display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:#ffffff;color:#000000;font:700 11px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase"><lu-icon i="flame" s="12"></lu-icon>Featured space</span>
+      <div style="font:400 50px/1.05 Marcellus,serif;margin:14px 0 8px">Deadlock Community</div>
+      <div style="display:flex;align-items:center;gap:14px;font-size:14px;color:#9a9a9a">
+        <div style="display:flex"><span style="width:26px;height:26px;border-radius:50%;background:url(../assets/avatars/pb-avatar-happy-violet.svg) center/cover;border:2px solid #0a0a0a"></span><span style="width:26px;height:26px;margin-left:-8px;border-radius:50%;background:url(../assets/avatars/pb-avatar-wink-coral.svg) center/cover;border:2px solid #0a0a0a"></span><span style="width:26px;height:26px;margin-left:-8px;border-radius:50%;background:url(../assets/avatars/pb-avatar-default-sky.svg) center/cover;border:2px solid #0a0a0a"></span></div>
+        <span><b style="color:#f2f2f2">1,904</b> online · 48,210 members · hosted on lanes.gg</span>
+      </div>
+    </div>
+  </div>
+  <div style="border-radius:14px;background:#161616;padding:48px 40px 32px;display:flex;flex-direction:column;gap:18px">
+    <div style="font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#ffffff">Welcome back</div>
+    <div style="font:400 38px/1.1 Marcellus,serif;margin-top:-6px">Sign in to your instance</div>
+    <div style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;color:#9a9a9a">Handle</span>
+      <div style="height:48px;border-radius:12px;background:#1f1f1f;border:1px solid rgba(255,255,255,.55);box-shadow:0 0 0 4px rgba(255,255,255,.1);display:flex;align-items:center;gap:10px;padding:0 8px 0 14px;font-size:15px"><lu-icon i="at" s="16"></lu-icon><span style="flex:1">lonelyfrog@switchyard.works</span><span style="display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:8px;background:rgba(159,212,135,.14);color:#9fd487;font-size:12px;font-weight:600"><lu-icon i="check" s="12"></lu-icon>Found</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;color:#9a9a9a;display:flex;justify-content:space-between">Password<a href="#" style="color:#ffffff;text-decoration:none">Forgot?</a></span>
+      <div style="height:48px;border-radius:12px;background:#1f1f1f;border:1px solid rgba(242,242,242,.08);display:flex;align-items:center;gap:10px;padding:0 14px;font-size:15px;color:#9a9a9a"><lu-icon i="lock" s="16"></lu-icon><span style="flex:1;letter-spacing:.25em;color:#f2f2f2">••••••••••</span><lu-icon i="eye" s="16"></lu-icon></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:#9a9a9a"><span style="width:36px;height:20px;border-radius:999px;background:#ffffff;position:relative"><span style="position:absolute;right:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#000000"></span></span>Stay signed in on this device</div>
+    <button style="height:50px;border:0;border-radius:12px;background:linear-gradient(180deg,#ffffff,#e6e6e6);color:#000000;font:700 16px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer" style-hover="filter:brightness(1.08)">Sign in<lu-icon i="arrow" s="16"></lu-icon></button>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;color:#707070"><span style="flex:1;height:1px;background:rgba(242,242,242,.08)"></span>or<span style="flex:1;height:1px;background:rgba(242,242,242,.08)"></span></div>
+    <button style="height:46px;border-radius:12px;background:#1f1f1f;border:1px solid rgba(242,242,242,.08);color:#f2f2f2;font:600 14px var(--font-body);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer" style-hover="background:#2a2a2a"><lu-icon i="key" s="16"></lu-icon>Use a passkey</button>
+    <div style="margin-top:auto;font-size:13px;color:#9a9a9a;text-align:center">New to the fediverse? <a href="#" style="color:#ffffff;text-decoration:none;font-weight:600">Find a home instance</a></div>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="2b"><div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Account picker — saved handles across instances, like a launcher profile screen</div>
+<div class="dv-card" style="width:1200px;height:760px;border-radius:18px;border:0;color:#f2f2f2;background:radial-gradient(80% 70% at 50% 0%,#222222 0%,#121212 60%,#0a0a0a 100%);display:flex;flex-direction:column;align-items:center;padding:28px 40px">
+  <div style="align-self:stretch;display:flex;align-items:center;justify-content:space-between"><div style="display:flex;align-items:center;gap:10px"><div style="color:#f2f2f2;display:grid;place-items:center"><div style="width:32px;height:32px;background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></div><span style="font:400 22px/1 Marcellus,serif">Pufferblow</span></div><span style="font-size:13px;color:#9a9a9a">Manage accounts</span></div>
+  <div style="margin-top:56px;font:600 12px/1 var(--font-heading);letter-spacing:.16em;text-transform:uppercase;color:#ffffff">Choose an account</div>
+  <div style="font:400 54px/1.1 Marcellus,serif;margin:12px 0 40px">Who's playing?</div>
+  <div style="display:flex;gap:20px">
+    <sc-for list="{{ v2accounts }}" as="a" hint-placeholder-count="3">
+      <div style="width:196px;padding:24px 16px 18px;border-radius:20px;background:{{ a.bg }};border:1px solid {{ a.bd }};display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer" style-hover="background:#1f1f1f">
+        <div style="width:104px;height:104px;border-radius:50%;background:{{ a.av }};box-shadow:{{ a.ring }};display:grid;place-items:center;font:400 36px/1 Marcellus,serif;color:#000000"></div>
+        <div style="text-align:center;line-height:1.3"><div style="font:600 19px var(--font-heading)">{{ a.name }}</div><div style="font-size:12px;color:#9a9a9a">{{ a.handle }}</div></div>
+      </div>
+    </sc-for>
+    <div style="width:196px;padding:24px 16px 18px;border-radius:20px;border:1.5px dashed rgba(242,242,242,.18);display:flex;flex-direction:column;align-items:center;gap:12px;color:#9a9a9a">
+      <div style="width:104px;height:104px;border-radius:50%;background:#161616;display:grid;place-items:center"><lu-icon i="plus" s="30"></lu-icon></div>
+      <div style="text-align:center;line-height:1.3"><div style="font:600 19px var(--font-heading);color:#f2f2f2">Add account</div><div style="font-size:12px">Any instance</div></div>
+    </div>
+  </div>
+  <div style="margin-top:36px;width:560px;padding:18px;border-radius:18px;background:rgba(22,22,22,.9);border:1px solid rgba(242,242,242,.08);display:flex;gap:10px;align-items:center">
+    <div style="flex:1;height:48px;border-radius:12px;background:#1f1f1f;border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;gap:10px;padding:0 14px;color:#9a9a9a"><lu-icon i="lock" s="16"></lu-icon><span style="flex:1;font-size:14px">Password for switchyard.works</span></div>
+    <button style="height:48px;padding:0 22px;border:0;border-radius:12px;background:linear-gradient(180deg,#ffffff,#e6e6e6);color:#000000;font:700 15px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;cursor:pointer">Enter<lu-icon i="arrow" s="15"></lu-icon></button>
+    <button style="width:48px;height:48px;border-radius:12px;background:#1f1f1f;border:1px solid rgba(242,242,242,.08);color:#f2f2f2;display:grid;place-items:center;cursor:pointer"><lu-icon i="key" s="18"></lu-icon></button>
+  </div>
+  <div style="margin-top:auto;font-size:12.5px;color:#707070">Saved accounts stay on this device. Each one signs in on its own instance.</div>
+</div></div>
+</div>
+
+<div class="dv-row">Dashboard</div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2c"><div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Floating panels — space banner, role pills, patch-note embed, in-game members</div>
+<div class="dv-card" style="width:1200px;height:760px;border-radius:18px;border:0;background:#0a0a0a;color:#f2f2f2;display:grid;grid-template-columns:72px 244px minmax(0,1fr) 240px;gap:8px;padding:8px 8px 8px 0">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 0">
+    <div title="Home" style="width:48px;height:48px;border-radius:16px;background:#1f1f1f;color:#f2f2f2;display:grid;place-items:center;cursor:pointer;transition:background .15s,color .15s" style-hover="background:#ffffff;color:#000000"><div style="width:30px;height:30px;background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></div>
+    <div style="width:28px;height:2px;border-radius:2px;background:rgba(242,242,242,.1)"></div>
+    <sc-for list="{{ v2rail }}" as="r" hint-placeholder-count="6">
+      <div style="position:relative;width:72px;display:flex;justify-content:center">
+        <span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:{{ r.ind }};border-radius:0 4px 4px 0;background:#f2f2f2"></span>
+        <div style="position:relative;width:48px;height:48px;border-radius:{{ r.rad }};background:{{ r.av }};container-type:size;display:grid;place-items:{{ r.pos }};padding:{{ r.pad }};box-sizing:border-box;font-family:Marcellus,serif;line-height:1;color:{{ r.fg }}"><span style="position:absolute;inset:0;border-radius:inherit;background:{{ r.deco }};pointer-events:none"></span><span style="position:relative;font-size:{{ r.fs }}cqw">{{ r.ini }}</span><sc-if value="{{ r.badge }}"><span style="position:absolute;right:-5px;bottom:-5px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#e2654f;color:#fff;border:3px solid #0a0a0a;display:grid;place-items:center;font:700 11px/1 var(--font-body)">{{ r.badge }}</span></sc-if></div>
+      </div>
+    </sc-for>
+    <div style="width:48px;height:48px;border-radius:24px;background:#161616;display:grid;place-items:center;color:#9fd487"><lu-icon i="plus" s="20"></lu-icon></div>
+    <div style="width:48px;height:48px;border-radius:24px;background:#161616;display:grid;place-items:center;color:#9fd487"><lu-icon i="globe" s="20"></lu-icon></div>
+  </div>
+  <div style="border-radius:14px;background:#161616;display:flex;flex-direction:column;overflow:hidden;min-height:0">
+    <div style="position:relative;height:118px;flex:none;background:url(../assets/patterns/fishfull-ink.svg) right -4% bottom -70%/46% auto no-repeat, #a99cf2">
+      <div style="position:absolute;left:14px;right:14px;bottom:12px;display:flex;align-items:flex-end;justify-content:space-between"><div><div style="font:400 20px/1.1 Marcellus,serif">Deadlock Community</div><div style="display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:11px;color:#dadada"><lu-icon i="globe" s="11"></lu-icon>lanes.gg</div></div><lu-icon i="down" s="16"></lu-icon></div>
+    </div>
+    <div style="margin:10px 10px 4px;padding:9px 10px;border-radius:10px;background:#1f1f1f;display:flex;align-items:center;gap:10px;font-size:12.5px"><span style="width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.16);color:#ffffff;display:grid;place-items:center"><lu-icon i="calendar" s="15"></lu-icon></span><span style="line-height:1.25"><b>Patch night</b><br><span style="color:#9a9a9a">Tonight · 8:00 PM · 212 going</span></span></div>
+    <div style="flex:1;padding:0 8px;overflow:hidden">
+      <sc-for list="{{ v2chan }}" as="g" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:4px;padding:14px 6px 6px;font:600 11.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:#707070"><lu-icon i="down" s="11"></lu-icon>{{ g.name }}</div>
+        <sc-for list="{{ g.items }}" as="c" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;border-radius:8px;background:{{ c.bg }};color:{{ c.col }};font-weight:{{ c.fw }};font-size:14.5px;cursor:pointer" style-hover="background:#1f1f1f">
+            <lu-icon i="{{ c.icon }}" s="16"></lu-icon><span style="flex:1">{{ c.n }}</span>
+            <sc-if value="{{ c.unread }}"><span style="min-width:20px;height:18px;padding:0 6px;border-radius:9px;display:grid;place-items:center;background:#e2654f;color:#fff;font:700 10.5px/1 var(--font-body)">{{ c.unread }}</span></sc-if>
+          </div>
+        </sc-for>
+      </sc-for>
+      <div style="display:flex;align-items:center;gap:4px;padding:14px 6px 6px;font:600 11.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:#707070"><lu-icon i="down" s="11"></lu-icon>Voice</div>
+      <div style="display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;font-size:14.5px;color:#9a9a9a"><lu-icon i="volume" s="16"></lu-icon>Ranked Grind<span style="margin-left:auto;font-size:11px">3/5</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:2px 0 0 36px;font-size:13px">
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:50%;background:url(../assets/avatars/pb-avatar-happy-sky.svg) center/cover no-repeat;box-shadow:0 0 0 2px #161616,0 0 0 4px #9fd487"></span>Vexa</div>
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:22px;height:22px;border-radius:50%;background:url(../assets/avatars/pb-avatar-grumpy-rose.svg) center/cover no-repeat"></span>rina<span style="font-size:11px;color:#707070">mesh.garden</span></div>
+      </div>
+    </div>
+    <div style="margin:8px;padding:8px 10px;border-radius:12px;background:#1f1f1f;display:flex;align-items:center;gap:10px">
+      <div style="position:relative;width:34px;height:34px;flex:none;border-radius:50%;background:url(../assets/avatars/pb-avatar-sleepy-rose.svg) center/cover no-repeat"><span style="position:absolute;right:-2px;bottom:-2px;width:12px;height:12px;border-radius:50%;background:#ffffff;border:3px solid #1f1f1f"></span></div>
+      <div style="flex:1;min-width:0;line-height:1.2"><div style="font-weight:600;font-size:13px">lonelyfrog</div><div style="font-size:11px;color:#9a9a9a">@switchyard.works</div></div>
+      <span style="color:#9a9a9a;display:flex;gap:10px"><lu-icon i="mic" s="16"></lu-icon><lu-icon i="headphones" s="16"></lu-icon><lu-icon i="settings" s="16"></lu-icon></span>
+    </div>
+  </div>
+  <div style="border-radius:14px;background:#161616;display:flex;flex-direction:column;min-width:0;min-height:0">
+    <div style="height:56px;flex:none;padding:0 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(242,242,242,.06)">
+      <lu-icon i="hash" s="18"></lu-icon><span style="font:600 19px var(--font-heading)">general</span><span style="font-size:13px;color:#9a9a9a;flex:1">General discussion · federated with 4 instances</span>
+      <span style="color:#9a9a9a;display:flex;gap:14px"><lu-icon i="pin" s="17"></lu-icon><lu-icon i="bell" s="17"></lu-icon><lu-icon i="users" s="17"></lu-icon></span>
+      <div style="width:190px;height:32px;border-radius:999px;background:#0a0a0a;display:flex;align-items:center;gap:8px;padding:0 12px;font-size:13px;color:#707070"><lu-icon i="search" s="14"></lu-icon>Search</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:10px 0;overflow:hidden">
+      <sc-for list="{{ v2msgs }}" as="m" hint-placeholder-count="5">
+        <div style="display:flex;gap:12px;padding:7px 18px" style-hover="background:rgba(242,242,242,.03)">
+          <div style="width:40px;height:40px;flex:none;border-radius:50%;background:{{ m.av }};display:grid;place-items:center;font:700 14px/1 var(--font-heading);color:#000000"></div>
+          <div style="flex:1;min-width:0">
+            <sc-if value="{{ m.replyTo }}"><div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#707070;margin-bottom:2px"><lu-icon i="reply" s="12"></lu-icon>{{ m.replyTo }}</div></sc-if>
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><span style="font-weight:700;font-size:15px">{{ m.name }}</span>
+              <sc-if value="{{ m.role }}"><span style="display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;background:rgba(242,242,242,.06);font:600 10.5px/1.4 var(--font-heading);letter-spacing:.1em;text-transform:uppercase;color:{{ m.rc }}"><span style="width:6px;height:6px;border-radius:50%;background:{{ m.rc }}"></span>{{ m.role }}</span></sc-if>
+              <sc-if value="{{ m.remote }}"><span style="padding:2px 8px;border-radius:999px;background:rgba(140,201,214,.1);color:#d6d6d6;font-size:11px">@{{ m.remote }}</span></sc-if>
+              <span style="font-size:11.5px;color:#707070">{{ m.time }}</span></div>
+            <div style="font-size:15px;color:#e0e0e0">{{ m.text }}</div>
+            <sc-if value="{{ m.embed }}">
+              <div style="margin-top:8px;max-width:460px;display:flex;gap:14px;padding:12px;border-radius:14px;background:#1f1f1f;border:1px solid rgba(242,242,242,.06)">
+                <div style="width:96px;height:96px;flex:none;border-radius:10px;background:url(../assets/patterns/tile-ink.svg) 0 0/36px 36px repeat, #e59ac0"></div>
+                <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font:600 11px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#ffffff">Update · Oct 9</span><span style="font:400 22px/1.1 Marcellus,serif">City Never Sleeps</span><span style="font-size:13px;color:#9a9a9a">New hero, ropes, bridges and hallways across the map.</span><a href="#" style="margin-top:auto;font-size:13px;font-weight:600;color:#ffffff;text-decoration:none">Read patch notes →</a></div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="padding:0 18px 4px;font-size:12px;color:#9a9a9a"><b style="color:#f2f2f2">Maestro</b> and <b style="color:#f2f2f2">rina</b> are typing…</div>
+    <div style="margin:0 14px 14px;height:50px;border-radius:14px;background:#1f1f1f;display:flex;align-items:center;gap:12px;padding:0 8px 0 12px;color:#9a9a9a">
+      <span style="width:30px;height:30px;border-radius:50%;background:#2a2a2a;display:grid;place-items:center"><lu-icon i="plus" s="16"></lu-icon></span><span style="flex:1;font-size:14.5px">Message #general</span><lu-icon i="gamepad" s="18"></lu-icon><lu-icon i="smile" s="18"></lu-icon>
+      <span style="width:36px;height:36px;border-radius:10px;background:#ffffff;color:#000000;display:grid;place-items:center"><lu-icon i="send" s="16"></lu-icon></span>
+    </div>
+  </div>
+  <div style="border-radius:14px;background:#161616;padding:12px 10px;overflow:hidden">
+    <sc-for list="{{ v2members }}" as="g" hint-placeholder-count="3">
+      <div style="padding:10px 6px 6px;font:600 11.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:#707070">{{ g.label }}</div>
+      <sc-for list="{{ g.members }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:10px;padding:6px;border-radius:10px" style-hover="background:#1f1f1f">
+          <div style="position:relative;width:34px;height:34px;flex:none;border-radius:50%;background:{{ p.av }};display:grid;place-items:center;font:700 12px/1 var(--font-heading);color:#000000"><span style="position:absolute;right:-2px;bottom:-2px;width:12px;height:12px;border-radius:50%;background:{{ p.dot }};border:3px solid #161616"></span></div>
+          <div style="min-width:0;line-height:1.25"><div style="font-size:14px;font-weight:600">{{ p.name }}</div><div style="font-size:11.5px;color:#9a9a9a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.sub }}</div></div>
+        </div>
+      </sc-for>
+    </sc-for>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="2d"><div class="dv-olabel"><a class="dv-oid" href="#2d">2d</a>Hub home — wiki-style main page: featured update, quick tiles, space portraits, recent activity</div>
+<div class="dv-card" style="width:1200px;height:760px;border-radius:18px;border:0;background:#0a0a0a;color:#f2f2f2;display:grid;grid-template-columns:72px minmax(0,1fr) 300px;gap:8px;padding:8px 8px 8px 0">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 0">
+    <div style="position:relative;width:72px;display:flex;justify-content:center"><span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:36px;border-radius:0 4px 4px 0;background:#f2f2f2"></span><div title="Home" style="width:48px;height:48px;border-radius:16px;background:#ffffff;color:#000000;display:grid;place-items:center;cursor:pointer"><div style="width:30px;height:30px;background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></div></div>
+    <div style="width:28px;height:2px;border-radius:2px;background:rgba(242,242,242,.1)"></div>
+    <sc-for list="{{ v2rail }}" as="r" hint-placeholder-count="6">
+      <div style="position:relative;width:48px;height:48px;border-radius:14px;background:{{ r.av }};container-type:size;display:grid;place-items:{{ r.pos }};padding:{{ r.pad }};box-sizing:border-box;font-family:Marcellus,serif;line-height:1;color:{{ r.fg }}"><span style="position:absolute;inset:0;border-radius:inherit;background:{{ r.deco }};pointer-events:none"></span><span style="position:relative;font-size:{{ r.fs }}cqw">{{ r.ini }}</span><sc-if value="{{ r.badge }}"><span style="position:absolute;right:-5px;bottom:-5px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#e2654f;color:#fff;border:3px solid #0a0a0a;display:grid;place-items:center;font:700 11px/1 var(--font-body)">{{ r.badge }}</span></sc-if></div>
+    </sc-for>
+    <div style="width:48px;height:48px;border-radius:24px;background:#161616;display:grid;place-items:center;color:#9fd487"><lu-icon i="plus" s="20"></lu-icon></div>
+  </div>
+  <div style="border-radius:14px;background:#161616;padding:18px 20px;display:flex;flex-direction:column;gap:16px;min-width:0;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="flex:1;height:42px;border-radius:999px;background:#0a0a0a;display:flex;align-items:center;gap:10px;padding:0 16px;font-size:14px;color:#707070"><lu-icon i="search" s="16"></lu-icon><span style="flex:1">Search spaces, people, patch notes…</span><span style="font:11px ui-monospace,monospace;padding:2px 6px;border-radius:6px;background:#1f1f1f">Ctrl K</span></div>
+      <span style="width:42px;height:42px;border-radius:50%;background:#1f1f1f;display:grid;place-items:center;color:#9a9a9a;position:relative"><lu-icon i="bell" s="18"></lu-icon><span style="position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:#e2654f"></span></span>
+      <span style="width:42px;height:42px;border-radius:50%;background:url(../assets/avatars/pb-avatar-sleepy-rose.svg) center/cover no-repeat"></span>
+    </div>
+    <div style="position:relative;height:218px;flex:none;border-radius:16px;overflow:hidden;background:url(../assets/patterns/fishfull-ink.svg) right -2% bottom -60%/40% auto no-repeat, #a99cf2">
+      <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(242,242,242,.03) 0 2px,transparent 2px 16px)"></div>
+      <span style="position:absolute;top:16px;right:18px;font:11px ui-monospace,monospace;color:#707070">feature art</span>
+      <div style="position:absolute;left:26px;bottom:24px;display:flex;flex-direction:column;gap:10px;max-width:480px">
+        <span style="align-self:flex-start;padding:5px 10px;border-radius:999px;background:#ffffff;color:#000000;font:700 11px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase">Out now</span>
+        <span style="font:400 44px/1 Marcellus,serif">City Never Sleeps</span>
+        <span style="font-size:14px;color:#dadada">Deadlock Community · lanes.gg · 1,904 talking about it</span>
+        <div style="display:flex;gap:10px;margin-top:4px">
+          <button style="height:40px;padding:0 18px;border:0;border-radius:10px;background:linear-gradient(180deg,#ffffff,#e6e6e6);color:#000000;font:700 14px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px;cursor:pointer"><lu-icon i="hash" s="15"></lu-icon>Open patch-notes</button>
+          <button style="height:40px;padding:0 16px;border-radius:10px;background:rgba(10,10,10,.55);border:1px solid rgba(242,242,242,.18);color:#f2f2f2;font:600 14px var(--font-body);display:flex;align-items:center;gap:8px;cursor:pointer"><lu-icon i="volume" s="15"></lu-icon>Join voice</button>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px">
+      <sc-for list="{{ v2tiles }}" as="t" hint-placeholder-count="6">
+        <div style="height:64px;border-radius:12px;background:#1f1f1f;display:flex;align-items:center;justify-content:center;gap:10px;font:600 15px var(--font-heading);letter-spacing:.06em;text-transform:uppercase;cursor:pointer" style-hover="background:#2a2a2a;color:#ffffff"><lu-icon i="{{ t.icon }}" s="20"></lu-icon>{{ t.label }}</div>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:baseline;justify-content:space-between"><span style="font:400 22px Marcellus,serif">Your spaces</span><a href="#" style="font-size:13px;color:#ffffff;text-decoration:none">See all 9</a></div>
+    <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ v2spaces }}" as="s" hint-placeholder-count="6">
+        <div style="position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:{{ s.art }};cursor:pointer" style-hover="box-shadow:0 0 0 2px #ffffff">
+          <div style="position:absolute;top:36%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:20px;background:{{ s.av }};container-type:size;display:grid;place-items:{{ s.pos }};padding:{{ s.pad }};box-sizing:border-box;font-family:Marcellus,serif;line-height:1;color:{{ s.fg }};box-shadow:0 0 0 4px rgba(10,10,10,.35)"><span style="position:absolute;inset:0;border-radius:inherit;background:{{ s.deco }}"></span><span style="position:relative;font-size:{{ s.fs }}cqw">{{ s.ini }}</span></div>
+          <sc-if value="{{ s.unread }}"><span style="position:absolute;top:10px;right:10px;min-width:24px;height:22px;padding:0 7px;border-radius:11px;background:#e2654f;color:#fff;display:grid;place-items:center;font:700 11px/1 var(--font-body)">{{ s.unread }}</span></sc-if>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:30px 10px 10px;background:linear-gradient(transparent,rgba(10,10,10,.92))"><div style="font:600 15px/1.15 var(--font-heading)">{{ s.name }}</div><div style="font-size:11px;color:#9a9a9a">{{ s.host }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="border-radius:14px;background:#161616;padding:18px 16px;display:flex;flex-direction:column;gap:14px;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:8px;font:600 12px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a"><span style="width:8px;height:8px;border-radius:50%;background:#9fd487;box-shadow:0 0 0 4px rgba(159,212,135,.18)"></span>Live now</div>
+    <sc-for list="{{ v2live }}" as="l" hint-placeholder-count="2">
+      <div style="padding:12px;border-radius:12px;background:#1f1f1f;display:flex;flex-direction:column;gap:10px">
+        <div style="line-height:1.25"><div style="font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:6px"><lu-icon i="volume" s="14"></lu-icon>{{ l.room }}</div><div style="font-size:12px;color:#9a9a9a">{{ l.sp }}</div></div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="display:flex;flex:1"><sc-for list="{{ l.people }}" as="p" hint-placeholder-count="3"><span style="width:28px;height:28px;margin-right:-8px;border-radius:50%;background:{{ p.av }};border:2px solid #1f1f1f;display:grid;place-items:center;font:700 10px/1 var(--font-heading);color:#000000"></span></sc-for><span style="margin-left:14px;font-size:12px;color:#9a9a9a;align-self:center">{{ l.more }}</span></div>
+          <button style="height:30px;padding:0 14px;border:0;border-radius:8px;background:rgba(159,212,135,.16);color:#9fd487;font:700 12px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase;cursor:pointer">Join</button>
+        </div>
+      </div>
+    </sc-for>
+    <div style="margin-top:6px;font:600 12px/1 var(--font-heading);letter-spacing:.14em;text-transform:uppercase;color:#9a9a9a">Recent activity</div>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <sc-for list="{{ v2recent }}" as="r" hint-placeholder-count="4">
+        <div style="padding:9px 8px;border-radius:10px;line-height:1.35" style-hover="background:#1f1f1f">
+          <div style="font-size:14px"><span style="color:#ffffff;font-weight:600">{{ r.ch }}</span> <span style="color:#9a9a9a">in {{ r.sp }}</span></div>
+          <div style="font-size:12px;color:#707070">{{ r.t }} · {{ r.who }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<div class="dv-row">Friends</div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2e"><div class="dv-olabel"><a class="dv-oid" href="#2e">2e</a>List + rich "Active now" — game sessions with join-party</div>
+<div class="dv-card" style="width:1200px;height:760px;border-radius:18px;border:0;background:#0a0a0a;color:#f2f2f2;display:grid;grid-template-columns:72px 236px minmax(0,1fr) 290px;gap:8px;padding:8px 8px 8px 0">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 0">
+    <div style="position:relative;width:72px;display:flex;justify-content:center"><span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:36px;border-radius:0 4px 4px 0;background:#f2f2f2"></span><div title="Home" style="width:48px;height:48px;border-radius:16px;background:#ffffff;color:#000000;display:grid;place-items:center;cursor:pointer"><div style="width:30px;height:30px;background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></div></div>
+    <div style="width:28px;height:2px;border-radius:2px;background:rgba(242,242,242,.1)"></div>
+    <sc-for list="{{ v2rail }}" as="r" hint-placeholder-count="6">
+      <div style="position:relative;width:48px;height:48px;border-radius:14px;background:{{ r.av }};container-type:size;display:grid;place-items:{{ r.pos }};padding:{{ r.pad }};box-sizing:border-box;font-family:Marcellus,serif;line-height:1;color:{{ r.fg }}"><span style="position:absolute;inset:0;border-radius:inherit;background:{{ r.deco }};pointer-events:none"></span><span style="position:relative;font-size:{{ r.fs }}cqw">{{ r.ini }}</span><sc-if value="{{ r.badge }}"><span style="position:absolute;right:-5px;bottom:-5px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#e2654f;color:#fff;border:3px solid #0a0a0a;display:grid;place-items:center;font:700 11px/1 var(--font-body)">{{ r.badge }}</span></sc-if></div>
+    </sc-for>
+  </div>
+  <div style="border-radius:14px;background:#161616;display:flex;flex-direction:column;min-height:0;overflow:hidden">
+    <div style="padding:10px"><div style="height:36px;border-radius:10px;background:#0a0a0a;display:flex;align-items:center;gap:8px;padding:0 12px;font-size:13px;color:#707070"><lu-icon i="search" s="14"></lu-icon>Find or start a conversation</div></div>
+    <div style="padding:0 8px;display:flex;flex-direction:column;gap:2px">
+      <div style="display:flex;align-items:center;gap:10px;height:40px;padding:0 12px;border-radius:10px;background:#2a2a2a;font-weight:600;font-size:14.5px"><lu-icon i="users" s="17"></lu-icon>Friends</div>
+      <div style="display:flex;align-items:center;gap:10px;height:40px;padding:0 12px;border-radius:10px;font-size:14.5px;color:#9a9a9a"><lu-icon i="inbox" s="17"></lu-icon>Inbox<span style="margin-left:auto;min-width:20px;height:18px;padding:0 6px;border-radius:9px;display:grid;place-items:center;background:#e2654f;color:#fff;font:700 10.5px/1 var(--font-body)">3</span></div>
+      <div style="display:flex;align-items:center;gap:10px;height:40px;padding:0 12px;border-radius:10px;font-size:14.5px;color:#9a9a9a"><lu-icon i="gamepad" s="17"></lu-icon>Parties</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 16px 6px;font:600 11.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:#707070">Direct messages<lu-icon i="plus" s="13"></lu-icon></div>
+    <div style="flex:1;padding:0 8px;overflow:hidden">
+      <sc-for list="{{ v2friends }}" as="f" hint-placeholder-count="8">
+        <div style="display:flex;align-items:center;gap:10px;height:46px;padding:0 8px;border-radius:10px" style-hover="background:#1f1f1f">
+          <div style="position:relative;width:32px;height:32px;flex:none;border-radius:50%;background:{{ f.av }};display:grid;place-items:center;font:700 11px/1 var(--font-heading);color:#000000"><span style="position:absolute;right:-2px;bottom:-2px;width:11px;height:11px;border-radius:50%;background:{{ f.dot }};border:3px solid #161616"></span></div>
+          <div style="min-width:0;line-height:1.2"><div style="font-size:14px;font-weight:500">{{ f.name }}</div><div style="font-size:11px;color:#707070;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.host }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="border-radius:14px;background:#161616;display:flex;flex-direction:column;min-width:0;min-height:0">
+    <div style="height:60px;padding:0 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(242,242,242,.06)">
+      <span style="display:flex;align-items:center;gap:8px;font:600 20px var(--font-heading)"><lu-icon i="users" s="19"></lu-icon>Friends</span>
+      <div style="display:flex;gap:4px;padding:4px;border-radius:12px;background:#0a0a0a">
+        <span style="padding:7px 14px;border-radius:9px;background:#2a2a2a;font-size:13.5px;font-weight:600">Online 5</span><span style="padding:7px 14px;font-size:13.5px;color:#9a9a9a">All 8</span><span style="padding:7px 14px;font-size:13.5px;color:#9a9a9a;display:flex;gap:6px;align-items:center">Pending<span style="width:18px;height:18px;border-radius:9px;display:grid;place-items:center;background:#e2654f;color:#fff;font:700 10px/1 var(--font-body)">2</span></span><span style="padding:7px 14px;font-size:13.5px;color:#9a9a9a">Blocked</span>
+      </div>
+      <button style="margin-left:auto;height:36px;padding:0 16px;border:0;border-radius:10px;background:linear-gradient(180deg,#ffffff,#e6e6e6);color:#000000;font:700 13px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px;cursor:pointer"><lu-icon i="userplus" s="15"></lu-icon>Add friend</button>
+    </div>
+    <div style="padding:18px;display:flex;flex-direction:column;gap:16px;min-height:0">
+      <div style="padding:14px;border-radius:14px;background:#1f1f1f;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:10px"><div style="flex:1;height:46px;border-radius:12px;background:#0a0a0a;border:1px solid rgba(255,255,255,.5);display:flex;align-items:center;gap:10px;padding:0 14px;font-size:14.5px"><lu-icon i="at" s="16"></lu-icon>ada@fogbank.net</div><button style="height:46px;padding:0 18px;border:0;border-radius:12px;background:#ffffff;color:#000000;font:700 13px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase;cursor:pointer">Send request</button></div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:13px;color:#9a9a9a"><span style="width:26px;height:26px;border-radius:50%;background:url(../assets/avatars/pb-avatar-sleepy-sage.svg) center/cover no-repeat"></span><span><b style="color:#f2f2f2">Ada Quill</b> found on fogbank.net · 2 mutual friends</span><span style="margin-left:auto;display:inline-flex;align-items:center;gap:5px;color:#9fd487"><lu-icon i="shield" s="14"></lu-icon>Federates</span></div>
+      </div>
+      <div style="font:600 11.5px/1 var(--font-heading);letter-spacing:.12em;text-transform:uppercase;color:#707070">Online — 5</div>
+      <div style="display:flex;flex-direction:column;gap:2px;margin-top:-8px">
+        <sc-for list="{{ v2online }}" as="f" hint-placeholder-count="5">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:12px;border-top:1px solid rgba(242,242,242,.05)" style-hover="background:#1f1f1f">
+            <div style="position:relative;width:40px;height:40px;flex:none;border-radius:50%;background:{{ f.av }};display:grid;place-items:center;font:700 13px/1 var(--font-heading);color:#000000"><span style="position:absolute;right:-2px;bottom:-2px;width:13px;height:13px;border-radius:50%;background:{{ f.dot }};border:3px solid #161616"></span></div>
+            <div style="flex:1;min-width:0;line-height:1.3"><div style="font-size:15px"><b>{{ f.name }}</b> <span style="font-size:12.5px;color:#707070">@{{ f.user }}@{{ f.host }}</span></div><div style="display:flex;align-items:center;gap:6px;font-size:12.5px;color:{{ f.dot }}"><sc-if value="{{ f.game }}"><lu-icon i="gamepad" s="13"></lu-icon></sc-if>{{ f.act }}</div></div>
+            <span style="width:36px;height:36px;border-radius:50%;background:#1f1f1f;display:grid;place-items:center;color:#9a9a9a"><lu-icon i="msg" s="16"></lu-icon></span>
+            <span style="width:36px;height:36px;border-radius:50%;background:#1f1f1f;display:grid;place-items:center;color:#9a9a9a"><lu-icon i="more" s="16"></lu-icon></span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <div style="border-radius:14px;background:#161616;padding:18px 14px;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+    <div style="font:400 22px Marcellus,serif;padding:0 2px">Active now</div>
+    <div style="border-radius:14px;background:#1f1f1f;overflow:hidden">
+      <div style="position:relative;height:92px;background:repeating-radial-gradient(circle at 12% 120%, transparent 0 11px, rgba(10,10,10,.12) 11px 14px), #7fc0e3">
+        <div style="position:absolute;left:12px;bottom:-16px;width:40px;height:40px;border-radius:50%;background:url(../assets/avatars/pb-avatar-happy-sky.svg) center/cover no-repeat;border:3px solid #1f1f1f"></div></div>
+      <div style="padding:22px 12px 12px;display:flex;flex-direction:column;gap:8px">
+        <div style="line-height:1.3"><div style="font-size:14.5px"><b>Vexa</b> <span style="font-size:12px;color:#707070">lanes.gg</span></div><div style="font-size:12.5px;color:#9fd487">Playing Deadlock</div><div style="font-size:12px;color:#9a9a9a">Street Brawl · 12:40 elapsed</div></div>
+        <div style="display:flex;align-items:center;gap:8px"><div style="display:flex;flex:1;align-items:center;gap:4px"><span style="width:18px;height:6px;border-radius:3px;background:#9fd487"></span><span style="width:18px;height:6px;border-radius:3px;background:#9fd487"></span><span style="width:18px;height:6px;border-radius:3px;background:#9fd487"></span><span style="width:18px;height:6px;border-radius:3px;background:#2a2a2a"></span><span style="width:18px;height:6px;border-radius:3px;background:#2a2a2a"></span><span style="width:18px;height:6px;border-radius:3px;background:#2a2a2a"></span><span style="font-size:11.5px;color:#9a9a9a;margin-left:4px">3/6</span></div></div>
+        <button style="height:36px;border:0;border-radius:10px;background:rgba(159,212,135,.16);color:#9fd487;font:700 13px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase;cursor:pointer">Ask to join</button>
+      </div>
+    </div>
+    <div style="border-radius:14px;background:#1f1f1f;padding:12px;display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="width:36px;height:36px;border-radius:50%;background:url(../assets/avatars/pb-avatar-grumpy-rose.svg) center/cover no-repeat"></div><div style="line-height:1.3"><div style="font-size:14.5px"><b>rina</b> <span style="font-size:12px;color:#707070">mesh.garden</span></div><div style="font-size:12.5px;color:#9fd487">Deadlock · Ranked · 18:22</div></div></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:#161616;font-size:12.5px;color:#9a9a9a"><lu-icon i="volume" s="14"></lu-icon><span style="flex:1">Ranked Grind · Deadlock Community</span><a href="#" style="color:#ffffff;text-decoration:none;font-weight:600">Join</a></div>
+    </div>
+  </div>
+</div></div>
+
+<div class="dv-opt" id="2f"><div class="dv-olabel"><a class="dv-oid" href="#2f">2f</a>Roster — friends as portrait cards, like the wiki's hero grid</div>
+<div class="dv-card" style="width:1200px;height:760px;border-radius:18px;border:0;background:#0a0a0a;color:#f2f2f2;display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px;padding:8px 8px 8px 0">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 0">
+    <div style="position:relative;width:72px;display:flex;justify-content:center"><span style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:36px;border-radius:0 4px 4px 0;background:#f2f2f2"></span><div title="Home" style="width:48px;height:48px;border-radius:16px;background:#ffffff;color:#000000;display:grid;place-items:center;cursor:pointer"><div style="width:30px;height:30px;background:currentColor;-webkit-mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat;mask:url(../assets/marks/pb-face-small-plain.svg) center/contain no-repeat"></div></div></div>
+    <div style="width:28px;height:2px;border-radius:2px;background:rgba(242,242,242,.1)"></div>
+    <sc-for list="{{ v2rail }}" as="r" hint-placeholder-count="6">
+      <div style="position:relative;width:48px;height:48px;border-radius:14px;background:{{ r.av }};container-type:size;display:grid;place-items:{{ r.pos }};padding:{{ r.pad }};box-sizing:border-box;font-family:Marcellus,serif;line-height:1;color:{{ r.fg }}"><span style="position:absolute;inset:0;border-radius:inherit;background:{{ r.deco }};pointer-events:none"></span><span style="position:relative;font-size:{{ r.fs }}cqw">{{ r.ini }}</span><sc-if value="{{ r.badge }}"><span style="position:absolute;right:-5px;bottom:-5px;min-width:22px;height:22px;padding:0 5px;border-radius:11px;background:#e2654f;color:#fff;border:3px solid #0a0a0a;display:grid;place-items:center;font:700 11px/1 var(--font-body)">{{ r.badge }}</span></sc-if></div>
+    </sc-for>
+  </div>
+  <div style="border-radius:14px;background:#161616;padding:22px 24px;display:flex;flex-direction:column;gap:18px;min-width:0;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div style="flex:1"><div style="font:400 38px/1 Marcellus,serif">Roster</div><div style="font-size:13px;color:#9a9a9a;margin-top:6px">8 friends on 5 instances · 3 in game</div></div>
+      <div style="width:300px;height:42px;border-radius:12px;background:#0a0a0a;display:flex;align-items:center;gap:10px;padding:0 14px;font-size:14px;color:#707070"><lu-icon i="at" s="16"></lu-icon>user@instance</div>
+      <button style="height:42px;padding:0 18px;border:0;border-radius:12px;background:linear-gradient(180deg,#ffffff,#e6e6e6);color:#000000;font:700 13px/1 var(--font-heading);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px;cursor:pointer"><lu-icon i="userplus" s="15"></lu-icon>Add</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <sc-for list="{{ v2filters }}" as="p" hint-placeholder-count="4">
+        <span style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:999px;background:{{ p.bg }};color:{{ p.col }};font-size:13.5px;font-weight:600;cursor:pointer">{{ p.l }}<span style="opacity:.65">{{ p.n }}</span></span>
+      </sc-for>
+      <span style="width:1px;height:20px;background:rgba(242,242,242,.1);margin:0 6px"></span>
+      <span style="display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 14px;border-radius:999px;border:1px solid rgba(242,242,242,.12);font-size:13.5px;color:#9a9a9a">All instances<lu-icon i="down" s="13"></lu-icon></span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <sc-for list="{{ v2requests }}" as="q" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:#1f1f1f;border:1px solid rgba(255,255,255,.25)">
+          <div style="width:40px;height:40px;flex:none;border-radius:50%;background:{{ q.av }};display:grid;place-items:center;font:700 13px/1 var(--font-heading);color:#000000"></div>
+          <div style="flex:1;min-width:0;line-height:1.3"><div style="font-size:14.5px"><b>{{ q.name }}</b> <span style="font-size:12px;color:#707070">@{{ q.handle }}</span></div><div style="font-size:12px;color:#ffffff">Wants to be friends · {{ q.note }}</div></div>
+          <span style="width:36px;height:36px;border-radius:50%;background:#161616;display:grid;place-items:center;color:#9a9a9a"><lu-icon i="x" s="16"></lu-icon></span>
+          <span style="width:36px;height:36px;border-radius:50%;background:#ffffff;display:grid;place-items:center;color:#000000"><lu-icon i="check" s="16"></lu-icon></span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px">
+      <sc-for list="{{ v2friends }}" as="f" hint-placeholder-count="8">
+        <div style="position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:{{ f.art }};cursor:pointer" style-hover="box-shadow:0 0 0 2px #ffffff">
+          <span style="position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;background:rgba(10,10,10,.6);color:{{ f.dot }};font:700 10.5px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase"><span style="width:6px;height:6px;border-radius:50%;background:{{ f.dot }}"></span>{{ f.status }}</span>
+          <span style="position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:{{ f.av }};display:grid;place-items:center;font:400 28px/1 Marcellus,serif;color:#000000;box-shadow:0 0 0 4px rgba(10,10,10,.5)"></span>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:28px 12px 12px;background:linear-gradient(transparent,rgba(10,10,10,.95))">
+            <div style="font:600 17px/1.15 var(--font-heading)">{{ f.name }}</div>
+            <div style="font-size:11px;color:#9a9a9a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.host }}</div>
+            <div style="font-size:11.5px;color:#e0e0e0;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ f.act }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div></div>
+</div>
+
+<p class="dv-next">Try next: "use <a class="dv-oid" href="#2d">2d</a> as home and <a class="dv-oid" href="#2c">2c</a> inside a space" · "rounder and brighter, closer to <a class="dv-oid" href="#2b">2b</a>" · "add a light theme of <a class="dv-oid" href="#2c">2c</a>"</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const on = 'var(--color-accent)', idle = 'var(--color-accent-300)', off = 'var(--color-neutral-400)';
+    const sel = 'color-mix(in srgb, var(--color-accent) 14%, transparent)';
+    const ch = (n, o = {}) => ({ n, unread: o.u || '', bg: o.a ? sel : 'transparent', col: (o.a || o.b) ? 'var(--color-text)' : 'var(--color-neutral-700)', fw: (o.a || o.b) ? 600 : 400 });
+    const faint = 'color-mix(in srgb, var(--color-bg) 30%, transparent)';
+    const rail = [
+      { ini: 'NS', bd: 'var(--color-bg)', bg: 'color-mix(in srgb, var(--color-bg) 14%, transparent)' },
+      { ini: 'KH', bd: faint, bg: 'transparent', badge: '3' },
+      { ini: 'GR', bd: faint, bg: 'transparent' },
+      { ini: 'MM', bd: faint, bg: 'transparent', badge: '12' },
+      { ini: 'OA', bd: faint, bg: 'transparent' },
+    ];
+    const msgs = [
+      { ini: 'MK', name: 'Mara Kessler', time: '6:02 PM', t24: '18:02', text: 'Patch notes for 2.3 are pinned in #announcements. The relay timeout fix made it in.' },
+      { ini: 'JU', name: 'juno', remote: 'mesh.garden', time: '6:04 PM', t24: '18:04', text: 'Confirmed. Reactions from our side stopped getting dropped after the update.' },
+      { ini: 'TV', name: 'Teo Vance', remote: 'switchyard.works', time: '6:05 PM', t24: '18:05', text: 'Anyone up for the Thursday build session? Same voice room as last week.', thread: '3 replies', rowBg: 'color-mix(in srgb, var(--color-accent) 8%, transparent)' },
+      { ini: 'LF', name: 'lonelyfrog', remote: 'switchyard.works', time: '6:07 PM', t24: '18:07', replyTo: 'Teo Vance: Anyone up for the Thursday build session?', text: 'In. Bringing the map edits.' },
+      { ini: 'IB', name: 'Ikram B.', remote: 'outpost.chat', time: '6:09 PM', t24: '18:09', text: 'Rough pass on the new banner. Feedback welcome.', img: true },
+    ].map(m => ({ rowBg: 'transparent', ...m }));
+    const P = (ini, name, dot, act = '') => ({ ini, name, dot, act });
+    const memberGroups = [
+      { host: 'kiln.social', count: '4', members: [P('MK', 'Mara Kessler', on, 'Editing #patch-notes'), P('SA', 'Sana', on, 'In Lounge'), P('HE', 'Hesper', on), P('NO', 'noor', idle, 'Away')] },
+      { host: 'mesh.garden', count: '2', members: [P('JU', 'juno', on, 'In Lounge'), P('PE', 'Pell', idle)] },
+      { host: 'switchyard.works', count: '2', members: [P('TV', 'Teo Vance', on), P('LF', 'lonelyfrog', on)] },
+      { host: 'outpost.chat', count: '1', members: [P('IB', 'Ikram B.', on)] },
+    ];
+    const sp = (name, ini, o = {}) => ({ name, ini, unread: o.u || '', open: !!o.open, channels: o.channels || [], fw: (o.u || o.open) ? 600 : 400, col: (o.u || o.open) ? 'var(--color-text)' : 'var(--color-neutral-800)' });
+    const instGroups = [
+      { host: 'switchyard.works', role: 'Home', tagc: 'tag-accent', spaces: [sp('Switchyard Commons', 'SC'), sp('Map Makers', 'MM', { u: '2' })] },
+      { host: 'kiln.social', role: 'Remote', tagc: 'tag-neutral', spaces: [sp('Night Shift Collective', 'NS', { open: true, channels: [ch('announcements', { u: '5', b: 1 }), ch('general', { a: 1 }), ch('build-logs', { b: 1 }), ch('off-topic')] }), sp('Kiln Help Desk', 'KH')] },
+      { host: 'mesh.garden', role: 'Remote', tagc: 'tag-neutral', spaces: [sp('Garden Radio', 'GR', { u: '8' })] },
+      { host: 'outpost.chat', role: 'Remote', tagc: 'tag-neutral', spaces: [sp('Outpost Art Club', 'OA')] },
+    ];
+    const thread = [
+      { ini: 'RM', name: 'Rui Matos', host: 'switchyard.works', time: '18:06', text: 'Yes. I can host if the Lounge is busy.' },
+      { ini: 'LF', name: 'lonelyfrog', host: 'switchyard.works', time: '18:07', text: 'In. Bringing the map edits.' },
+      { ini: 'JU', name: 'juno', host: 'mesh.garden', time: '18:11', text: 'Can people from mesh.garden join the voice room, or is it local only?' },
+    ];
+    const mentions = [
+      { ini: 'TV', name: 'Teo Vance', path: 'Night Shift Collective › #general', host: 'kiln.social', text: '@lonelyfrog can you bring the map edits Thursday?', time: '6:05 PM' },
+      { ini: 'RM', name: 'Rui Matos', path: 'Map Makers › #reviews', host: 'switchyard.works', text: 'Left notes on your harbor layout, mostly lighting.', time: '5:41 PM' },
+      { ini: 'JU', name: 'juno', path: 'Direct message', host: 'mesh.garden', text: 'Did the relay fix land on your instance too?', time: '4:58 PM' },
+      { ini: 'PE', name: 'Pell', path: 'Garden Radio › #requests', host: 'mesh.garden', text: 'Queued your track for the Friday set.', time: '3:12 PM' },
+      { ini: 'IB', name: 'Ikram B.', path: 'Outpost Art Club › #crit', host: 'outpost.chat', text: 'Which banner crop do you prefer, A or B?', time: '1:30 PM' },
+    ];
+    const live = [
+      { room: 'Lounge', space: 'Night Shift Collective', host: 'kiln.social', people: ['JU', 'SA', 'MK'] },
+      { room: 'Build session', space: 'Map Makers', host: 'switchyard.works', people: ['RM', 'TV'] },
+    ];
+    const tiles = [
+      { name: 'Night Shift Collective', host: 'kiln.social', unread: '24', last: 'Ikram: Rough pass on the new banner.' },
+      { name: 'Garden Radio', host: 'mesh.garden', unread: '8', last: 'Pell: Friday set list is up.' },
+      { name: 'Map Makers', host: 'switchyard.works', unread: '2', last: 'Rui: Harbor layout v3 uploaded.' },
+      { name: 'Kiln Help Desk', host: 'kiln.social', last: 'No new messages' },
+      { name: 'Outpost Art Club', host: 'outpost.chat', last: 'Ikram: Crit thread closes Sunday.' },
+      { name: 'Switchyard Commons', host: 'switchyard.works', last: 'Admin: Maintenance Sat 02:00.' },
+    ].map(t => ({ unread: '', bg: 'transparent', ...t }));
+    const F = (ini, name, user, host, status, act = '') => {
+      const dot = status === 'Offline' ? off : status === 'Idle' ? idle : on;
+      const tagc = (status === 'Online' || status === 'In voice') ? 'tag-accent' : 'tag-neutral';
+      return { ini, name, user, host, status, act, dot, tagc };
+    };
+    const friends = [
+      F('MK', 'Mara Kessler', 'mara', 'kiln.social', 'Online', 'Editing #patch-notes'),
+      F('JU', 'juno', 'juno', 'mesh.garden', 'In voice', 'Lounge · Night Shift'),
+      F('RM', 'Rui Matos', 'rui', 'switchyard.works', 'In voice', 'Build session · Map Makers'),
+      F('TV', 'Teo Vance', 'teo', 'switchyard.works', 'Online', ''),
+      F('SA', 'Sana', 'sana', 'kiln.social', 'Online', ''),
+      F('IB', 'Ikram B.', 'ikram', 'outpost.chat', 'Idle', 'Away 20 min'),
+      F('PE', 'Pell', 'pell', 'mesh.garden', 'Offline', 'Last seen yesterday'),
+      F('OL', 'Oskar Lind', 'oskar', 'fogbank.net', 'Offline', 'Last seen 2 h ago'),
+    ];
+    const friendsOnline = friends.filter(f => f.status === 'Online' || f.status === 'In voice').map(f => ({ ...f, act: f.act || '—' }));
+    const railFriends = [{ ini: 'NS', badge: '24' }, { ini: 'KH' }, { ini: 'GR', badge: '8' }, { ini: 'MM', badge: '2' }, { ini: 'OA' }].map(r => ({ badge: '', ...r }));
+    const IF = (host, n, a, icon = 'server') => ({ host, n, icon, bg: a ? sel : 'transparent', fw: a ? 600 : 400 });
+    const instFilter = [IF('All instances', '8', true, 'grid'), IF('switchyard.works', '2'), IF('kiln.social', '2'), IF('mesh.garden', '2'), IF('outpost.chat', '1'), IF('fogbank.net', '1')];
+    const requests = [
+      { ini: 'AQ', name: 'Ada Quill', user: 'ada', host: 'fogbank.net', note: 'Verified instance · 2 mutual friends' },
+      { ini: 'NO', name: 'noor', user: 'noor', host: 'kiln.social', note: 'Shares Night Shift Collective' },
+    ];
+    const I = (topic, host, desc, members, mode, s) => ({ topic, host, desc, members, mode, bd: s ? 'var(--color-accent)' : 'var(--color-divider)', bg: s ? 'color-mix(in srgb, var(--color-accent) 7%, transparent)' : 'transparent' });
+    const instances = [
+      I('General', 'switchyard.works', 'Run by a small co-op. Spaces, voice rooms and long-form threads.', '18.2k members', 'Open'),
+      I('Makers & craft', 'kiln.social', 'Ceramics, woodworking and anyone who builds with their hands.', '6.4k members', 'Approval', true),
+      I('Music', 'mesh.garden', 'Independent radio, DJ sets and shared listening rooms.', '3.1k members', 'Open'),
+      I('Illustration', 'outpost.chat', 'Comics, concept art and weekly critique circles.', '4.8k members', 'Approval'),
+      I('Science', 'fogbank.net', 'Meteorology, climate and field research.', '2.2k members', 'Invite'),
+      I('Regional', 'harbor.town', 'For people living around the north harbor.', '940 members', 'Open'),
+    ];
+    const chanGroups = [
+      { name: 'Information', items: [ch('rules'), ch('announcements', { u: '5', b: 1 }), ch('patch-notes', { b: 1 })] },
+      { name: 'Talk', items: [ch('general', { a: 1 }), ch('off-topic'), ch('build-logs', { b: 1 }), ch('fan-art'), ch('modding')] },
+    ];
+    return { rail, msgs, memberGroups, instGroups, thread, mentions, live, tiles, friends, friendsOnline, railFriends, instFilter, requests, instances, chanGroups, ...this.v2() };
+  }
+  v2() {
+    const G = [['#f2f2f2', '#5c5c5c'], ['#d6d6d6', '#3d3d3d'], ['#e0e0e0', '#333333'], ['#bdbdbd', '#353535'], ['#cfcfcf', '#404040'], ['#b0b0b0', '#2e2e2e'], ['#dadada', '#4a4a4a'], ['#c4c4c4', '#383838']];
+    const g = i => `linear-gradient(135deg, ${G[i % 8][0]}, ${G[i % 8][1]})`;
+    const PAL = { brass: '#e3ae4f', coral: '#ec8a6f', rose: '#e59ac0', violet: '#a99cf2', sky: '#7fc0e3', sage: '#9fcf8a' };
+    const TONES = Object.keys(PAL), EXPR = ['default', 'happy', 'wink', 'sleepy', 'surprised', 'grumpy'];
+    const hash = s => { let h = 7; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h; };
+    const who = ini => { const h = hash(ini); return { e: EXPR[h % 6], t: TONES[(h >> 4) % 6] }; };
+    const AV = ini => { const w = who(ini); return `url(../assets/avatars/pb-avatar-${w.e}-${w.t}.svg) center/cover no-repeat`; };
+    const PT = '../assets/patterns/';
+    const UBK = ['ripple', 'burst', 'halftone', 'crowd'];
+    const UB = (ini, i) => { const hex = PAL[who(ini).t], at = '50% 38%', ink = 'rgba(10,10,10,.12)';
+      return ({
+        ripple: `repeating-radial-gradient(circle at ${at}, transparent 0 11px, ${ink} 11px 14px), ${hex}`,
+        burst: `radial-gradient(circle at ${at}, ${hex} 0 20%, transparent 50%), repeating-conic-gradient(from 0deg at ${at}, ${ink} 0 4deg, transparent 4deg 13deg), ${hex}`,
+        halftone: `radial-gradient(circle at ${at}, ${hex} 0 24%, transparent 62%), radial-gradient(circle, rgba(10,10,10,.2) 36%, transparent 40%) 0 0/9px 9px, ${hex}`,
+        crowd: `url(${PT}tile-ink.svg) 0 0/40px 40px repeat, ${hex}`,
+      })[UBK[i % 4]]; };
+    const SV = [['violet', 'crop', 'crop'], ['coral', 'initials', 'pattern'], ['sky', 'bubble', 'bubbles'], ['rose', 'crop', 'pattern'], ['sage', 'school', 'crop'], ['brass', 'initials', 'pattern']];
+    const icon = (i, ini) => { const [tone, kind] = SV[i % 6], hex = PAL[tone];
+      const k = { initials: { pos: 'center', pad: '0', fs: 38, deco: 'none', ini },
+        crop: { pos: 'start start', pad: '12% 0 0 16%', fs: 40, deco: `url(${PT}crop-ink.svg) center/100% 100% no-repeat`, ini: ini[0] },
+        bubble: { pos: 'center', pad: '6% 6% 0 0', fs: 32, deco: `url(${PT}ring-ink.svg) center/100% no-repeat`, ini: ini[0] },
+        school: { pos: 'center', pad: '0', fs: 30, deco: `url(${PT}school-ink.svg) center/100% no-repeat`, ini: '' } }[kind];
+      return { av: hex, fg: '#0a0a0a', ...k }; };
+    const banner = (i, wide) => { const [tone, , b] = SV[i % 6], hex = PAL[tone];
+      return ({ pattern: `url(${PT}tile-ink.svg) 0 0/${wide ? 64 : 48}px ${wide ? 64 : 48}px repeat, ${hex}`,
+        crop: wide ? `url(${PT}fishfull-ink.svg) right -4% bottom -42%/52% auto no-repeat, ${hex}` : `url(${PT}fishfull-ink.svg) right -46% bottom -14%/120% auto no-repeat, ${hex}`,
+        bubbles: `url(${PT}bubbles-ink.svg) center/cover no-repeat, ${hex}` })[b]; };
+    const art = i => `radial-gradient(120% 100% at 20% 10%, ${G[i % 8][1]} 0%, #1a1a1a 70%)`;
+    const v2rail = [
+      { ini: 'DC', active: 1, badge: '' }, { ini: 'SB', badge: '5' }, { ini: 'HL', badge: '' }, { ini: 'PN', badge: '2' }, { ini: 'FA', badge: '' }, { ini: 'SC', badge: '' },
+    ].map((r, i) => ({ ...r, ...icon(i, r.ini), ind: r.active ? '36px' : r.badge ? '8px' : '0px', rad: '14px' }));
+    const C = (n, o = {}) => ({ n, icon: o.v ? 'volume' : 'hash', unread: o.u || '', bg: o.a ? '#2a2a2a' : 'transparent', col: (o.a || o.b) ? '#f2f2f2' : '#9a9a9a', fw: (o.a || o.b) ? 600 : 500 });
+    const v2chan = [
+      { name: 'Information', items: [C('rules'), C('announcements', { u: '5', b: 1 }), C('patch-notes', { b: 1 })] },
+      { name: 'Community', items: [C('general', { a: 1 }), C('off-topic'), C('lfg', { b: 1 }), C('fan-art'), C('clips')] },
+    ];
+    const v2msgs = [
+      { ini: 'VX', name: 'Vexa', role: 'Spirit', rc: '#a99cf2', time: '1:32 PM', text: 'Patch is live. Ropes, bridges and new hallways around the mid lanes.', embed: true },
+      { ini: 'RN', name: 'rina', role: 'Vitality', rc: '#9fcf8a', remote: 'mesh.garden', time: '1:33 PM', text: 'Finally. The bridge rotation feels completely different now.' },
+      { ini: 'MA', name: 'Maestro', role: 'Weapon', rc: '#ec8a6f', time: '1:34 PM', text: 'Did they fix the stutter when you zipline into a tower?' },
+      { ini: 'KW', name: 'kate wolf', role: 'Spirit', rc: '#a99cf2', remote: 'kiln.social', time: '1:35 PM', replyTo: 'Maestro: Did they fix the stutter…', text: 'Not on my end. Still there in Street Brawl.' },
+      { ini: 'LF', name: 'lonelyfrog', role: '', remote: 'switchyard.works', time: '1:36 PM', text: 'Queue a few after this? Need two more for a stack.' },
+    ].map((m, i) => ({ ...m, av: AV(m.ini) }));
+    const M = (ini, name, sub, i, dot) => ({ ini, name, sub, av: AV(ini), dot });
+    const v2members = [
+      { label: 'In game — 3', members: [M('VX', 'Vexa', 'Deadlock · Street Brawl', 0, '#9fd487'), M('RN', 'rina', 'Deadlock · Ranked', 1, '#9fd487'), M('MA', 'Maestro', 'Deadlock · Hero Labs', 2, '#9fd487')] },
+      { label: 'Online — 4', members: [M('KW', 'kate wolf', 'kiln.social', 3, '#ffffff'), M('LF', 'lonelyfrog', 'switchyard.works', 4, '#ffffff'), M('SI', 'Sierra', 'lanes.gg', 5, '#ffffff'), M('IG', 'Igny', 'outpost.chat', 6, '#ffffff')] },
+      { label: 'Offline — 2', members: [M('PE', 'Pell', 'mesh.garden', 7, '#555555'), M('OL', 'Oskar Lind', 'fogbank.net', 1, '#555555')] },
+    ];
+    const v2spaces = [
+      { name: 'Deadlock Community', host: 'lanes.gg', unread: '24' }, { name: 'Street Brawl LFG', host: 'lanes.gg', unread: '5' },
+      { name: 'Hero Labs Theorycraft', host: 'kiln.social', unread: '' }, { name: 'Patch Notes Patrol', host: 'mesh.garden', unread: '2' },
+      { name: 'Fan Art Guild', host: 'outpost.chat', unread: '' }, { name: 'Switchyard Commons', host: 'switchyard.works', unread: '' },
+    ].map((s, i) => { const ini = s.name.split(' ').map(w => w[0]).slice(0, 2).join(''); return { ...s, art: banner(i, false), ...icon(i, ini) }; });
+    const v2recent = [
+      { ch: '#patch-notes', sp: 'Deadlock Community', who: 'Vexa', t: '2m ago' },
+      { ch: '#lfg', sp: 'Street Brawl LFG', who: 'kate wolf', t: '9m ago' },
+      { ch: '#builds', sp: 'Hero Labs Theorycraft', who: 'Maestro', t: '16m ago' },
+      { ch: '#fan-art', sp: 'Fan Art Guild', who: 'Ikram B.', t: '47m ago' },
+    ];
+    const v2live = [
+      { room: 'Ranked Grind', sp: 'Deadlock Community', people: [{ ini: 'VX', av: AV('VX') }, { ini: 'RN', av: AV('RN') }, { ini: 'MA', av: AV('MA') }], more: '+4' },
+      { room: 'Street Brawl Squad', sp: 'Street Brawl LFG', people: [{ ini: 'KW', av: AV('KW') }, { ini: 'SI', av: AV('SI') }], more: '' },
+    ];
+    const v2tiles = [['grid', 'Spaces'], ['volume', 'Voice'], ['calendar', 'Events'], ['flame', 'Trending'], ['gamepad', 'LFG'], ['globe', 'Discover']].map(([icon, label]) => ({ icon, label }));
+    const S = { 'In game': ['#9fd487', 'rgba(159,212,135,.14)'], Online: ['#ffffff', 'rgba(255,255,255,.14)'], Idle: ['#9a9a9a', 'rgba(154,154,154,.14)'], Offline: ['#707070', 'rgba(112,112,112,.14)'] };
+    const FR = (ini, name, user, host, status, act, i) => ({ ini, name, user, host, status, act, av: AV(ini), art: UB(ini, i), dot: S[status][0], pbg: S[status][1], game: status === 'In game' });
+    const v2friends = [
+      FR('VX', 'Vexa', 'vexa', 'lanes.gg', 'In game', 'Deadlock · Street Brawl · 12:40', 0),
+      FR('RN', 'rina', 'rina', 'mesh.garden', 'In game', 'Deadlock · Ranked · 18:22', 1),
+      FR('MA', 'Maestro', 'maestro', 'lanes.gg', 'In game', 'Deadlock · Hero Labs', 2),
+      FR('KW', 'kate wolf', 'kate', 'kiln.social', 'Online', 'In #lfg · Street Brawl LFG', 3),
+      FR('TV', 'Teo Vance', 'teo', 'switchyard.works', 'Online', 'Online', 4),
+      FR('IB', 'Ikram B.', 'ikram', 'outpost.chat', 'Idle', 'Away 20 min', 5),
+      FR('PE', 'Pell', 'pell', 'mesh.garden', 'Offline', 'Last seen yesterday', 6),
+      FR('OL', 'Oskar Lind', 'oskar', 'fogbank.net', 'Offline', 'Last seen 2 h ago', 7),
+    ];
+    const v2online = v2friends.slice(0, 5);
+    const v2requests = [
+      { ini: 'AQ', name: 'Ada Quill', handle: 'ada@fogbank.net', note: '2 mutual friends', av: AV('AQ') },
+      { ini: 'NO', name: 'noor', handle: 'noor@kiln.social', note: 'Also in Deadlock Community', av: AV('NO') },
+    ];
+    const v2accounts = [
+      { ini: 'LF', name: 'lonelyfrog', handle: '@lonelyfrog@switchyard.works', ring: '0 0 0 3px #0d0d0d, 0 0 0 6px #ffffff, 0 0 40px rgba(255,255,255,.35)', bg: '#1f1f1f', bd: 'rgba(255,255,255,.5)', av: AV('LF') },
+      { ini: 'FA', name: 'frog.alt', handle: '@frog@lanes.gg', ring: 'none', bg: 'transparent', bd: 'rgba(242,242,242,.08)', av: AV('FA') },
+      { ini: 'L0', name: 'l0nelyfrogg', handle: '@lf@kiln.social', ring: 'none', bg: 'transparent', bd: 'rgba(242,242,242,.08)', av: AV('L0') },
+    ];
+    const v2filters = [['All', '8', 1], ['In game', '3'], ['Online', '2'], ['Offline', '2']].map(([l, n, a]) => ({ l, n, bg: a ? '#ffffff' : '#1f1f1f', col: a ? '#000000' : '#f2f2f2' }));
+    return { v2rail, v2chan, v2msgs, v2members, v2spaces, v2recent, v2live, v2tiles, v2friends, v2online, v2requests, v2accounts, v2filters, v2heroArt: banner(0, true) };
+  }
+}
+</script>
+</body>
+</html>

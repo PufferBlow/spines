@@ -1,0 +1,91 @@
+/* Pufferblow brand. This file is the source; the client and the website import it. */
+/*
+ * Text roles. Every piece of text maps to exactly one row: font and colour together, so they are
+ * never mixed by hand. The names are the design language's.
+ */
+.pb-panel-header { font: 400 18px/1.2 var(--pb-font-display); color: var(--pb-text-1); }
+.pb-section-label {
+  font: 600 11px/1 var(--pb-font-label);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pb-text-3);
+}
+.pb-channel-idle { font: 500 14.5px/1.2 var(--pb-font-body); color: var(--pb-text-2); }
+.pb-channel-active { font: 600 14.5px/1.2 var(--pb-font-body); color: var(--pb-text-1); }
+.pb-username { font: 700 15px/1.3 var(--pb-font-body); color: var(--pb-text-1); }
+.pb-host {
+  font: 400 11.5px/1.4 var(--pb-font-body);
+  color: var(--pb-text-2);
+  background: var(--pb-raised);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+.pb-timestamp { font: 400 11.5px/1.3 var(--pb-font-body); color: var(--pb-text-3); }
+.pb-message-body { font: 400 15px/1.5 var(--pb-font-body); color: var(--pb-text-body); }
+.pb-mention-you {
+  font: 600 15px/1.5 var(--pb-font-body);
+  color: var(--pb-on-light);
+  background: var(--pb-text-1);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+.pb-mention-other {
+  font: 600 15px/1.5 var(--pb-font-body);
+  color: var(--pb-text-1);
+  background: rgba(242, 242, 242, 0.1);
+  padding: 1px 5px;
+  border-radius: 5px;
+}
+.pb-link { font: 400 15px/1.5 var(--pb-font-body); color: var(--pb-text-1); text-decoration: underline rgba(242, 242, 242, 0.35); }
+.pb-inline-code {
+  font: 400 13.5px/1.5 var(--pb-font-mono);
+  color: var(--pb-text-body);
+  background: var(--pb-bg);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+.pb-system-line { font: italic 400 13.5px/1.4 var(--pb-font-body); color: var(--pb-text-2); }
+.pb-label-button {
+  font: 700 13px/1 var(--pb-font-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.pb-button-primary {
+  font: 700 13px/1 var(--pb-font-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pb-on-light);
+  background: var(--pb-text-1);
+  padding: 9px 14px;
+  border-radius: 8px;
+}
+.pb-button-secondary {
+  font: 700 13px/1 var(--pb-font-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pb-text-1);
+  background: var(--pb-raised);
+  padding: 9px 14px;
+  border-radius: 8px;
+}
+.pb-role-tag {
+  font: 700 10.5px/1 var(--pb-font-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--role-colour, var(--pb-text-1));
+  background: color-mix(in srgb, var(--role-colour, #f2f2f2) 14%, transparent);
+  padding: 5px 8px;
+  border-radius: 6px;
+}
+.pb-activity { font: 700 10.5px/1 var(--pb-font-label); letter-spacing: 0.1em; text-transform: uppercase; color: var(--pb-in-game); }
+.pb-meta { font: 400 12px/1.4 var(--pb-font-body); color: var(--pb-text-3); }
+.pb-error { font: 500 12.5px/1.4 var(--pb-font-body); color: var(--pb-danger-text); }
+.pb-warning { font: 500 12.5px/1.4 var(--pb-font-body); color: var(--pb-warn); }
+.pb-data-figure {
+  font: 700 32px/1 var(--pb-font-label);
+  color: var(--pb-text-1);
+  font-variant-numeric: tabular-nums;
+}
+.pb-data-axis { font: 400 11px/1 var(--pb-font-mono); color: var(--pb-text-3); }
+.pb-title { font: 400 22px/1.15 var(--pb-font-display); color: var(--pb-text-1); }
+.pb-display { font: 400 36px/1.1 var(--pb-font-display); color: var(--pb-text-1); }

@@ -1,0 +1,319 @@
+{
+  "name": "@pufferblow/brand",
+  "avatars": {
+    "expressions": [
+      "default",
+      "grumpy",
+      "happy",
+      "sleepy",
+      "surprised",
+      "wink"
+    ],
+    "tones": [
+      "ash",
+      "brass",
+      "coral",
+      "graphite",
+      "ink",
+      "paper",
+      "rose",
+      "sage",
+      "silver",
+      "sky",
+      "slate",
+      "violet"
+    ],
+    "files": {
+      "default": {
+        "ash": "assets/avatars/pb-avatar-default-ash.svg",
+        "brass": "assets/avatars/pb-avatar-default-brass.svg",
+        "coral": "assets/avatars/pb-avatar-default-coral.svg",
+        "graphite": "assets/avatars/pb-avatar-default-graphite.svg",
+        "ink": "assets/avatars/pb-avatar-default-ink.svg",
+        "paper": "assets/avatars/pb-avatar-default-paper.svg",
+        "rose": "assets/avatars/pb-avatar-default-rose.svg",
+        "sage": "assets/avatars/pb-avatar-default-sage.svg",
+        "silver": "assets/avatars/pb-avatar-default-silver.svg",
+        "sky": "assets/avatars/pb-avatar-default-sky.svg",
+        "slate": "assets/avatars/pb-avatar-default-slate.svg",
+        "violet": "assets/avatars/pb-avatar-default-violet.svg"
+      },
+      "grumpy": {
+        "ash": "assets/avatars/pb-avatar-grumpy-ash.svg",
+        "brass": "assets/avatars/pb-avatar-grumpy-brass.svg",
+        "coral": "assets/avatars/pb-avatar-grumpy-coral.svg",
+        "graphite": "assets/avatars/pb-avatar-grumpy-graphite.svg",
+        "ink": "assets/avatars/pb-avatar-grumpy-ink.svg",
+        "paper": "assets/avatars/pb-avatar-grumpy-paper.svg",
+        "rose": "assets/avatars/pb-avatar-grumpy-rose.svg",
+        "sage": "assets/avatars/pb-avatar-grumpy-sage.svg",
+        "silver": "assets/avatars/pb-avatar-grumpy-silver.svg",
+        "sky": "assets/avatars/pb-avatar-grumpy-sky.svg",
+        "slate": "assets/avatars/pb-avatar-grumpy-slate.svg",
+        "violet": "assets/avatars/pb-avatar-grumpy-violet.svg"
+      },
+      "happy": {
+        "ash": "assets/avatars/pb-avatar-happy-ash.svg",
+        "brass": "assets/avatars/pb-avatar-happy-brass.svg",
+        "coral": "assets/avatars/pb-avatar-happy-coral.svg",
+        "graphite": "assets/avatars/pb-avatar-happy-graphite.svg",
+        "ink": "assets/avatars/pb-avatar-happy-ink.svg",
+        "paper": "assets/avatars/pb-avatar-happy-paper.svg",
+        "rose": "assets/avatars/pb-avatar-happy-rose.svg",
+        "sage": "assets/avatars/pb-avatar-happy-sage.svg",
+        "silver": "assets/avatars/pb-avatar-happy-silver.svg",
+        "sky": "assets/avatars/pb-avatar-happy-sky.svg",
+        "slate": "assets/avatars/pb-avatar-happy-slate.svg",
+        "violet": "assets/avatars/pb-avatar-happy-violet.svg"
+      },
+      "sleepy": {
+        "ash": "assets/avatars/pb-avatar-sleepy-ash.svg",
+        "brass": "assets/avatars/pb-avatar-sleepy-brass.svg",
+        "coral": "assets/avatars/pb-avatar-sleepy-coral.svg",
+        "graphite": "assets/avatars/pb-avatar-sleepy-graphite.svg",
+        "ink": "assets/avatars/pb-avatar-sleepy-ink.svg",
+        "paper": "assets/avatars/pb-avatar-sleepy-paper.svg",
+        "rose": "assets/avatars/pb-avatar-sleepy-rose.svg",
+        "sage": "assets/avatars/pb-avatar-sleepy-sage.svg",
+        "silver": "assets/avatars/pb-avatar-sleepy-silver.svg",
+        "sky": "assets/avatars/pb-avatar-sleepy-sky.svg",
+        "slate": "assets/avatars/pb-avatar-sleepy-slate.svg",
+        "violet": "assets/avatars/pb-avatar-sleepy-violet.svg"
+      },
+      "surprised": {
+        "ash": "assets/avatars/pb-avatar-surprised-ash.svg",
+        "brass": "assets/avatars/pb-avatar-surprised-brass.svg",
+        "coral": "assets/avatars/pb-avatar-surprised-coral.svg",
+        "graphite": "assets/avatars/pb-avatar-surprised-graphite.svg",
+        "ink": "assets/avatars/pb-avatar-surprised-ink.svg",
+        "paper": "assets/avatars/pb-avatar-surprised-paper.svg",
+        "rose": "assets/avatars/pb-avatar-surprised-rose.svg",
+        "sage": "assets/avatars/pb-avatar-surprised-sage.svg",
+        "silver": "assets/avatars/pb-avatar-surprised-silver.svg",
+        "sky": "assets/avatars/pb-avatar-surprised-sky.svg",
+        "slate": "assets/avatars/pb-avatar-surprised-slate.svg",
+        "violet": "assets/avatars/pb-avatar-surprised-violet.svg"
+      },
+      "wink": {
+        "ash": "assets/avatars/pb-avatar-wink-ash.svg",
+        "brass": "assets/avatars/pb-avatar-wink-brass.svg",
+        "coral": "assets/avatars/pb-avatar-wink-coral.svg",
+        "graphite": "assets/avatars/pb-avatar-wink-graphite.svg",
+        "ink": "assets/avatars/pb-avatar-wink-ink.svg",
+        "paper": "assets/avatars/pb-avatar-wink-paper.svg",
+        "rose": "assets/avatars/pb-avatar-wink-rose.svg",
+        "sage": "assets/avatars/pb-avatar-wink-sage.svg",
+        "silver": "assets/avatars/pb-avatar-wink-silver.svg",
+        "sky": "assets/avatars/pb-avatar-wink-sky.svg",
+        "slate": "assets/avatars/pb-avatar-wink-slate.svg",
+        "violet": "assets/avatars/pb-avatar-wink-violet.svg"
+      }
+    }
+  },
+  "patterns": {
+    "bubbles": "assets/patterns/bubbles-ink.svg",
+    "crop": "assets/patterns/crop-ink.svg",
+    "fish": "assets/patterns/fish-ink.svg",
+    "fishfull": "assets/patterns/fishfull-ink.svg",
+    "ring": "assets/patterns/ring-ink.svg",
+    "school": "assets/patterns/school-ink.svg",
+    "tile": "assets/patterns/tile-ink.svg"
+  },
+  "logo": {
+    "pufferblow-logo": {
+      "svg": [
+        "assets/logo/pufferblow-logo/svg/pufferblow-dark-theme-small.svg",
+        "assets/logo/pufferblow-logo/svg/pufferblow-dark-theme.svg",
+        "assets/logo/pufferblow-logo/svg/pufferblow-light-theme-small.svg",
+        "assets/logo/pufferblow-logo/svg/pufferblow-light-theme.svg"
+      ],
+      "png": 18
+    },
+    "pufferblow-badge": {
+      "svg": [
+        "assets/logo/pufferblow-badge/svg/pufferblow-badge-small.svg",
+        "assets/logo/pufferblow-badge/svg/pufferblow-badge.svg"
+      ],
+      "png": 11,
+      "favicon": "assets/logo/pufferblow-badge/favicon.ico"
+    },
+    "pufferblow-mono": {
+      "svg": [
+        "assets/logo/pufferblow-mono/svg/pufferblow-mono-badge-small.svg",
+        "assets/logo/pufferblow-mono/svg/pufferblow-mono-badge.svg",
+        "assets/logo/pufferblow-mono/svg/pufferblow-mono-black-small.svg",
+        "assets/logo/pufferblow-mono/svg/pufferblow-mono-black.svg",
+        "assets/logo/pufferblow-mono/svg/pufferblow-mono-white-small.svg",
+        "assets/logo/pufferblow-mono/svg/pufferblow-mono-white.svg"
+      ],
+      "png": 18
+    }
+  },
+  "loader": [
+    {
+      "file": "assets/loader/archive/pufferblow-loader-dark-theme.svg",
+      "kb": 9
+    },
+    {
+      "file": "assets/loader/archive/pufferblow-loader-light-theme.svg",
+      "kb": 9
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-dark-theme-1024.png",
+      "kb": 2735.2
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-dark-theme-still.png",
+      "kb": 43.4
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-dark-theme.svg",
+      "kb": 8.6
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-light-theme-1024.png",
+      "kb": 2838.2
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-light-theme-still.png",
+      "kb": 45.9
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-light-theme.svg",
+      "kb": 8.6
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-mono-black-1024.png",
+      "kb": 1972.5
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-mono-white-1024.png",
+      "kb": 2171.8
+    },
+    {
+      "file": "assets/loader/pufferblow-loader-mono-white-still.png",
+      "kb": 29.3
+    }
+  ],
+  "marks": [
+    "assets/marks/a-icon-dark.svg",
+    "assets/marks/a-icon.svg",
+    "assets/marks/a-mark-gold.svg",
+    "assets/marks/a-mark-ink.svg",
+    "assets/marks/b-icon-dark.svg",
+    "assets/marks/b-icon.svg",
+    "assets/marks/b-mark-gold.svg",
+    "assets/marks/b-mark-ink.svg",
+    "assets/marks/c-icon-dark.svg",
+    "assets/marks/c-icon.svg",
+    "assets/marks/c-mark-gold.svg",
+    "assets/marks/c-mark-ink.svg",
+    "assets/marks/d-icon-dark.svg",
+    "assets/marks/d-icon.svg",
+    "assets/marks/d-mark-gold.svg",
+    "assets/marks/d-mark-ink.svg",
+    "assets/marks/e-icon-dark.svg",
+    "assets/marks/e-icon.svg",
+    "assets/marks/e-mark-gold.svg",
+    "assets/marks/e-mark-ink.svg",
+    "assets/marks/f-icon-dark.svg",
+    "assets/marks/f-icon.svg",
+    "assets/marks/f-mark-gold.svg",
+    "assets/marks/f-mark-ink.svg",
+    "assets/marks/face-a-gold.svg",
+    "assets/marks/face-a-ink.svg",
+    "assets/marks/face-a-paper.svg",
+    "assets/marks/face-b-gold.svg",
+    "assets/marks/face-b-ink.svg",
+    "assets/marks/face-b-paper.svg",
+    "assets/marks/face-c-gold.svg",
+    "assets/marks/face-c-ink.svg",
+    "assets/marks/face-c-paper.svg",
+    "assets/marks/g-icon-dark.svg",
+    "assets/marks/g-icon.svg",
+    "assets/marks/g-mark-gold.svg",
+    "assets/marks/g-mark-ink.svg",
+    "assets/marks/h-icon-dark.svg",
+    "assets/marks/h-icon.svg",
+    "assets/marks/h-mark-gold.svg",
+    "assets/marks/h-mark-ink.svg",
+    "assets/marks/p-icon-dark.svg",
+    "assets/marks/p-icon-small-dark.svg",
+    "assets/marks/p-icon-small.svg",
+    "assets/marks/p-icon.svg",
+    "assets/marks/p-mark-gold.svg",
+    "assets/marks/p-mark-ink.svg",
+    "assets/marks/p-mark-paper.svg",
+    "assets/marks/p-mark-small-gold.svg",
+    "assets/marks/p-mark-small-ink.svg",
+    "assets/marks/p-mark-small-paper.svg",
+    "assets/marks/pb-face-gold-white.svg",
+    "assets/marks/pb-face-gold.svg",
+    "assets/marks/pb-face-ink-white.svg",
+    "assets/marks/pb-face-ink.svg",
+    "assets/marks/pb-face-paper.svg",
+    "assets/marks/pb-face-plain-full.svg",
+    "assets/marks/pb-face-small-gold-white.svg",
+    "assets/marks/pb-face-small-gold.svg",
+    "assets/marks/pb-face-small-ink-white.svg",
+    "assets/marks/pb-face-small-ink.svg",
+    "assets/marks/pb-face-small-paper.svg",
+    "assets/marks/pb-face-small-plain.svg",
+    "assets/marks/pb-mono-badge-small.svg",
+    "assets/marks/pb-mono-badge.svg",
+    "assets/marks/pb-mono-black-small.svg",
+    "assets/marks/pb-mono-black.svg",
+    "assets/marks/pb-mono-white-small.svg",
+    "assets/marks/pb-mono-white.svg",
+    "assets/marks/pb-unified-badge-small.svg",
+    "assets/marks/pb-unified-badge.svg",
+    "assets/marks/pb-unified-brass-small.svg",
+    "assets/marks/pb-unified-brass.svg",
+    "assets/marks/pb-unified-sticker-small.svg",
+    "assets/marks/pb-unified-sticker.svg"
+  ],
+  "cli": {
+    "glyphs": [
+      "cli/glyphs/pufferblow-ascii-24.txt",
+      "cli/glyphs/pufferblow-ascii-40.txt",
+      "cli/glyphs/pufferblow-braille-12.txt",
+      "cli/glyphs/pufferblow-braille-24.txt",
+      "cli/glyphs/pufferblow-braille-8.txt",
+      "cli/glyphs/pufferblow-color-16-256.ans",
+      "cli/glyphs/pufferblow-color-16.ans",
+      "cli/glyphs/pufferblow-color-26-256.ans",
+      "cli/glyphs/pufferblow-color-26.ans",
+      "cli/glyphs/pufferblow-color-40-256.ans",
+      "cli/glyphs/pufferblow-color-40.ans",
+      "cli/glyphs/pufferblow-half-16.txt",
+      "cli/glyphs/pufferblow-half-26.txt",
+      "cli/glyphs/pufferblow-half-40.txt"
+    ],
+    "json": "cli/marks.json",
+    "python": "cli/python/glyph_marks.py"
+  },
+  "css": [
+    "css/code.css",
+    "css/components.css",
+    "css/index.css",
+    "css/motion.css",
+    "css/text.css"
+  ],
+  "tokens": [
+    "tokens/theme.css",
+    "tokens/tokens.css",
+    "tokens/tokens.json"
+  ],
+  "specs": [
+    "specs/archive/ui-mockups-mono-v1.html",
+    "specs/archive/ui-mockups-v1-standalone.html",
+    "specs/archive/ui-mockups-v1.html",
+    "specs/avatars.html",
+    "specs/cli-glyphs.html",
+    "specs/design-language.html",
+    "specs/logo-reference-mono.html",
+    "specs/logo-reference.html",
+    "specs/ui-mockups-v2.html",
+    "specs/ui-mockups-v3.html"
+  ]
+}

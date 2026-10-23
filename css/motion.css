@@ -1,0 +1,64 @@
+/* Pufferblow brand. This file is the source; the client and the website import it. */
+/* The dots in "Ada is typing…". */
+@keyframes typing-dot {
+  0%, 60%, 100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+.typing-dot {
+  animation: typing-dot 1.2s ease-in-out infinite;
+}
+
+/* The puffer shows up in the small moments: reactions, typing, mentions, speaking. */
+@keyframes pb-pop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.45); }
+  55% { transform: scale(0.92); }
+  75% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+@keyframes pb-spike {
+  0% { opacity: 0; transform: rotate(var(--r)) translateY(0) scaleY(0.2); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(var(--r)) translateY(-17px) scaleY(1); }
+}
+@keyframes pb-rise {
+  0%, 100% { transform: translateY(0) scale(0.8); opacity: 0.35; }
+  45% { transform: translateY(-6px) scale(1); opacity: 1; }
+}
+@keyframes pb-ring {
+  0% { box-shadow: 0 0 0 2px var(--pb-ring-gap, #161616), 0 0 0 4px rgba(159, 207, 138, 1); }
+  60% { box-shadow: 0 0 0 2px var(--pb-ring-gap, #161616), 0 0 0 9px rgba(159, 207, 138, 0); }
+  100% { box-shadow: 0 0 0 2px var(--pb-ring-gap, #161616), 0 0 0 4px rgba(159, 207, 138, 0); }
+}
+@keyframes pb-bristle {
+  0%, 100% { transform: scale(0.86); opacity: 0.7; }
+  50% { transform: scale(1); opacity: 1; }
+}
+.pb-anim-pop { animation: pb-pop var(--motion-puff) var(--motion-ease-puff); }
+.pb-anim-spike { animation: pb-spike 0.55s var(--motion-ease-out) forwards; }
+.pb-anim-rise { animation: pb-rise 1.2s ease-in-out infinite; }
+.pb-anim-speaking { animation: pb-ring 1.4s ease-out infinite; }
+.pb-anim-bristle { animation: pb-bristle 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pb-anim-pop,
+  .pb-anim-spike,
+  .pb-anim-rise,
+  .pb-anim-speaking,
+  .pb-anim-bristle,
+  .typing-dot,
+  .animate-pulse,
+  .animate-bounce,
+  .animate-fade-in,
+  .animate-slide-in-right,
+  .animate-scale-in {
+    animation: none !important;
+    transform: none !important;
+  }
+}
