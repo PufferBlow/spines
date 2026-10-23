@@ -43,7 +43,7 @@ Add it as a dependency by path or by git URL:
 ```jsonc
 // package.json of a consumer
 "dependencies": { "@pufferblow/spines": "file:../spines" }
-// or "github:thefr0gg/spines"
+// or "github:pufferblow/spines"
 ```
 
 **Styles.** In a Tailwind v4 app, import the theme and the shared CSS, and let Tailwind scan the components:
