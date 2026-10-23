@@ -1,4 +1,4 @@
-# Pufferblow brand
+# Pufferblow spines
 
 Everything that makes Pufferblow look and move like Pufferblow, in one repository that the client, the website, the backend's CLI and anything else can depend on.
 
@@ -40,31 +40,31 @@ Add it as a dependency by path or by git URL:
 
 ```jsonc
 // package.json of a consumer
-"dependencies": { "@pufferblow/brand": "file:../brand" }
-// or "github:pufferblow/brand"
+"dependencies": { "@pufferblow/spines": "file:../spines" }
+// or "github:thefr0gg/spines"
 ```
 
 **Styles.** In a Tailwind v4 app, import the theme and the shared CSS, and let Tailwind scan the components:
 
 ```css
 @import "tailwindcss";
-@import "@pufferblow/brand/theme.css";
-@import "@pufferblow/brand/css";
-@source "../node_modules/@pufferblow/brand/src";
+@import "@pufferblow/spines/theme.css";
+@import "@pufferblow/spines/css";
+@source "../node_modules/@pufferblow/spines/src";
 ```
 
-Anywhere else, `@import "@pufferblow/brand/css"` alone gives the tokens as custom properties, the text roles and the motion.
+Anywhere else, `@import "@pufferblow/spines/css"` alone gives the tokens as custom properties, the text roles and the motion.
 
 **Code.**
 
 ```ts
-import { identity, defaultAvatarUrl, bannerCss, PUFF_FACES, lookOf } from "@pufferblow/brand";
-import { PuffFace, RoleTag, Tooltip, PufferblowBrand } from "@pufferblow/brand";
+import { identity, defaultAvatarUrl, bannerCss, PUFF_FACES, lookOf } from "@pufferblow/spines";
+import { PuffFace, RoleTag, Tooltip, PufferblowBrand } from "@pufferblow/spines";
 ```
 
 The fish and the loader are resolved with Vite's asset handling (`import.meta.glob` and `new URL(..., import.meta.url)`), so the consumer ships them with its own bundle. The components are React 19 and use Tailwind class names; they read only the tokens above.
 
-**Art.** `@pufferblow/brand/assets/...` resolves any file; `manifest.json` lists them by name.
+**Art.** `@pufferblow/spines/assets/...` resolves any file; `manifest.json` lists them by name.
 
 **Terminal marks.** `cli/marks.json` for any language. The backend generates its splash module from the repo:
 `npm run cli:python -- ../pufferblow/pufferblow/cli/glyph_marks.py`.

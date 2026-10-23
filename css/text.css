@@ -1,4 +1,4 @@
-/* Pufferblow brand. This file is the source; the client and the website import it. */
+/* Pufferblow spines. This file is the source; the client and the website import it. */
 /*
  * Text roles. Every piece of text maps to exactly one row: font and colour together, so they are
  * never mixed by hand. The names are the design language's.

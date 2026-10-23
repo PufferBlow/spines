@@ -1,7 +1,7 @@
 {
-  "name": "@pufferblow/brand",
+  "name": "@pufferblow/spines",
   "version": "0.1.0",
-  "description": "Pufferblow's brand in one place: the art, the tokens, the motion, the terminal glyphs, the design sheets and the components that carry them.",
+  "description": "Pufferblow, in one place: the art, the tokens, the motion, the terminal glyphs, the design sheets and the components that carry them.",
   "type": "module",
   "license": "GPL-3.0-only",
   "sideEffects": [
