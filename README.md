@@ -30,7 +30,7 @@ src/           the code
 specs/         the design sheets, as they were made (open them in a browser)
   design-language.html   the design language
   ui-mockups-v3.html     the screens: login, account picker, space, hub, friends, roster, control panel
-  role-badges.html       the role badges (design only; not implemented yet)
+  role-badges.html       the role badges (implemented in the client and the instance; src/roleBadges.ts draws them)
   references/            the screenshots pasted into the design tool while making the sheets
   avatars.html, cli-glyphs.html, logo-reference.html, logo-reference-mono.html, ui-mockups-v2.html, archive/
 manifest.json  what the repo ships, by name (derived)

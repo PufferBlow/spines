@@ -22,3 +22,4 @@ export { SpaceIcon } from "./components/SpaceIcon";
 export { Spinner } from "./components/Spinner";
 export { TitleTooltips } from "./components/TitleTooltips";
 export { Tooltip } from "./components/Tooltip";
+export * from "./roleBadges";
