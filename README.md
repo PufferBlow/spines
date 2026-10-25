@@ -25,8 +25,10 @@ css/           the shared stylesheet pieces
 src/           the code
   identity.ts    colour, fish and banner from a handle (the hash must never change: people would change colour)
   puff.ts        puff reactions; spaceIcon.ts space icons; look.ts the profile card's look and settings
-  components/    PuffFace, PufferblowBrand, RoleTag, HostPill, SpaceIcon, Tooltip, TitleTooltips, Button, Card,
-                 Input, Modal, Badge, ProgressBar, Spinner, EmptyState, ErrorState, LoadingState, Preload
+  components/    PuffFace, PufferblowBrand, RoleBadge, RoleTag, HostPill, SpaceIcon, Tooltip, TitleTooltips, Button,
+                 Card, Input, Modal, Badge, ProgressBar, Spinner, Skeleton, EmptyState, ErrorState, LoadingState,
+                 Preload
+  assetUrl.ts    how the app turns an uploaded picture's path into an address (AssetUrlContext)
 specs/         the design sheets, as they were made (open them in a browser)
   design-language.html   the design language
   ui-mockups-v3.html     the screens: login, account picker, space, hub, friends, roster, control panel
@@ -63,6 +65,9 @@ Anywhere else, `@import "@pufferblow/spines/css"` alone gives the tokens as cust
 import { identity, defaultAvatarUrl, bannerCss, PUFF_FACES, lookOf } from "@pufferblow/spines";
 import { PuffFace, RoleTag, Tooltip, PufferblowBrand } from "@pufferblow/spines";
 ```
+
+A picture the app uploaded (a role badge's image) is addressed by the app, not by this package: wrap the app in
+`<AssetUrlContext.Provider value={resolveAssetUrl}>`. Without a provider the address is used as it is.
 
 The fish and the loader are resolved with Vite's asset handling (`import.meta.glob` and `new URL(..., import.meta.url)`), so the consumer ships them with its own bundle. The components are React 19 and use Tailwind class names; they read only the tokens above.
 
