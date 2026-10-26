@@ -295,6 +295,7 @@
   "css": [
     "css/code.css",
     "css/components.css",
+    "css/cursor.css",
     "css/index.css",
     "css/motion.css",
     "css/text.css"

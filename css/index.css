@@ -2,5 +2,6 @@
 @import "../tokens/tokens.css";
 @import "./text.css";
 @import "./motion.css";
+@import "./cursor.css";
 @import "./code.css";
 @import "./components.css";
